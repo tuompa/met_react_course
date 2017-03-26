@@ -25,6 +25,20 @@
   }
 }
 
+.hover-image-button{
+  border: 4px solid rgb(17, 17, 17);
+  width: 200px;
+  height: 80px;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  transition: all 0.3s;
+  vertical-align: text-top;
+  position:relative;
+}
+
+
 .primary {
   background: $backgroundPrimary;
   color: #ffffff;

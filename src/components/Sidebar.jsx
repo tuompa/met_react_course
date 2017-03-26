@@ -5,7 +5,8 @@ import { SidebarItem, SidebarLink, SidebarPenLink, SidebarHomeItem } from './Sid
 const LINKS = {
   '/jsxSyntax': 'JSX Syntax',
   '/Lists': 'JSX Lists',
-  '/state': 'Component State',
+  '/componentState': 'Component State',
+  '/componentProps': 'Component Props',
 };
 
 export default class Sidebar extends React.Component {
