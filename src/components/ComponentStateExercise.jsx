@@ -9,7 +9,7 @@ const IMAGES = {
 /* TODO
 1. keep state.text upper cased
 2. if the new value equals some of the image names change state.imageName
-so that a new image will be displayed
+to match it, so that a new image will be displayed
 */
 
 export default class ComponentStateExercise extends React.Component {
