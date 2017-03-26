@@ -1,0 +1,29 @@
+
+.corner-message-container {
+  pointer-events: none;
+  width: 250px;
+  position: absolute;
+  right: 20px;
+  z-index: 20;
+  opacity: 0.7;
+}
+
+.corner-message{
+  padding:7px;
+  width: 100%;
+  color:black;
+  border-radius: 5px;
+  border: solid 2px;
+}
+
+.error-message{
+  background-color: #FFF6F6;
+  color:#9F3A38;
+  border-color: #9F3A38;
+}
+
+.success-message{
+  background-color: #f1ffed;
+  color: #5a9f62;
+  border-color: #5a9f62;
+}

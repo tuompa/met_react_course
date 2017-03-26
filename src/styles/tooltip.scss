@@ -1,0 +1,36 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  opacity: 0;
+  width: 150px;
+  background: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.8);
+  padding: .6em 1em .6em 1em;
+  border-radius: 1em;
+  /* Position the tooltip */
+  position: absolute;
+}
+
+.tooltip-text{
+  pointer-events: none;
+}
+
+.tooltip:hover .tooltip-text {
+  animation: from-transparent-to-visible 1.2s;
+  opacity: 1;
+}
+
+@keyframes from-transparent-to-visible {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity:0;
+  }
+  100%{
+    opacity: 1;
+  }
+}

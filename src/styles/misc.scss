@@ -1,0 +1,68 @@
+@import "./common.scss";
+
+body {
+  font-family: Comic Sans MS;
+  font-size: medium;
+}
+
+form {
+  transition: opacity .5s;
+  opacity: 1;
+}
+
+label {
+  padding: 0.25em;
+  font-size: inherit;
+}
+.flex{
+  display: flex;
+  align-content: flex-start;
+}
+
+.centered-box {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.box, .centered-box {
+  border: 3px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.vertical-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+
+.flex-center{
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.horizontal-flex-container{
+  display:flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.transparent{
+  transition: opacity .5s;
+  opacity: 0.3;
+}
+
+.fixed-top{
+  position: fixed;
+}
+.padded-content{
+  padding:2em;
+  background: $contentBackground;
+  border: $itemBorder;
+  border-radius: 2em;
+}

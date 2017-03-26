@@ -1,0 +1,47 @@
+
+@import "./common";
+
+.input-default {
+  transition: all $defaultTransitionTime;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  font-size: inherit;
+  margin: 0.25em;
+  font-family: inherit;
+  box-shadow: 5px 5px 5px $neutralGrey;
+  &:focus{
+    box-shadow: 8px 8px 8px $neutralGrey;
+  }
+  &:enabled:hover{
+    @extend input:focus;
+  }
+}
+
+.required {
+  background: #fefee2;
+}
+
+.neutral {
+  background: #ffffff;
+}
+
+.invalid {
+  background: #ffecec;
+}
+
+.valid {
+  background: #f0faff;
+}
+
+@mixin checkbox{
+  box-shadow: 2px 2px 2px $neutralGrey;
+}
+input[type='checkbox']{
+  @include checkbox;
+}
+input[type='checkbox']:hover{
+  @include checkbox
+}
+input[type='checkbox']:focus{
+  @include checkbox
+}

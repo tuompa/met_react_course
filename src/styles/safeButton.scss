@@ -1,0 +1,46 @@
+/**
+ * Created by joonaenbuska on 28/01/2017.
+ */
+@import 'common';
+.safeButtonContainer{
+  display:flex;
+  align-items: center;
+  flex-grow: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.safeButtonHidden{
+  opacity: 0;
+  transition: all $defaultTransitionTime;
+  font-size: 0;
+  flex-shrink: 1;
+  flex-grow: 0;
+  padding: .5em;
+  margin:.1em;
+  color:transparent;
+  cursor: pointer;
+}
+
+.safeButtonVisible{
+  @extend .safeButtonHidden;
+  font-size: .7em;
+  opacity: 1;
+  color: $itemDefaultTextColor
+}
+
+.fa-trash{
+  transition: all $defaultTransitionTime;
+  transform-origin: bottom right .6em;
+  transform:rotate(15deg);
+  cursor: pointer;
+  padding: .6em;
+  border:1px solid transparent;
+  border-radius: 2em;
+  color:$itemDefaultTextColor;
+  &:hover{
+    transform:rotate(0deg);
+    border:1px solid white;
+  }
+}
+
