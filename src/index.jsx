@@ -11,8 +11,10 @@ import reducers from 'reducers';
 import 'styles';
 import JSXSyntax from 'components/JSXSyntax';
 import JSXSyntaxExercise from 'components/JSXSyntaxExercise';
+import Lists from 'components/Lists';
+import ListsExercise from 'components/ListExercise';
 
-const middleware = [ thunk, ];
+const middleware = [thunk];
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 const store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
 
@@ -21,8 +23,10 @@ const router = (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="/jsxSyntax/exercise" component={JSXSyntax} />
         <Route path="/jsxSyntax" component={JSXSyntax} />
+        <Route path="/jsxSyntax/exercise" component={JSXSyntaxExercise} />
+        <Route path="/lists" component={Lists} />
+        <Route path="/lists/exercise" component={ListsExercise} />
         <Route path="/state" component={State} />
       </Route>
     </Router>

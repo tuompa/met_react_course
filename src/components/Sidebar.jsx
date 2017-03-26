@@ -4,6 +4,7 @@ import { SidebarItem, SidebarLink, SidebarPenLink, SidebarHomeItem } from './Sid
 
 const LINKS = {
   '/jsxSyntax': 'JSX Syntax',
+  '/Lists': 'JSX Lists',
   '/state': 'Component State',
 };
 
