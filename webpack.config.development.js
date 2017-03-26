@@ -36,7 +36,6 @@ module.exports = merge(config.base, {
   ],
   devServer: {
     //host must be set to enable accessing server from localhost:${PORT} when devServer running in docker
-    host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 8000,
     contentBase: config.sourcePath,
     historyApiFallback: true,
