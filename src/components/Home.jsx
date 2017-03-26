@@ -38,7 +38,8 @@ const Home = () => (
     </ul>
     <h1>Workflow</h1>
     <ul>
-      <li>Well be looking at <b>short examples</b>, and between there is a <b>short assignment</b> based on the previous topic</li>
+      <li>Will be looking at <b>short examples</b>, and between there is a <b>short assignment</b> based on the previous topic</li>
+      <li>Click the subject name to see the example and the pen icon next to it to see the output of the code you are editing</li>
       <li>When you are done when the topics assigment
         <ol>
           <li>First make sure you are not in master branch <b>git branch</b></li>

@@ -34,8 +34,8 @@
       <li><b>Control + C</b> at terminal to stop dev server</li>
     </ul>
     <h1>Workflow</h1>
-    <ul>
-      <li>Well be looking at <b>short examples</b>, and between each there is a <b>short assignment</b> based on the previous topic</li>
+    <ul>    
+      <li>Will be looking at <b>short examples</b>, and between each there is a <b>short assignment</b> based on the previous topic</li>      
       <li>When you are done when the topics assigment
         <ol>
           <li>First make sure you are not in master branch <b>git branch</b></li>
