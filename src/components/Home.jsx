@@ -27,7 +27,8 @@ const Home = () => (
       <li>From then on <b>npm start</b> to run the project in dev
         server
       </li>
-      <li><b>Control + C</b> to stop dev server</li>
+      <li>Open browser at <b>localhost:8000</b> to see the app running</li>
+      <li><b>Control + C</b> at terminal to stop dev server</li>
     </ul>
     <h1>Development</h1>
     <ul>
