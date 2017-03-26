@@ -23,7 +23,7 @@ const Home = () => (
     </ul>
     <h1>How to run</h1>
     <ul>
-      <li>First <b>npm install</b> from commandline</li>
+      <li>First go to project root folder in you terminal and type <b>npm install</b></li>
       <li>From then on <b>npm start</b> to run the project in dev
         server
       </li>
