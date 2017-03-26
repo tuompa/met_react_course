@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "airbnb"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "max-len": [2, {"code": 200/*maxlength causes problems with my webstorm*/}],
+    "no-underscore-dangle": 0,
+    "react/jsx-space-before-closing" : "error",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved" : "off",
+    "import/extensions": "off"
+  },
+  "plugins": [
+    "react"
+  ],
+  "quotes": [
+    "warn",
+    "single"
+  ],
+  "semi": [
+    "warn",
+    "always"
+  ],
+  "comma-dangle": "always-multiline"
+}
