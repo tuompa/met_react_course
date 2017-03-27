@@ -48,41 +48,38 @@
     </ul>
     <h1>Development tips</h1>
     <ul>
-      <li>Enable <b>eslint</b> codequality tool in Webstorm
+      <li>Enable <b>ESlint</b> codequality tool in Webstorm
         <ol>
           <li>
             Open Preferences...
           </li>
           <li>
-            Language and framework
+            Language and framework...
           </li>
           <li>
-            JavaScript
+            JavaScript...
           </li>
           <li>
-            Code quality tools
+            Code quality tools...
           </li>
           <li>
-            set <b>enabled</b> true
+            ESLint set <b>enabled</b> true
           </li>
         </ol>
       </li>
       <li>Other
         <ol>
           <li>
-            From preferences...
+            Open preferences...
           </li>
           <li>
-            Language and framework
+            Language and framework...
           </li>
           <li>
-            JavaScript
+            JavaScript...
           </li>
           <li>
-            Set 'use string' to false and Javascript language version to React JSX
-          </li>
-          <li>
-            set <b>enabled</b> true
+            Set <b>use strict</b> to false and Javascript language version to <b>React JSX</b>
           </li>
         </ol>
       </li>
