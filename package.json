@@ -16,6 +16,7 @@
     "json-loader": "^0.5.4",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
+    "react-audio-player": "^0.3.3",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "react-router": "^3.0.2",
@@ -49,6 +50,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
+    "webpack-audio-sprite-plugin": "^0.1.0",
     "webpack-dev-server": "^2.4.1",
     "webpack-merge": "^4.0.0"
   }

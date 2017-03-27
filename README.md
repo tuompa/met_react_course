@@ -36,7 +36,7 @@
     <h1>Workflow</h1>
     <ul>    
       <li>Will be looking at <b>short examples</b>, and between each there is a <b>short assignment</b> based on the previous topic</li>      
-      <li>When you are done when the topics assigment
+      <li>When you are done with the topics assigment
         <ol>
           <li>First make sure you are not in master branch <b>git branch</b></li>
           <li>If you need help let me know</li>
@@ -48,41 +48,44 @@
     </ul>
     <h1>Development tips</h1>
     <ul>
-      <li>Enable <b>ESlint</b> codequality tool in Webstorm
-        <ol>
-          <li>
-            Open Preferences...
-          </li>
-          <li>
-            Language and framework...
-          </li>
-          <li>
-            JavaScript...
-          </li>
-          <li>
-            Code quality tools...
-          </li>
-          <li>
-            ESLint set <b>enabled</b> true
-          </li>
-        </ol>
-      </li>
-      <li>Other
-        <ol>
-          <li>
-            Open preferences...
-          </li>
-          <li>
-            Language and framework...
-          </li>
-          <li>
-            JavaScript...
-          </li>
-          <li>
-            Set <b>use strict</b> to false and Javascript language version to <b>React JSX</b>
-          </li>
-        </ol>
-      </li>
+      <li>Enable <b>ESlint</b> codequality tools for Webstorm
+              <ol>
+                <li>
+                  Open Preferences...
+                </li>
+                <li>
+                  Language and framework
+                </li>
+                <li>
+                  JavaScript
+                </li>
+                <li>
+                  Code quality tools...
+                </li>
+                <li>
+                  ESlint...
+                </li>
+                <li>
+                  set <b>enabled</b> true
+                </li>
+              </ol>
+            </li>
+            <li>Other configs for Webstorm
+              <ol>
+                <li>
+                  Open preferences...
+                </li>
+                <li>
+                  Language and framework...
+                </li>
+                <li>
+                  JavaScript...
+                </li>
+                <li>
+                  Set <b>use strict</b> to <b>false</b> and Javascript language version to <b>React JSX</b>
+                </li>
+              </ol>
+            </li>
       <li>Debugging in Chrome
         <ul>
           <li>Using Chrome developer tools you can for example: see console log:s, set breakpoints, and see and change application state using react devtools and redux devtools</li>
