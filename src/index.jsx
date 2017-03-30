@@ -15,13 +15,14 @@ import JSXSyntaxExercise from 'components/JSXSyntaxExercise';
 import Lists from 'components/Lists';
 import ListsExercise from 'components/ListExercise';
 import ComponentProps from 'components/ComponentProps';
+import ComponentPropsExecrice from 'components/ComponentPropsExercise';
 import ReusableComponents from 'components/ReusableComponents';
 
 const middleware = [thunk];
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 const store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
 
-const router = (
+const root = (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
@@ -33,10 +34,11 @@ const router = (
         <Route path="/componentState" component={ComponentState} />
         <Route path="/componentState/exercise" component={ComponentStateExercise} />
         <Route path="/componentProps" component={ComponentProps} />
+        <Route path="/componentProps/exercise" component={ComponentPropsExecrice} />
         <Route path="/reusableComponents" component={ReusableComponents} />
       </Route>
     </Router>
   </Provider>
 );
 
-ReactDOM.render(router, document.getElementById('app'));
+ReactDOM.render(root, document.getElementById('app'));

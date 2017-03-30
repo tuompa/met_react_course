@@ -18,6 +18,7 @@ module.exports = merge(config.base, {
   output: {
     path: config.distPath,
     filename: config.outputFileNameTemplate,
+    publicPath: config.outputPublicPath,
   },
   plugins: [
     new CleanWebpackPlugin([config.distPath]),
