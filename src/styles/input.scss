@@ -17,6 +17,24 @@
   }
 }
 
+.validate-input-container{
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.invalid-indicator-visible{
+  transition:all .4s;
+  height: 50px;
+  transform:rotate(360deg)
+}
+.invalid-indicator-hidden{
+  transition: all .4s;
+  height: 0;
+}
+
+
+
 .required {
   background: #fefee2;
 }
@@ -25,7 +43,7 @@
   background: #ffffff;
 }
 
-.invalid {
+.invalid-input{
   background: #ffecec;
 }
 
