@@ -17,6 +17,11 @@
   }
 }
 
+.invalid-input{
+  @extend .input-default;
+  background: #ffecec;
+}
+
 .validate-input-container{
   display: flex;
   align-items: center;
@@ -43,9 +48,6 @@
   background: #ffffff;
 }
 
-.invalid-input{
-  background: #ffecec;
-}
 
 .valid {
   background: #f0faff;

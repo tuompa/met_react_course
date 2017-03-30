@@ -40,7 +40,7 @@ class ValidateInput extends React.Component {
       <div className="validate-input-container">
         <input
           placeholder={this.props.placeholder}
-          className={`input-default ${invalid && 'invalid-input'}`}
+          className={invalid ? 'input-default' : 'invalid-input'}
           onChange={this.onTextChanged}
           value={text}
           onBlur={this.onBlur}
