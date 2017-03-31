@@ -77,8 +77,9 @@
   height: .8em;
   width: .8em;
   &:hover {
-    background: white;
-    color: #ff6655;
+    transition: all .5s;
+    transform: rotate(360deg);
+    color: #9eff91;
   }
   &:active{
     transition: all .0s;

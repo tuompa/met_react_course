@@ -31,8 +31,8 @@ export default class Sidebar extends React.Component {
               {LINKS[key]}
             </SidebarLink>
             <SidebarPenLink
-              selected={pathname === ''}
-              onClick={() => { browserHistory.push(key+'/exercise')}}
+              selected={(`${key}/exercise`) === pathname}
+              onClick={() => { browserHistory.push(`${key}/exercise`); }}
             />
           </SidebarItem>))}
       </section>
