@@ -51,19 +51,14 @@ class ValidateInput extends React.Component {
 
 }
 
-export default class Component extends React.Component {
-
-  state = { searching: false };
-  emailRegex = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/;
-
-  render() {
-    return (
-      <div>
-        <h1>{this.state.header}</h1>
-        <ValidateInput validate={text => this.emailRegex.test(text)} type="email" placeholder="email" />
-        <ValidateInput validate={text => text.length > 8} type="password" placeholder="password" />
-      </div>
+const emailRegex = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/;
+const form = () => (
+  <div>
+    <h1>{this.state.header}</h1>
+    <ValidateInput validate={text => emailRegex.test(text)} type="email" placeholder="email" />
+    <ValidateInput validate={text => text.length > 8} type="password" placeholder="password" />
+  </div>
     );
-  }
-}
+
+export default form;
 
