@@ -1,6 +1,10 @@
 import React from 'react';
-import catComplete from '../images/cat-complete.png';
+import catInvalid from '../images/cat-complete.png';
 const { func, string } = React.PropTypes;
+
+/* ValidateInput is a component that displays error
+ * after focus has left on element is left if props validate
+ * function does not return true */
 class ValidateInput extends React.Component {
 
   static propTypes = {
@@ -18,25 +22,12 @@ class ValidateInput extends React.Component {
   onTextChanged = (event) => {
     const text = event.target.value;
     const nextState = { text };
-    /* TODO
-    if state is invalid but nextState is valid set invalid to false */
-    const { invalid } = this.state;
-
-    const { validate } = this.props;
-    if (invalid && validate(text)) {
-      nextState.invalid = false;
-    }
-    this.setState(nextState);
+    /* change state.text */
+    /* and validate text, if it is valid set state.invalid:false*/
   }
 
   onBlur= () => {
-    const { text } = this.state;
-    const { validate } = this.props;
-    const nextState = {};
-    if (!validate(text)) {
-      nextState.invalid = true;
-    }
-    this.setState(nextState);
+    /* on blur validate text and set state invalid:true if it is not valid */
   }
 
   render() {
@@ -52,7 +43,7 @@ class ValidateInput extends React.Component {
           value={text}
           onBlur={this.onBlur}
         />
-        <img className={invalid ? 'invalid-indicator-visible' : 'invalid-indicator-hidden'} src={catComplete} />
+        <img className={invalid ? 'invalid-indicator-visible' : 'invalid-indicator-hidden'} src={catInvalid} />
       </div>
     );
   }
@@ -69,8 +60,8 @@ export default class Component extends React.Component {
     return (
       <div>
         <h1>{this.state.header}</h1>
-        <ValidateInput validate={text => this.emailRegex.test(text)} type="email" placeholder={'email'} />
-        <ValidateInput validate={text => text.length > 8} type="password" placeholder={'8 or more characters'} />
+        <ValidateInput validate={text => this.emailRegex.test(text)} type="email" placeholder="email" />
+        <ValidateInput validate={text => text.length > 8} type="password" placeholder="password" />
       </div>
     );
   }
