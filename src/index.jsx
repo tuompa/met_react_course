@@ -18,9 +18,16 @@ import ComponentProps from 'components/ComponentProps';
 import ComponentPropsExecrice from 'components/ComponentPropsExercise';
 import ReusableComponents from 'components/ReusableComponents';
 
-const middleware = [thunk];
-const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
-const store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
+const middlewares = [thunk];
+let store;
+if (process.env.NODE_ENV === 'development') {
+  const { logger } = require('redux-logger');
+  middlewares.push(logger);
+  const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
+  store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
+} else {
+  store = createStore(reducers, middlewares);
+}
 
 const root = (
   <Provider store={store}>
