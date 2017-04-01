@@ -1,67 +1,83 @@
 @import "./common.scss";
+@import './button.scss';
 
 body {
   font-family: Comic Sans MS;
   font-size: medium;
 }
 
-form {
-  transition: opacity .5s;
-  opacity: 1;
-}
-
-label {
-  padding: 0.25em;
-  font-size: inherit;
-}
 .flex{
   display: flex;
 }
 
-.centered-box {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.flex-row{
   display: flex;
+  flex-direction: row;
 }
 
-.box, .centered-box {
-  border: 3px solid black;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px #888888;
+.thump-nail-container{
+  display: flex;
+  flex-direction: row;
 }
 
-.vertical-flex-container {
+.vertical-thump-nail-container{
   display: flex;
   flex-direction: column;
-  justify-content: center
 }
 
-.flex-center{
+.centered-foreground-item{
+  align-self: center;
+  z-index: 100;
+}
+.thump-nail-item{
+  margin: 0 1em 0 1em;
   display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;;
 }
 
-.horizontal-flex-container{
+.thump-nail-list-item{
+  @extend .flex-row;
+  padding: 1em;
+  align-content: space-between;
+}
+
+.reset-content-button{
+  align-self:flex-start;
+}
+
+.flex-list{
   display:flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.transparent{
-  transition: opacity .5s;
-  opacity: 0.3;
+.image-action-container{
+  @extend .flex-list;
+  justify-content: center;
+  padding-right: 1em;
 }
 
-.fixed-top{
-  position: fixed;
+.url-thump-nail{
+  height: 100px;
+  border-radius: 4em;
+  cursor: pointer;
+  transition: all .4s
 }
-.padded-content{
-  padding:2em;
-  background: $contentBackground;
-  border: $itemBorder;
+
+.url-thump-nail-selected{
+  @extend .url-thump-nail;
+  box-shadow: 10px 10px 10px $neutralGrey;
+  transform: scale(1.1)
+}
+
+.selected-item{
+  height: 200px;
+  margin:2em;
   border-radius: 2em;
+  opacity: 1;
+  animation: fade .5s ease-out;
+}
+
+@keyframes fade {
+  0% { opacity: 0; transform: scale(0.1)}
+  100%  { opacity: 1 }
 }

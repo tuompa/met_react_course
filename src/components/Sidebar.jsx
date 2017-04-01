@@ -7,6 +7,7 @@ const LINKS = {
   '/Lists': 'JSX Lists',
   '/componentState': 'Component State',
   '/componentProps': 'Component Props',
+  '/react-redux': 'React Redux',
 };
 
 export default class Sidebar extends React.Component {

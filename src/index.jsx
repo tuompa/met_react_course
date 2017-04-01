@@ -8,6 +8,7 @@ import App from 'components/App';
 import Home from 'components/Home';
 import ComponentState from 'components/ComponentState';
 import ComponentStateExercise from 'components/ComponentStateExercise';
+import ReactRedux from 'components/ReactRedux';
 import reducers from 'reducers';
 import 'styles';
 import JSXSyntax from 'components/JSXSyntax';
@@ -16,7 +17,7 @@ import Lists from 'components/Lists';
 import ListsExercise from 'components/ListExercise';
 import ComponentProps from 'components/ComponentProps';
 import ComponentPropsExecrice from 'components/ComponentPropsExercise';
-import ReusableComponents from 'components/ReusableComponents';
+import ReactReduxExercise from 'components/ReactReduxExercise';
 
 const middlewares = [thunk];
 let store;
@@ -42,7 +43,8 @@ const root = (
         <Route path="/componentState/exercise" component={ComponentStateExercise} />
         <Route path="/componentProps" component={ComponentProps} />
         <Route path="/componentProps/exercise" component={ComponentPropsExecrice} />
-        <Route path="/reusableComponents" component={ReusableComponents} />
+        <Route path="/react-redux" components={ReactRedux}/>
+        <Route path="/react-redux/exercise" components={ReactReduxExercise}/>
       </Route>
     </Router>
   </Provider>

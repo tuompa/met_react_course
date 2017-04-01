@@ -6,6 +6,7 @@
   box-shadow: 5px 5px 5px black;
   font-family: inherit;
   font-size: inherit;
+  min-height: 30px;
   border: 0.1em solid black;
   border-radius: 5px;
   outline: none;
@@ -39,12 +40,14 @@
 }
 
 
-.primary {
+.button-primary {
+  @extend .button-default;
   background: $backgroundPrimary;
   color: #ffffff;
 }
 
-.warning {
+.button-warning {
+  @extend .button-default;
   background: $backgroundWarning;
   color: #ffffff;
 }
