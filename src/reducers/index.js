@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import employees from './employees';
-import products from './products';
+import image from './imageReducer';
 
-export default combineReducers({ employees, products });
+export default combineReducers({ image });
