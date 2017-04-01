@@ -13,6 +13,10 @@ class SeizureButton extends React.Component {
 
   state = { displayImage: false, textAlign: 'center' }
 
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+  }
+
   onMouseOver = () => {
     this.setTimerForTextAlign();
     this.setState({ displayImage: true });
