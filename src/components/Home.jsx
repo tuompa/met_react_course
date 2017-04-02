@@ -23,6 +23,9 @@ const Home = () => (
         href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en"
       >Redux
         DevTools for Chrome</a></li>
+      <li>For some assigments you need to enable cross-origin resource sharing <a
+        href="https://chrome.google.com/webstore/detail/cors-toggle/omcncfnpmcabckcddookmnajignpffnh"
+      >chrome extension 'CORS Toggle'</a> to be able to make request to courses backend</li>
     </ul>
     <h1>To get started</h1>
     <ul>
