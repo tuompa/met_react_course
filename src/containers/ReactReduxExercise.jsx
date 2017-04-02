@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, } from 'react-redux';
 import FlipMove from 'react-flip-move';
 
-const { func, string, bool, arrayOf } = React.PropTypes;
+const { func, string, bool, arrayOf, } = React.PropTypes;
 
 class Image extends React.Component {
 
   render() {
-    const { url, removeImage, selectImage, isSelected } = this.props;
+    const { url, removeImage, selectImage, isSelected, } = this.props;
     return (<div key={url} className="thump-nail-list-item">
       <div className="image-action-container">
         <button className="centered-foreground-item button-warning " onClick={() => removeImage(url)}>Remove</button>
@@ -32,10 +32,10 @@ Image.propTypes = {
 
 class ImageGallery extends React.Component {
 
-  state = { inputValue: '' }
+  state = { inputValue: '', };
 
   render() {
-    const { selectImage, selectedImage, images, resetImages } = this.props;
+    const { selectImage, selectedImage, images, resetImages, } = this.props;
     return (
       <div>
         <div className="flex-row">
@@ -44,7 +44,7 @@ class ImageGallery extends React.Component {
             type="text"
             placeholder="image url"
             value={this.state.inputValue}
-            onChange={e => this.setState({ inputValue: e.target.value })}
+            onChange={e => this.setState({ inputValue: e.target.value, })}
           />
           <button className="button-primary" onClick={() => console.log('ADD_IMAGE not implemented')}>Add</button>
           <button className="button-default" onClick={resetImages}>Reset Images</button>
@@ -78,11 +78,10 @@ const mapStateToProps = state => ({
   images: state.image.images,
 });
 const mapDispatchToProps = ({
-  selectImage: url => dispatch => dispatch({ type: 'SELECT_IMAGE', payload: url }),
-  removeImage: url => dispatch => dispatch({ type: 'REMOVE_IMAGE', payload: url }),
-  resetImages: () => dispatch => dispatch({ type: 'RESET_IMAGES' }),
-  /* TODO
-  * addImage ...
+  selectImage: url => dispatch => dispatch({ type: 'SELECT_IMAGE', payload: url, }),
+  removeImage: url => dispatch => dispatch({ type: 'REMOVE_IMAGE', payload: url, }),
+  resetImages: () => dispatch => dispatch({ type: 'RESET_IMAGES', }),
+  /* addImage ...
   * shuffleImages ...
   * */
 });
