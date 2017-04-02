@@ -39,7 +39,7 @@ ImageGallery.propTypes = {
   images: arrayOf(string),
 };
 
-/* state is redux store state*/
+/* 'state' is redux store state*/
 const mapStateToProps = state => ({
   selectedImage: state.image.selectedImage,
   images: state.image.images,
