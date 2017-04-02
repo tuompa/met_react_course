@@ -30,7 +30,8 @@
     "array-bracket-spacing":[1, "always"],
     "no-param-reassign": [1, { "props": true }],
     "key-spacing": [1, { "afterColon": true, "beforeColon": false }],
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }]
   },
   "plugins": [
     "react"
