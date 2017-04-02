@@ -10,22 +10,41 @@
     "mocha": true
   },
   "rules": {
-    "max-len": [2, {"code": 200/*maxlength causes problems with my webstorm*/}],
-    "no-underscore-dangle": 0,
-    "react/jsx-space-before-closing" : "error",
-    "import/no-extraneous-dependencies": "off",
+    "no-shadow": 0,
+    "react/require-default-props": 0,
+    "react/forbid-prop-types": [0],
+    "no-class-assign": 0,
     "import/no-unresolved" : "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "react/prefer-stateless-function": "off",
+    "react/prop-types": "off",
+    "max-len": [1, {"code": 200}], /*airbnb default maxlength causes problems with my ide*/
+    "no-underscore-dangle": 0,
+    "react/jsx-space-before-closing" : 1,
+    "import/no-extraneous-dependencies": "off",
+    "comma-dangle" : [1, "always"],
+    "indent": [1,2],
+    "camelcase": [1, {"properties": "always"}],
+    "comma-spacing": [1, {"before": false, "after": true}],
+    "object-curly-spacing": [1, "always"],
+    "array-bracket-spacing":[1, "always"],
+    "no-param-reassign": [1, { "props": true }],
+    "key-spacing": [1, { "afterColon": true, "beforeColon": false }],
+    "no-unused-vars": 1
   },
   "plugins": [
     "react"
   ],
+  "indent": [
+    1,
+    2
+  ],
   "quotes": [
-    "warn",
+    1,
     "single"
   ],
   "semi": [
-    "warn",
+    1,
     "always"
   ],
   "comma-dangle": "always-multiline"
