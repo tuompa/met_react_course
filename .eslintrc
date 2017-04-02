@@ -28,10 +28,17 @@
     "comma-spacing": [1, {"before": false, "after": true}],
     "object-curly-spacing": [1, "always"],
     "array-bracket-spacing":[1, "always"],
-    "no-param-reassign": [1, { "props": true }],
+    "no-param-reassign": [0],
     "key-spacing": [1, { "afterColon": true, "beforeColon": false }],
     "no-unused-vars": 1,
-    "no-trailing-spaces": ["error", { "skipBlankLines": true }]
+    "react/jsx-indent": 1,
+    "no-trailing-spaces": [2, { "skipBlankLines": true }],
+    "eol-last": 1,
+    "react/no-multi-comp": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "arrow-spacing": 1,
+    "no-plusplus": 0,
+    "jsx-quotes": [1, "prefer-double"]
   },
   "plugins": [
     "react"
