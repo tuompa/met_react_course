@@ -1,8 +1,12 @@
+const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const SRC_PATH = path.join(__dirname, 'src');
-
+const distPath = path.join(__dirname, 'dist');
+const sourcePath = path.join(__dirname, 'src');
 const getPostCssPlugins = () => [
   autoprefixer({ browsers: [
     '>1%',
@@ -16,8 +20,8 @@ const baseConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: [
-      path.join(__dirname, 'node_modules'),
-      path.join(__dirname, 'src'),
+      path.resolve(__dirname, 'node_modules'),
+      sourcePath,
     ],
   },
   module: {
@@ -36,16 +40,23 @@ const baseConfig = {
       {
         test: [/\.scss$/, /\.css$/],
         exclude: /node_modules/,
-        use: [
-          'style-loader',
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
             // Using source maps breaks urls in the CSS loader
             // https://github.com/webpack/css-loader/issues/232
             // This comment solves it, but breaks testing from a local network
             // https://github.com/webpack/css-loader/issues/232#issuecomment-240449998
             // 'css-loader?sourceMap',
-          'css-loader',
-          'sass-loader?sourceMap',
-        ],
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: getPostCssPlugins(),
+              },
+            },
+            'sass-loader?sourceMap', //TODO sourceMap should be removed at some point from production build
+          ] }),
       },
       {
         test: /\.json$/,
@@ -53,15 +64,23 @@ const baseConfig = {
       },
     ],
   },
+  plugins: [
+    new ExtractTextPlugin({ filename: getPath => getPath('css/[name][hash].css').replace('css/js', 'css'),
+      allChunks: true }),
+    new HtmlWebpackPlugin({
+      template: `${sourcePath}/index.html`,
+      path: distPath,
+      filename: 'index.html',
+    }),
+    new webpack.NamedModulesPlugin(),
+  ],
 };
 
 module.exports = {
-  getPostCssPlugins: getPostCssPlugins,
+  distPath,
+  sourcePath,
   vendorLibs: ['react', 'react-dom', 'redux', 'react-redux', 'redux-thunk'],
-  outputFileNameTemplate: '[name].[hash].js',
   outputPublicPath: '/',
   base: baseConfig,
-  sourcePath: path.join(__dirname, 'src'),
-  distPath: path.join(__dirname, 'dist'),
   modulesPath: path.join(__dirname, 'node_modules'),
 };

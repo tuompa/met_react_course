@@ -1,9 +1,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-// TODO const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const API_HOST = JSON.stringify('TODO');
 
 const config = require('./webpack.config.base');
@@ -16,7 +13,7 @@ module.exports = merge(config.base, {
   },
   output: {
     path: config.distPath,
-    filename: config.outputFileNameTemplate,
+    filename: '[name].js',
     publicPath: config.outputPublicPath,
   },
   plugins: [
@@ -26,17 +23,11 @@ module.exports = merge(config.base, {
       },
       API_HOST,
     }),
-    new webpack.NamedModulesPlugin(),
-    new HtmlWebpackPlugin({
-      template: `${config.sourcePath}/index.html`,
-      path: config.distPath,
-      filename: 'index.html',
-    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
-    //host must be set to enable accessing server from localhost:${PORT} when devServer running in docker
-    publicPath:config.outputPublicPath,
+    // host must be set to enable accessing server from localhost:${PORT} when devServer running in docker
+    host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 8000,
     contentBase: config.sourcePath,
     historyApiFallback: true,
