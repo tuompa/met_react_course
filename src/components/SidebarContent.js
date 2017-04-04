@@ -1,6 +1,3 @@
-/**
- * Created by joonaenbuska on 18/01/2017.
- */
 import React from 'react';
 const { bool, func, string, } = React.PropTypes;
 

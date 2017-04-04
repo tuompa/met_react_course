@@ -12,7 +12,6 @@ export default class TreeList extends React.Component {
     objectRoot: {},
   };
 
-
   render() {
     const { objectRoot, } = this.props;
     return (
