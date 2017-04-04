@@ -10,10 +10,6 @@ export default class StateNode extends Component {
     subject: any,
   };
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ value: nextProps.subject, });
-  }
-
   render() {
     const { name, subject, } = this.props;
     const hasChildren = subject instanceof Object && notEmpty(subject);
@@ -21,9 +17,9 @@ export default class StateNode extends Component {
       return (
         <div>
           <div className="inline">
-            <span style={blackStyle}>{name}</span>
+            <span>{name}</span>
           </div>
-          <ul className="list">
+          <ul className="tree-list">
             {keys(subject).map(k => ({ k, v: subject[k], }))
               .map(
                 ({ k, v, }) => (
@@ -39,7 +35,7 @@ export default class StateNode extends Component {
     }
     return (
       <div className="inline">
-        <span style={blackStyle}>{name}</span>
+        <span>{name}</span>
         <span> - </span>
         {subject}
       </div>
