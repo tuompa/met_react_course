@@ -4,24 +4,24 @@ import { Router, Route, IndexRoute, browserHistory, } from 'react-router';
 import { createStore, applyMiddleware, } from 'redux';
 import { Provider, } from 'react-redux';
 import thunk from 'redux-thunk';
-import App from 'components/App';
-import Home from 'components/Home';
-import ComponentState from 'components/ComponentState';
-import ComponentStateExercise from 'components/ComponentStateExercise';
-import ComponentLifecycle from 'components/ComponentLifecycle';
-import Redux from 'components/Redux';
-import ReactRedux from 'containers/ReactRedux';
-import ReactReduxExercise from 'containers/ReactReduxExercise';
-import FetchingData from 'containers/FetchingData';
-import reducers from 'reducers';
 import 'styles';
-import JSXSyntax from 'components/JSXSyntax';
-import JSXSyntaxExercise from 'components/JSXSyntaxExercise';
-import Lists from 'components/Lists';
-import ListsExercise from 'components/ListExercise';
-import ComponentProps from 'components/ComponentProps';
-import ComponentPropsExecrice from 'components/ComponentPropsExercise';
-
+import reducers from './reducers';
+import App from './components/App';
+import Home from './components/Home';
+import JSXSyntax from './components/JSXSyntax';
+import JSXSyntaxExercise from './components/JSXSyntaxExercise';
+import Lists from './components/Lists';
+import ListsExercise from './components/ListExercise';
+import ComponentState from './components/ComponentState';
+import ComponentStateExercise from './components/ComponentStateExercise';
+import ComponentProps from './components/ComponentProps';
+import ComponentPropsExecrice from './components/ComponentPropsExercise';
+import Redux from './components/Redux';
+import ReactRedux from './containers/ReactRedux';
+import ComponentLifecycle from './components/ComponentLifecycle';
+import ReactReduxExercise from './containers/ReactReduxExercise';
+import UsingRestApis from './containers/UsingRestApis';
+import UsingRestApisExercise from './containers/UsingRestApisExercise';
 
 const middlewares = [ thunk, ];
 let store;
@@ -49,9 +49,10 @@ const root = (
         <Route path="/componentProps/exercise" component={ComponentPropsExecrice} />
         <Route path="/componentLifecycle" components={ComponentLifecycle} />
         <Route path="/redux" component={Redux} />
-        <Route path="/react-redux" component={ReactRedux} />
-        <Route path="/react-redux/exercise" component={ReactReduxExercise} />
-        <Route path="/fetcing-data" component={FetchingData} />
+        <Route path="/reactRedux" component={ReactRedux} />
+        <Route path="/reactRedux/exercise" component={ReactReduxExercise} />
+        <Route path="/usingRestApis" component={UsingRestApis} />
+        <Route path="/usingRestApis/exercise" component={UsingRestApisExercise} />
       </Route>
     </Router>
   </Provider>

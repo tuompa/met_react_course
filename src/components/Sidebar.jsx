@@ -9,8 +9,8 @@ const LINKS = [
   { path: '/componentProps', name: 'Component Props', exercise: true, },
   { path: '/componentLifecycle', name: 'Component Lifecycle', },
   { path: '/Redux', name: 'Redux', },
-  { path: '/react-redux', name: 'React Redux', exercise: true, },
-  { path: '/fetcing-data', name: 'Fetch Data', exercise: true, },
+  { path: '/reactRedux', name: 'React Redux', exercise: true, },
+  { path: '/usingRestApis', name: 'Using Rest apis', exercise: true, },
 ];
 
 export default class Sidebar extends React.Component {

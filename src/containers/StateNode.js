@@ -1,5 +1,4 @@
 import React, { Component, } from 'react';
-const blackStyle = { color: 'black', };
 const { string, any, } = React.PropTypes;
 const { keys, } = Object;
 const notEmpty = obj => obj instanceof Object && keys(obj).length > 0;
@@ -10,7 +9,10 @@ export default class StateNode extends Component {
     subject: any,
   };
 
+  state = { visible: true, };
+
   render() {
+    const { visible, } = this.state;
     const { name, subject, } = this.props;
     const hasChildren = subject instanceof Object && notEmpty(subject);
     if (hasChildren) {
@@ -20,7 +22,10 @@ export default class StateNode extends Component {
             <span>{name}</span>
           </div>
           <ul className="tree-list">
-            {keys(subject).map(k => ({ k, v: subject[k], }))
+            <button onClick={() => this.setState({ visible: !visible, })}>
+              <i className={`fa fa-arrow-${visible ? 'up' : 'down'}`} />
+            </button>
+            {visible && keys(subject).map(k => ({ k, v: subject[k], }))
               .map(
                 ({ k, v, }) => (
                   <li key={k}>
