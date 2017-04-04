@@ -1,19 +1,15 @@
 import React from 'react';
 import axios from '../axios';
-import TreeList from 'containers/TreeList';
+import TreeList from 'components/TreeList';
 
 export default class FetchingData extends React.Component {
 
   state = { status: 'idle', data: {}, };
 
-  sendRequest = async () => {
-    const { data, } = await axios.get('/',);
-    this.setState({ status: 'data fetched', data, });
-  };
-
-  fetchOptions = () => {
-    this.sendRequest();
+  fetchOptions = async () => {
     this.setState({ status: 'fetching data', });
+    const { data, } = await axios.get('/');
+    this.setState({ status: 'data fetched', data, });
   };
 
   render() {
