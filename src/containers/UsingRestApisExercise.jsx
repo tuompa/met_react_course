@@ -13,7 +13,7 @@ class UserItem extends React.Component {
     return (
       <div className="user-item-container">
         <img className="user-image-thumbnail" src={imageUrl} role="presentation" />
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <div className='user-right-container'>
           <p className="user-item-name">{name}</p>
           <button className="user-select-button">{isSelected ? 'unselect' : 'select'}</button>
         </div>
@@ -59,7 +59,7 @@ class TodoAppContainer extends React.Component {
   componentWillMount() {
     const { getAllUsers, setUsers, } = this.props;
     setUsers([
-      {id:'2', name:'kalle', imageUrl: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSkaOVGeP-KtPVerBW_sLSQq3lZxmZdiOrSMCNi9WnWE0z7PiSbtH0SFq0'},
+      {id:'2', name:'kalldsadsadsasdadsasadasdsae', imageUrl: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSkaOVGeP-KtPVerBW_sLSQq3lZxmZdiOrSMCNi9WnWE0z7PiSbtH0SFq0'},
       {id:'something', name:'onni', imageUrl: 'https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg'},
       ])
     /*getAllUsers()

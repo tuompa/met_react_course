@@ -17,12 +17,15 @@
 }
 .user-item-container{
   display:flex;
-  align-self: flex-end;
-  justify-self: flex-end;
   max-height: 100px;
   margin: .6em;
   box-shadow: .5em .5em .5em .5em $facebookLightBlue;
   border-radius: 2em;
+}
+.user-right-container{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .user-item-name{
@@ -33,11 +36,11 @@
 }
 
 .user-select-button{
-  justify-self: flex-start;
-  padding: 0.5em;
-  margin: 0 1em 2em 1em;
-  min-height: 38px;
   box-shadow: 3px 3px 3px $neutralGrey;
+  width: 100px;
+  align-self: center;
+  justify-content: center;
+  justify-items: center;
   border: 0.1em solid black;
   border-radius: 2em;
   outline: none;
