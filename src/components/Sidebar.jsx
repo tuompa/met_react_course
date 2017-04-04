@@ -7,6 +7,7 @@ const LINKS = [
   { path: '/Lists', name: 'JSX Lists', exercise: true, },
   { path: '/componentState', name: 'Component State', exercise: true, },
   { path: '/componentProps', name: 'Component Props', exercise: true, },
+  { path: '/componentLifecycle', name: 'Component Lifecycle', },
   { path: '/Redux', name: 'Redux', },
   { path: '/react-redux', name: 'React Redux', exercise: true, },
   { path: '/fetcing-data', name: 'Fetch Data', exercise: true, },
