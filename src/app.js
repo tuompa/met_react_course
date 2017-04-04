@@ -8,6 +8,7 @@ import App from 'components/App';
 import Home from 'components/Home';
 import ComponentState from 'components/ComponentState';
 import ComponentStateExercise from 'components/ComponentStateExercise';
+import ComponentLifecycle from 'components/ComponentLifecycle';
 import Redux from 'components/Redux';
 import ReactRedux from 'containers/ReactRedux';
 import ReactReduxExercise from 'containers/ReactReduxExercise';
@@ -46,6 +47,7 @@ const root = (
         <Route path="/componentState/exercise" component={ComponentStateExercise} />
         <Route path="/componentProps" component={ComponentProps} />
         <Route path="/componentProps/exercise" component={ComponentPropsExecrice} />
+        <Route path="/componentLifecycle" components={ComponentLifecycle} />
         <Route path="/redux" component={Redux} />
         <Route path="/react-redux" component={ReactRedux} />
         <Route path="/react-redux/exercise" component={ReactReduxExercise} />
