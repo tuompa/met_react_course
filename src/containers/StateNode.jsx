@@ -1,19 +1,19 @@
-import React, { Component, } from 'react';
-const { string, any, } = React.PropTypes;
-const { keys, } = Object;
-const notEmpty = obj => obj instanceof Object && keys(obj).length > 0;
-export default class StateNode extends Component {
+import React from 'react';
+const {string,any,} = React.PropTypes;
+const {keys,} = Object;
+const notEmpty = obj=>obj instanceof Object && keys(obj).length > 0;
+export default class StateNode extends React.Component {
 
   static propTypes = {
     name: string.isRequired,
     subject: any,
   };
 
-  state = { visible: true, };
+  state = {visible: true,};
 
   render() {
-    const { visible, } = this.state;
-    const { name, subject, } = this.props;
+    const {visible,} = this.state;
+    const {name,subject,} = this.props;
     const hasChildren = subject instanceof Object && notEmpty(subject);
     if (hasChildren) {
       return (
@@ -22,12 +22,12 @@ export default class StateNode extends Component {
             <span>{name}</span>
           </div>
           <ul className="tree-list">
-            <button onClick={() => this.setState({ visible: !visible, })}>
+            <button onClick={()=>this.setState({visible: !visible,})}>
               <i className={`fa fa-arrow-${visible ? 'up' : 'down'}`} />
             </button>
-            {visible && keys(subject).map(k => ({ k, v: subject[k], }))
+            {visible && keys(subject).map(k=>({k,v: subject[k],}))
               .map(
-                ({ k, v, }) => (
+                ({k,v,})=>(
                   <li key={k}>
                     <StateNode
                       subject={v}

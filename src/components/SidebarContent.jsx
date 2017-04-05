@@ -1,7 +1,7 @@
 import React from 'react';
-const { bool, func, string, } = React.PropTypes;
+const {bool,func,string,} = React.PropTypes;
 
-const SidebarItem = ({ children }) => (
+const SidebarItem = ({children,})=>(
   <div className="sidebar-item">
     {children}
   </div>
@@ -9,7 +9,7 @@ const SidebarItem = ({ children }) => (
 
 exports.SidebarItem = SidebarItem;
 
-const SidebarLink = ({ id, selected, onClick, children }) => (
+const SidebarLink = ({id,selected,onClick,children,})=>(
   <div
     id={id}
     className={`sidebar-link ${selected && 'selected-link'}`}
@@ -23,7 +23,7 @@ SidebarLink.propTypes = {
 };
 exports.SidebarLink = SidebarLink;
 
-const SidebarHomeItem = ({ id, selected, onClick }) => (
+const SidebarHomeItem = ({id,selected,onClick,})=>(
   <div id={id} className="sidebar-item-small" onClick={onClick}>
     <i className={`sidebar-link fa fa-home sidebar-home ${selected && 'selected-link'}`} />
   </div>
@@ -36,7 +36,7 @@ SidebarHomeItem.propTypes = {
 exports.SidebarHomeItem = SidebarHomeItem;
 
 
-const SidebarPenLink = ({ id, selected, onClick }) => (
+const SidebarPenLink = ({id,selected,onClick,})=>(
   <i
     className={`fa fa-pencil sidebar-link sidebar-pencil ${selected && 'selected-link'}`}
     id={id} onClick={onClick}

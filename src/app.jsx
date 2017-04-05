@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory, } from 'react-router';
-import { createStore, applyMiddleware, } from 'redux';
-import { Provider, } from 'react-redux';
+import {Router,Route,IndexRoute,browserHistory,} from 'react-router';
+import {createStore,applyMiddleware,} from 'redux';
+import {Provider,} from 'react-redux';
 import thunk from 'redux-thunk';
 import 'styles';
 import reducers from './reducers';
@@ -23,15 +23,15 @@ import ReactReduxExercise from './containers/ReactReduxExercise';
 import UsingRestApis from './containers/UsingRestApis';
 import UsingRestApisExercise from './containers/UsingRestApisExercise';
 
-const middlewares = [ thunk, ];
+const middlewares = [thunk,];
 let store;
 if (process.env.NODE_ENV === 'production') {
-  store = createStore(reducers, middlewares);
+  store = createStore(reducers,middlewares);
 } else {
-  const { logger, } = require('redux-logger');
+  const {logger,} = require('redux-logger');
   middlewares.push(logger);
   const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-  store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
+  store = createStoreWithMiddleware(reducers,window.devToolsExtension && window.devToolsExtension());
 }
 
 const root = (
@@ -58,4 +58,4 @@ const root = (
   </Provider>
 );
 
-ReactDOM.render(root, document.getElementById('app'));
+ReactDOM.render(root,document.getElementById('app'));

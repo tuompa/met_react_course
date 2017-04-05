@@ -14,9 +14,9 @@ to match it, so that a new image will be displayed
 
 export default class ComponentStateExercise extends React.Component {
 
-  state = { text: 'CATURDAY', imageName: 'CATURDAY' };
+  state = {text: 'CATURDAY',imageName: 'CATURDAY',};
 
-  onTextChanged = (event) => {
+  onTextChanged = (event)=>{
     /* 1. make event.target.value upper case 'event.target.value.toUpperCase()'
     * and save it to a variable
     * 2. check if variable equals some of the IMAGES names,

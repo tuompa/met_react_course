@@ -5,7 +5,7 @@ import React from 'react';
  * jsx will be written in a single file */
 
 const TEXT_ALIGN_OPTIONS = [
-  'left', 'center', 'right',
+  'left','center','right',
 ];
 
 class SeizureButton extends React.Component {
@@ -15,35 +15,35 @@ class SeizureButton extends React.Component {
     onClick: React.PropTypes.func.isRequired,
   };
 
-  state = { displayImage: false, textAlign: 'center', };
+  state = {displayImage: false,textAlign: 'center',};
 
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }
 
-  onMouseOver = () => {
+  onMouseOver = ()=>{
     this.setTimerForTextAlign();
-    this.setState({ displayImage: true, });
+    this.setState({displayImage: true,});
   };
 
-  onMouseOut = () => {
+  onMouseOut = ()=>{
     clearTimeout(this.timeout);
-    this.setState({ displayImage: false, });
+    this.setState({displayImage: false,});
   };
 
   setTimerForTextAlign() {
-    this.timeout = setTimeout(() => {
-      const textAlign = TEXT_ALIGN_OPTIONS[parseInt(Math.random() * 3, 10)];
-      this.setState({ textAlign, });
+    this.timeout = setTimeout(()=>{
+      const textAlign = TEXT_ALIGN_OPTIONS[parseInt(Math.random() * 3,10)];
+      this.setState({textAlign,});
       this.setTimerForTextAlign();
-    }, 100);
+    },100);
   }
 
   render() {
-    const { textAlign, displayImage, } = this.state;
+    const {textAlign,displayImage,} = this.state;
     let extraStyles = {};
     if (displayImage) {
-      extraStyles = { textAlign, background: `url("${this.props.imageUrl}") center -40px`, };
+      extraStyles = {textAlign,background: `url("${this.props.imageUrl}") center -40px`,};
     }
     return (
       <div>
@@ -67,14 +67,14 @@ const URL2 = 'http://catsticker.com/images/dancing-cat.gif';
 
 export default class Component extends React.Component {
 
-  state = { header: 'Click a button', };
+  state = {header: 'Click a button',};
 
   render() {
     return (
       <div>
         <h1>{this.state.header}</h1>
-        <SeizureButton imageUrl={URL1} onClick={() => this.setState({ header: '!!AEIOUYÖÄ!', })} />
-        <SeizureButton imageUrl={URL2} onClick={() => this.setState({ header: 'I like cardboard boxes', })} />
+        <SeizureButton imageUrl={URL1} onClick={()=>this.setState({header: '!!AEIOUYÖÄ!',})} />
+        <SeizureButton imageUrl={URL2} onClick={()=>this.setState({header: 'I like cardboard boxes',})} />
       </div>
     );
   }

@@ -1,19 +1,19 @@
 import React from 'react';
-import { connect, } from 'react-redux';
+import {connect,} from 'react-redux';
 import axios from '../axios';
-import { setUsers, getAllUsers, removeUser, requestDeleteUser, requestUpdateUser, selectUser, setUserRequestError, unSelectUser, updateUser, getUserById, } from '../actions/userActions';
+import {setUsers,getAllUsers,removeUser,requestDeleteUser,requestUpdateUser,selectUser,setUserRequestError,unSelectUser,updateUser,getUserById,} from '../actions/userActions';
 
-const { keys, } = Object;
-const { func, array, string, } = React.PropTypes;
+const {keys,} = Object;
+const {func,array,string,} = React.PropTypes;
 
 class UserItem extends React.Component {
 
   render() {
-    const { isSelected, imageUrl, name, } = this.props;
+    const {isSelected,imageUrl,name,} = this.props;
     return (
       <div className="user-item-container">
         <img className="user-image-thumbnail" src={imageUrl} role="presentation" />
-        <div className='user-right-container'>
+        <div className="user-right-container">
           <p className="user-item-name">{name}</p>
           <button className="user-select-button">{isSelected ? 'unselect' : 'select'}</button>
         </div>
@@ -34,56 +34,99 @@ class UsersComponent extends React.Component {
   };
 
   render() {
-    const { users, selected, } = this.props;
+    const {users,selected,} = this.props;
     return (
       <div className="user-list-container">
-        {users.map(user => <UserItem key={user.id} isSelected={user.id === selected} {...user} />)}
+        {users.map(user=><UserItem key={user.id} isSelected={user.id === selected} {...user} />)}
       </div>
     );
   }
 }
 
-class Todos extends React.Component{
-  render(){
+class Todos extends React.Component {
+  render() {
     return (
       <div className="todos-list-container">
         <div className="todo-item">Must do this</div>
         <div className="todo-item">Must do that</div>
       </div>
-    )
+    );
+  }
+}
+
+class AddUser extends React.Component {
+
+  static propTypes = {
+    onAddUser: func.isRequired,
+  };
+
+  state = {name: '',imageUrl: '',};
+
+  onSubmit = (e)=>{
+    e.preventDefault();
+    const {name,imageUrl,} = this.state;
+    if (name && imageUrl) {
+      this.props.onAddUser({name,imageUrl,});
+    }
+  };
+
+  render() {
+    const {name,imageUrl,} = this.state;
+    return (
+      <form onSubmit={this.onSubmit}>
+        <h4>Add user</h4>
+        <input
+          className="input-default"
+          placeholder="username"
+          type="text" value={name}
+          onChange={e=>this.setState({name: e.target.value,})}
+        />
+        <input
+          className="input-default"
+          placeholder="image url"
+          type="text"
+          value={imageUrl}
+          onChange={e=>this.setState({imageUrl: e.target.value,})}
+        />
+        <button className="button-primary" type="submit">Submit</button>
+      </form>
+    );
   }
 }
 
 class TodoAppContainer extends React.Component {
 
   componentWillMount() {
-    const { getAllUsers, setUsers, } = this.props;
+    const {getAllUsers,setUsers,} = this.props;
     setUsers([
-      {id:'2', name:'kalldsadsadsasdadsasadasdsae', imageUrl: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSkaOVGeP-KtPVerBW_sLSQq3lZxmZdiOrSMCNi9WnWE0z7PiSbtH0SFq0'},
-      {id:'something', name:'onni', imageUrl: 'https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg'},
-      ])
-    /*getAllUsers()
+      {id: '2',name: 's',imageUrl: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSkaOVGeP-KtPVerBW_sLSQq3lZxmZdiOrSMCNi9WnWE0z7PiSbtH0SFq0',},
+      {id: 'something',name: 'onni',imageUrl: 'https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg',},
+    ]);
+    /* getAllUsers()
       .then(({ data, }) => setUsers(data))
       .catch(err => setUserRequestError(err.message));*/
   }
 
   render() {
-    const { user, } = this.props;
-    const { data, } = user;
+    const {user,} = this.props;
+    const {data,} = user;
     return (
-      <div className="todos-app-container">
-        <div>
-          <UsersComponent {...this.props} users={keys(data).map(id => data[id])} selected={user.selected} />
+      <div >
+        <AddUser onAddUser={()=>{}} />
+        <div className="todos-app-container">
+          <div>
+            <UsersComponent {...this.props} users={keys(data).map(id=>data[id])} selected={user.selected} />
+          </div>
+          <div>
+            <Todos />
+          </div>
         </div>
-        <div>
-          <Todos/>
-        </div>
-    </div>
+      </div>
     );
   }
 }
 
-const mapStateToProps = ({ user, }) => ({ user, });
+const mapStateToProps = ({user,})=>({user,});
 const mapDispatchToProps = ({
   getAllUsers,
   setUsers,
@@ -93,5 +136,5 @@ const mapDispatchToProps = ({
   unSelectUser,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoAppContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(TodoAppContainer);
 

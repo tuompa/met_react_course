@@ -1,14 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect,} from 'react-redux';
 
-const { func, string, bool, arrayOf } = React.PropTypes;
+const {func,string,bool,arrayOf,} = React.PropTypes;
 
-const Image = (props) => {
-  const { url, removeImage, selectImage, isSelected } = props;
+const Image = (props)=>{
+  const {url,removeImage,selectImage,isSelected,} = props;
   return (<div key={url} className="thump-nail-item">
-    <button className="centered-foreground-item button-warning " onClick={() => removeImage(url)}>Remove</button>
+    <button className="centered-foreground-item button-warning " onClick={()=>removeImage(url)}>Remove</button>
     <img src={url} alt="presentation" className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'} />
-    <button className="centered-foreground-item button-primary" onClick={() => selectImage(url)}>Select</button>
+    <button className="centered-foreground-item button-primary" onClick={()=>selectImage(url)}>Select</button>
   </div>);
 };
 
@@ -20,14 +20,14 @@ Image.propTypes = {
 };
 
 
-const ImageGallery = (props) => {
-  const { selectImage, selectedImage, images, removeImage } = props;
+const ImageGallery = (props)=>{
+  const {selectImage,selectedImage,images,removeImage,} = props;
   return (
     <div>
       <div className="thump-nail-container">
-        {images.map(url => (<Image key={url} url={url} selectImage={selectImage} removeImage={removeImage} isSelected={selectedImage === url} />))}
+        {images.map(url=>(<Image key={url} url={url} selectImage={selectImage} removeImage={removeImage} isSelected={selectedImage === url} />))}
       </div>
-          <img key={selectedImage} alt="presentation" src={selectedImage} className="selected-item" />
+      <img key={selectedImage} alt="presentation" src={selectedImage} className="selected-item" />
     </div>
   );
 };
@@ -40,13 +40,13 @@ ImageGallery.propTypes = {
 };
 
 /* 'state' is redux store state*/
-const mapStateToProps = state => ({
+const mapStateToProps = state=>({
   selectedImage: state.image.selectedImage,
   images: state.image.images,
 });
 const mapDispatchToProps = ({
-  selectImage: url => dispatch => dispatch({ type: 'SELECT_IMAGE', payload: url }),
-  removeImage: url => dispatch => dispatch({ type: 'REMOVE_IMAGE', payload: url }),
+  selectImage: url=>dispatch=>dispatch({type: 'SELECT_IMAGE',payload: url,}),
+  removeImage: url=>dispatch=>dispatch({type: 'REMOVE_IMAGE',payload: url,}),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageGallery);
+export default connect(mapStateToProps,mapDispatchToProps)(ImageGallery);

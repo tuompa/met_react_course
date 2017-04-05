@@ -1,7 +1,7 @@
 import React from 'react';
 
-const { keys, } = Object;
-const { object, func, } = React.PropTypes;
+const {keys,} = Object;
+const {object,func,} = React.PropTypes;
 class Component extends React.Component {
 
   static propTypes = {
@@ -11,28 +11,28 @@ class Component extends React.Component {
     onBreedRemoved: func.isRequired,
   };
 
-  state = { newBreedName: '', };
+  state = {newBreedName: '',};
 
-  onNewBreedNameChanged = (e) => {
+  onNewBreedNameChanged = (e)=>{
     const newBreedName = e.target.value;
-    this.setState({ newBreedName, });
+    this.setState({newBreedName,});
   };
 
-  addBreed = () => {
+  addBreed = ()=>{
     this.props.onBreedAdded(this.state.newBreedName);
-    this.setState({ newBreedName: '', });
+    this.setState({newBreedName: '',});
   };
 
   render() {
-    const { onBreedChanged, onBreedRemoved, catBreeds, } = this.props;
+    const {onBreedChanged,onBreedRemoved,catBreeds,} = this.props;
     return (
       <div>
         {keys(catBreeds)
-          .map(key => catBreeds[key])
-          .map(({ id, name, }) => (
+          .map(key=>catBreeds[key])
+          .map(({id,name,})=>(
             <div key={id}>
-              <input className="input-default" value={name} onChange={e => onBreedChanged({ id, name: e.target.value, })} />
-              <button className="button-default" onClick={() => onBreedRemoved(id)}>Remove</button>
+              <input className="input-default" value={name} onChange={e=>onBreedChanged({id,name: e.target.value,})} />
+              <button className="button-default" onClick={()=>onBreedRemoved(id)}>Remove</button>
             </div>))}
         <input
           value={this.state.newBreedName}
@@ -55,7 +55,7 @@ class Connect extends React.Component {
     *    <SubChild />
     *   <Child/>
     * </Provider>
-    * Context data use to persist application state during route changes. It pretty much like 'App state'
+    * Context data is used to persist application state during route changes. It pretty much like 'App state'
   */
   static contextTypes = {
     store: React.PropTypes.object,
@@ -64,32 +64,34 @@ class Connect extends React.Component {
   state = {};
 
   componentWillMount() {
-    /* when the value of context data is changed it does not automatically cause re-render for components,
-    * This is why Redux store has a callback function 'subscribe' that get called every time a new
-     * store state is generated */
-    const { store, } = this.context;
+    /* when the value of context data is changed it does not usually automatically cause re-render for
+    child components, This is why Redux store has a callback function 'subscribe' that get called every time a new
+    store state is generated */
+    const {store,} = this.context;
     this.setState(store.getState());
-    this.subscription = store.subscribe(() => {
+    this.subscription = store.subscribe(()=>{
       /*  when new store state is generated, this function is called
-      -> Connect (this component) and its  child component 'Component' gets re-rendered'*/
+      -> Connect (this component) and its  child component 'Component' gets re-rendered' due to
+      Connect calls this.setState*/
       this.setState(store.getState());
     });
   }
 
   componentWillUnmount() {
-    /* subscriptions must be unsubscribed when component unmounts*/
+    /* subscriptions must be unsubscribed when component unmounts otherwise
+    * it will continue to receive context data changes after it not needed*/
     this.subscription();
   }
 
   render() {
-    const { store, } = this.context;
+    const {store,} = this.context;
     if (this.state.catBreed) {
       return (
         <Component
           catBreeds={this.state.catBreed}
-          onBreedAdded={breedName => store.dispatch({ type: 'ADD_BREED', payload: breedName, })}
-          onBreedChanged={breedName => store.dispatch({ type: 'MODIFY_BREED', payload: breedName, })}
-          onBreedRemoved={id => store.dispatch({ type: 'REMOVE_BREED', payload: id, })}
+          onBreedAdded={breedName=>store.dispatch({type: 'ADD_BREED',payload: breedName,})}
+          onBreedChanged={breedName=>store.dispatch({type: 'MODIFY_BREED',payload: breedName,})}
+          onBreedRemoved={id=>store.dispatch({type: 'REMOVE_BREED',payload: id,})}
         />
       );
     }

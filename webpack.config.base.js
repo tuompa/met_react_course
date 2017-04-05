@@ -4,23 +4,23 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const SRC_PATH = path.join(__dirname, 'src');
-const distPath = path.join(__dirname, 'dist');
-const sourcePath = path.join(__dirname, 'src');
-const getPostCssPlugins = () => [
-  autoprefixer({ browsers: [
+const SRC_PATH = path.join(__dirname,'src');
+const distPath = path.join(__dirname,'dist');
+const sourcePath = path.join(__dirname,'src');
+const getPostCssPlugins = ()=>[
+  autoprefixer({browsers: [
     '>1%',
     'last 4 versions',
     'Firefox ESR',
     'not ie < 9', // React doesn't support IE8 anyway
-  ] }),
+  ],}),
 ];
 
 const baseConfig = {
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js','.jsx',],
     modules: [
-      path.resolve(__dirname, 'node_modules'),
+      path.resolve(__dirname,'node_modules'),
       sourcePath,
     ],
   },
@@ -33,12 +33,12 @@ const baseConfig = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/,
-        include: path.join(SRC_PATH, './images'),
+        include: path.join(SRC_PATH,'./images'),
         use: 'url-loader?limit=10000&name=assets/[name].[hash:8].[ext]',
         //If the file is greater than the limit (10000 in bytes) the file-loader is used and all query parameters are passed to it.
       },
       {
-        test: [/\.scss$/, /\.css$/],
+        test: [/\.scss$/,/\.css$/,],
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -56,7 +56,7 @@ const baseConfig = {
               },
             },
             'sass-loader?sourceMap', //TODO sourceMap should be removed at some point from production build
-          ] }),
+          ],}),
       },
       {
         test: /\.json$/,
@@ -65,8 +65,8 @@ const baseConfig = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin({ filename: getPath => getPath('css/[name][hash].css').replace('css/js', 'css'),
-      allChunks: true }),
+    new ExtractTextPlugin({filename: getPath=>getPath('css/[name][hash].css').replace('css/js','css'),
+      allChunks: true,}),
     new HtmlWebpackPlugin({
       template: `${sourcePath}/index.html`,
       path: distPath,
@@ -79,8 +79,8 @@ const baseConfig = {
 module.exports = {
   distPath,
   sourcePath,
-  vendorLibs: ['react', 'react-dom', 'redux', 'react-redux', 'redux-thunk'],
+  vendorLibs: ['react','react-dom','redux','react-redux','redux-thunk',],
   outputPublicPath: '/',
   base: baseConfig,
-  modulesPath: path.join(__dirname, 'node_modules'),
+  modulesPath: path.join(__dirname,'node_modules'),
 };

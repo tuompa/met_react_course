@@ -1,7 +1,7 @@
 import React from 'react';
 import LoggingComponent from 'components/LogginComponent';
 
-const { string, func, bool, number ,} = React.PropTypes;
+const {string,func,bool,number,} = React.PropTypes;
 class Button extends LoggingComponent {
 
   static propTypes = {
@@ -13,7 +13,7 @@ class Button extends LoggingComponent {
 
   render() {
     super.doLog('RENDER');
-    const { text, onClick, logIdentity, className, } = this.props;
+    const {text,onClick,logIdentity,className,} = this.props;
     return (
       <div className="component-profile">
         <div className="component-identity">{`Button ${logIdentity}`}</div>
@@ -34,14 +34,14 @@ class Input extends LoggingComponent {
 
   render() {
     super.doLog('RENDER');
-    const { text, onTextChanged, } = this.props;
+    const {text,onTextChanged,} = this.props;
     return (
       <div className="component-profile">
         <div className="component-identity">{`Input ${this.props.logIdentity}`}</div>
         <input
           value={text}
           className="input-default"
-          onChange={e => onTextChanged(e.target.value)}
+          onChange={e=>onTextChanged(e.target.value)}
         />
       </div>);
   }
@@ -57,13 +57,13 @@ class TodoForm extends LoggingComponent {
     mutable: bool.isRequired,
   };
 
-  state = { text: '', };
+  state = {text: '',};
 
-  handleSubmit = () => {
-    const { text, } = this.state;
+  handleSubmit = ()=>{
+    const {text,} = this.state;
     if (text) {
       this.props.onSubmit(text);
-      this.setState({ text: '', });
+      this.setState({text: '',});
     }
   };
 
@@ -76,7 +76,7 @@ class TodoForm extends LoggingComponent {
           indentations={(this.props.indentations || 0) + 1}
           logIdentity={this.props.logIdentity}
           text={this.state.text}
-          onTextChanged={text => this.setState({ text, })}
+          onTextChanged={text=>this.setState({text,})}
         />
         <Button
           indentations={(this.props.indentations || 0) + 1}
@@ -100,7 +100,7 @@ class Item extends LoggingComponent {
 
   render() {
     super.doLog('RENDER');
-    const { text, onRemove, logIdentity, } = this.props;
+    const {text,onRemove,logIdentity,} = this.props;
     return (
       <div className="component-profile">
         <div className="component-identity">{`Item ${logIdentity}`}</div>
@@ -119,21 +119,21 @@ class Item extends LoggingComponent {
 
 export default class Todos extends LoggingComponent {
 
-  state = { todos: [], };
+  state = {todos: [],};
 
-  addTodo = (todo) => {
-    let { todos, } = this.state;
-    todos = [ ...todos, todo, ];
-    this.setState({ todos, });
+  addTodo = (todo)=>{
+    let {todos,} = this.state;
+    todos = [...todos,todo,];
+    this.setState({todos,});
   };
 
-  removeTodo = (index) => {
-    let { todos, } = this.state;
+  removeTodo = (index)=>{
+    let {todos,} = this.state;
     todos = [
-      ...todos.slice(0, index),
-      ...todos.slice((index + 1), todos.length),
+      ...todos.slice(0,index),
+      ...todos.slice((index + 1),todos.length),
     ];
-    this.setState({ todos, });
+    this.setState({todos,});
   };
 
   render() {
@@ -148,13 +148,13 @@ export default class Todos extends LoggingComponent {
           onSubmit={this.addTodo}
           buttonText="Add"
         />
-        {this.state.todos.map((todo, i) => (
+        {this.state.todos.map((todo,i)=>(
           <Item
             indentations={(this.props.indentations || 0) + 1}
             key={i}
             text={todo}
             logIdentity={`$todo_${i}`}
-            onRemove={() => this.removeTodo(i)}
+            onRemove={()=>this.removeTodo(i)}
           />
           ))}
       </div>

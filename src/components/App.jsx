@@ -1,21 +1,21 @@
 import React from 'react';
 import TransitionGroup from 'react-addons-css-transition-group';
 import Sidebar from 'components/Sidebar';
-import { browserHistory } from 'react-router';
+import {browserHistory,} from 'react-router';
 
 class App extends React.Component {
 
-  state = { sidebarCollapsed: false, pathname: undefined };
+  state = {sidebarCollapsed: false,pathname: undefined,};
 
   componentWillMount() {
-    this.setState({ pathname: browserHistory.getCurrentLocation().pathname });
-    this.routeSubscription = browserHistory.listen(({ pathname }) => this.setState({ pathname }));
+    this.setState({pathname: browserHistory.getCurrentLocation().pathname,});
+    this.routeSubscription = browserHistory.listen(({pathname,})=>this.setState({pathname,}));
   }
   componentWillUnmount() {
     this.routeSubscription();
   }
   render() {
-    const { sidebarCollapsed, pathname } = this.state;
+    const {sidebarCollapsed,pathname,} = this.state;
     return (
       <div>
         <div>
