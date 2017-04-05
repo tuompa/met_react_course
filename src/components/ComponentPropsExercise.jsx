@@ -1,5 +1,7 @@
 import React from 'react';
 import catInvalid from '../images/cat-invalid.png';
+import Img from './Img';
+
 const {func,string,} = React.PropTypes;
 
 /* ValidateInput is a component that displays error
@@ -43,8 +45,7 @@ class ValidateInput extends React.Component {
           value={text}
           onBlur={this.onBlur}
         />
-        <img
-          role="presentation"
+        <Img
           className={invalid ? 'invalid-indicator-visible' : 'invalid-indicator-hidden'}
           src={catInvalid}
         />

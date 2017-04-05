@@ -1,18 +1,20 @@
 import React from 'react';
 import {connect,} from 'react-redux';
+import Img from '../components/Img';
+import {ButtonWarning,ButtonPrimary,} from '../components/Buttons';
 
 const {func,string,bool,arrayOf,} = React.PropTypes;
 
-const Image = (props)=>{
+const ImageItem = (props)=>{
   const {url,removeImage,selectImage,isSelected,} = props;
   return (<div key={url} className="thump-nail-item">
-    <button className="centered-foreground-item button-warning " onClick={()=>removeImage(url)}>Remove</button>
-    <img src={url} alt="presentation" className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'} />
-    <button className="centered-foreground-item button-primary" onClick={()=>selectImage(url)}>Select</button>
+    <ButtonWarning className="centered-foreground-item" onClick={()=>removeImage(url)}>Remove</ButtonWarning>
+    <Img src={url} className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'} />
+    <ButtonPrimary className="centered-foreground-item" onClick={()=>selectImage(url)}>Select</ButtonPrimary>
   </div>);
 };
 
-Image.propTypes = {
+ImageItem.propTypes = {
   selectImage: func,
   removeImage: func,
   isSelected: bool,
@@ -25,9 +27,9 @@ const ImageGallery = (props)=>{
   return (
     <div>
       <div className="thump-nail-container">
-        {images.map(url=>(<Image key={url} url={url} selectImage={selectImage} removeImage={removeImage} isSelected={selectedImage === url} />))}
+        {images.map(url=>(<ImageItem key={url} url={url} selectImage={selectImage} removeImage={removeImage} isSelected={selectedImage === url} />))}
       </div>
-      <img key={selectedImage} alt="presentation" src={selectedImage} className="selected-item" />
+      <Img key={selectedImage} src={selectedImage} className="selected-item" />
     </div>
   );
 };

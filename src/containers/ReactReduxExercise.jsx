@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect,} from 'react-redux';
 import FlipMove from 'react-flip-move';
+import {ButtonPrimary,ButtonWarning,} from '../components/Buttons';
+import Img from '../components/Img'
 
 const {func,string,bool,arrayOf,} = React.PropTypes;
 
@@ -10,12 +12,11 @@ class Image extends React.Component {
     const {url,removeImage,selectImage,isSelected,} = this.props;
     return (<div key={url} className="thump-nail-list-item">
       <div className="image-action-container">
-        <button className="centered-foreground-item button-warning " onClick={()=>removeImage(url)}>Remove</button>
-        <button className="centered-foreground-item button-primary" onClick={()=>selectImage(url)}>Select</button>
+        <ButtonWarning className="centered-foreground-item" onClick={()=>removeImage(url)}>Remove</ButtonWarning>
+        <ButtonPrimary className="centered-foreground-item" onClick={()=>selectImage(url)}>Select</ButtonPrimary>
       </div>
-      <img
+      <Img
         src={url}
-        role="presentation"
         className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'}
       />
     </div>);

@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect,} from 'react-redux';
 import axios from '../axios';
+import Img from '../components/Img';
+import InputDefault from '../components/InputDefault';
+import {ButtonPrimary} from '../components/Buttons';
 import {setUsers,getAllUsers,removeUser,requestDeleteUser,requestUpdateUser,selectUser,setUserRequestError,unSelectUser,updateUser,getUserById,} from '../actions/userActions';
 
 const {keys,} = Object;
@@ -12,7 +15,7 @@ class UserItem extends React.Component {
     const {isSelected,imageUrl,name,} = this.props;
     return (
       <div className="user-item-container">
-        <img className="user-image-thumbnail" src={imageUrl} role="presentation" />
+        <Img className="user-image-thumbnail" src={imageUrl} />
         <div className="user-right-container">
           <p className="user-item-name">{name}</p>
           <button className="user-select-button">{isSelected ? 'unselect' : 'select'}</button>
@@ -75,20 +78,17 @@ class AddUser extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
         <h4>Add user</h4>
-        <input
-          className="input-default"
+        <InputDefault
           placeholder="username"
-          type="text" value={name}
-          onChange={e=>this.setState({name: e.target.value,})}
+          value={name}
+          onChange={name=>this.setState({name,})}
         />
-        <input
-          className="input-default"
+        <InputDefault
           placeholder="image url"
-          type="text"
           value={imageUrl}
-          onChange={e=>this.setState({imageUrl: e.target.value,})}
+          onChange={imageUrl=>this.setState({imageUrl,})}
         />
-        <button className="button-primary" type="submit">Submit</button>
+        <ButtonPrimary onClick={this.onSubmit}>Submit</ButtonPrimary>
       </form>
     );
   }

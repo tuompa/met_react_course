@@ -32,7 +32,7 @@ export default class ComponentStateExercise extends React.Component {
       <div>
         <input value={this.state.text} onChange={this.onTextChanged} />
         <br />
-        <img src={IMAGES[this.state.imageName]} height={400} />
+        <img src={IMAGES[this.state.imageName]} role="presentation" height={400} />
       </div>
     );
   }

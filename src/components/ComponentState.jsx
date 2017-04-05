@@ -23,8 +23,8 @@ export default class ComponentState extends React.Component {
     return (
       <div>
         <p>Number of re-renders {this.reRenders++}</p>
-        <input id="random_text" value={text} onChange={this.onTextChanged} />
         <label htmlFor="random_text">{`${text.length}/${this.maxLength}`}</label>
+        <input id="random_text" value={text} onChange={this.onTextChanged} />
         <button onClick={this.clearText}>Clear</button>
       </div>
     );
