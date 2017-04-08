@@ -1,6 +1,7 @@
 import React from 'react';
 import TransitionGroup from 'react-addons-css-transition-group';
 import Sidebar from 'components/Sidebar';
+import {signOut} from '../firebaseDatabase';
 import {browserHistory,} from 'react-router';
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
   }
   componentWillUnmount() {
     this.routeSubscription();
+    signOut();
   }
   render() {
     const {sidebarCollapsed,pathname,} = this.state;
