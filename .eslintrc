@@ -44,7 +44,13 @@
     "jsx-quotes": [1, "prefer-double"],
     "object-curly-spacing": [1, "never"],
     "space-infix-ops": [0, "never"],
-    "func-names": [0, "never"]
+    "func-names": [0, "never"],
+    "keyword-spacing": [1],
+    "brace-style": [1],
+    "arrow-body-style": [1],
+    "react/sort-comp": [1],
+    "no-empty" : [1],
+    "react/no-find-dom-node": [1]
   },
 
   "plugins": [
