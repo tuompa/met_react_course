@@ -16,6 +16,7 @@ import ComponentState from './components/ComponentState';
 import ComponentStateExercise from './components/ComponentStateExercise';
 import ComponentProps from './components/ComponentProps';
 import ComponentPropsExecrice from './components/ComponentPropsExercise';
+import Firebase from './components/Firebase/FirebaseChatApp';
 import Redux from './components/Redux';
 import ReactRedux from './containers/ReactRedux';
 import ComponentLifecycle from './components/ComponentLifecycle';
@@ -48,6 +49,7 @@ const root = (
         <Route path="/componentProps" component={ComponentProps} />
         <Route path="/componentProps/exercise" component={ComponentPropsExecrice} />
         <Route path="/componentLifecycle" components={ComponentLifecycle} />
+        <Route path="/firebase" components={Firebase} />
         <Route path="/redux" component={Redux} />
         <Route path="/reactRedux" component={ReactRedux} />
         <Route path="/reactRedux/exercise" component={ReactReduxExercise} />
