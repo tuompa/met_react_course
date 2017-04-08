@@ -14,6 +14,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.0",
+    "firebase": "^3.7.5",
     "json-loader": "^0.5.4",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
