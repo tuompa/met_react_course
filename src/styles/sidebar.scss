@@ -41,6 +41,11 @@
   justify-content: center;
   align-items: center;
 }
+.sidebar-small-item-row{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5em
+}
 .sidebar-link {
   flex-shrink: 0;
   flex-grow: 1;

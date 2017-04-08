@@ -23,17 +23,17 @@ SidebarLink.propTypes = {
 };
 exports.SidebarLink = SidebarLink;
 
-const SidebarHomeItem = ({id,selected,onClick,})=>(
+const SidebarSmallItem = ({id,selected,onClick,className})=>(
   <div id={id} className="sidebar-item-small" onClick={onClick}>
-    <i className={`sidebar-link fa fa-home sidebar-home ${selected && 'selected-link'}`} />
+    <i className={`sidebar-link fa fa-${className} sidebar-home ${selected && 'selected-link'}`} />
   </div>
   );
-SidebarHomeItem.propTypes = {
+SidebarSmallItem.propTypes = {
   id: string,
   selected: bool,
   onClick: func,
 };
-exports.SidebarHomeItem = SidebarHomeItem;
+exports.SidebarSmallItem = SidebarSmallItem;
 
 
 const SidebarPenLink = ({id,selected,onClick,})=>(

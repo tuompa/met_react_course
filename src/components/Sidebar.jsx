@@ -1,6 +1,6 @@
 import React from 'react';
 import {browserHistory,} from 'react-router';
-import {SidebarItem,SidebarLink,SidebarPenLink,SidebarHomeItem,} from './SidebarContent';
+import {SidebarItem,SidebarLink,SidebarPenLink,SidebarSmallItem,} from './SidebarContent';
 
 const LINKS = [
   {path: '/jsxSyntax',name: 'JSX Syntax',exercise: true,},
@@ -25,8 +25,21 @@ export default class Sidebar extends React.Component {
   render() {
     const {pathname,} = this.state;
     return (
-      <section id="sidebar" className="sidebar" >
-        <SidebarHomeItem selected={pathname === '/'} onClick={()=>browserHistory.push('/')} id="homeLink" />
+      <aside id="sidebar" className="sidebar" >
+        <div className="sidebar-small-item-row">
+          <SidebarSmallItem
+            selected={pathname === '/'}
+            onClick={()=>browserHistory.push('/')}
+            className="home"
+            id="homeLink"
+          />
+          <SidebarSmallItem
+            selected={pathname === '/firebase'}
+            onClick={()=>browserHistory.push('/firebase')}
+            className="comment"
+            id="homeLink"
+          />
+        </div>
         {LINKS.map(({path,name,exercise,})=>(
           <SidebarItem key={path}>
             <SidebarLink
@@ -40,7 +53,7 @@ export default class Sidebar extends React.Component {
               onClick={()=>{ browserHistory.push(`${path}/exercise`); }}
             />)}
           </SidebarItem>))}
-      </section>
+      </aside>
     );
   }
 

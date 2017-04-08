@@ -49,7 +49,6 @@ const root = (
         <Route path="/componentProps" component={ComponentProps} />
         <Route path="/componentProps/exercise" component={ComponentPropsExecrice} />
         <Route path="/componentLifecycle" components={ComponentLifecycle} />
-        <Route path="/firebase" components={Firebase} />
         <Route path="/redux" component={Redux} />
         <Route path="/reactRedux" component={ReactRedux} />
         <Route path="/reactRedux/exercise" component={ReactReduxExercise} />
