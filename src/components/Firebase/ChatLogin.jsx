@@ -3,11 +3,11 @@ import {values,} from '../../utils';
 import {ButtonPrimary,} from '../Buttons';
 import {InputDefault,} from '../Inputs';
 
-const {object,func,} = React.PropTypes;
+const {oneOfType,object,array,func,} = React.PropTypes;
 export default class ChatLogin extends React.Component {
 
   static propTypes = {
-    users: object,
+    users: oneOfType([object,array]),
     onSubmit: func,
   }
 
@@ -20,8 +20,8 @@ export default class ChatLogin extends React.Component {
       .some(({username: other,})=>other===username);
   }
 
-  handleSubmit = (e) => {
-    try { e.preventDefault(); } catch (e) {}
+  handleSubmit = (e)=>{
+    try { e.preventDefault(); } catch (e) { /* screw it */ }
     if (this.state.isValid) {
       this.props.onSubmit(this.state.username);
     }
