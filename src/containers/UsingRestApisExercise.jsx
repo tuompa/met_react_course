@@ -2,8 +2,8 @@ import React from 'react';
 import {connect,} from 'react-redux';
 import axios from '../axios';
 import Img from '../components/Img';
-import InputDefault from '../components/InputDefault';
-import {ButtonPrimary} from '../components/Buttons';
+import {InputDefault,} from '../components/Inputs';
+import {ButtonPrimary,} from '../components/Buttons';
 import {setUsers,getAllUsers,removeUser,requestDeleteUser,requestUpdateUser,selectUser,setUserRequestError,unSelectUser,updateUser,getUserById,} from '../actions/userActions';
 
 const {keys,} = Object;
