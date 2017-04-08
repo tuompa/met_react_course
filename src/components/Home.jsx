@@ -55,6 +55,7 @@ const Home = () => (
     </ul>
     <h1>Development tips</h1>
     <ul>
+      <li>Always keep chrome console log visible to catch errors</li>
       <li>Enable <b>ESlint</b> codequality tools for Webstorm
         <ol>
           <li>
