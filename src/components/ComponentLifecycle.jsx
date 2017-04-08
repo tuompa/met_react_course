@@ -70,21 +70,24 @@ class TodoForm extends LoggingComponent {
   render() {
     super.doLog('RENDER');
     return (
-      <div className="component-profile">
-        <div className="component-identity">{`TodoForm ${this.props.logIdentity}`}</div>
-        <Input
-          indentations={(this.props.indentations || 0) + 1}
-          logIdentity={this.props.logIdentity}
-          text={this.state.text}
-          onTextChanged={text=>this.setState({text,})}
-        />
-        <Button
-          indentations={(this.props.indentations || 0) + 1}
-          text={this.props.buttonText}
-          logIdentity={this.props.logIdentity}
-          onClick={this.handleSubmit}
-          className="button-primary"
-        />
+      <div>
+        <h3>See chrome console logs to see whats happening</h3>
+        <div className="component-profile">
+          <div className="component-identity">{`TodoForm ${this.props.logIdentity}`}</div>
+          <Input
+            indentations={(this.props.indentations || 0) + 1}
+            logIdentity={this.props.logIdentity}
+            text={this.state.text}
+            onTextChanged={text=>this.setState({text,})}
+          />
+          <Button
+            indentations={(this.props.indentations || 0) + 1}
+            text={this.props.buttonText}
+            logIdentity={this.props.logIdentity}
+            onClick={this.handleSubmit}
+            className="button-primary"
+          />
+        </div>
       </div>);
   }
 }
