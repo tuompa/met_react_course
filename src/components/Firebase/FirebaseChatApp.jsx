@@ -45,9 +45,11 @@ class FirebaseChatApp extends React.Component {
   componentWillUnmount() {
     this.users.off('value',err=>console.log(err));
     this.messages.off('child_added',err=>console.log(err));
-    this.users.remove(this.state.user.id);
     chat.off('value',err=>console.log(err));
-    this.sendMessage('... has left');
+    if (this.state.user) {
+      this.users.child(this.state.user.id).remove();
+      this.sendMessage('... has left');
+    }
   }
 
   handleLogin = (username)=>{
