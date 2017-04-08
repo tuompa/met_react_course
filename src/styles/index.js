@@ -5,4 +5,5 @@ import './input.scss';
 import './button.scss';
 import './component-lifecycle.scss';
 import './todosApp.scss';
+import './chat.scss';
 import './app.scss';
