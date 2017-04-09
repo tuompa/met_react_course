@@ -1,5 +1,5 @@
 
-export const keys = (obj)=>{
+const keys = (obj)=>{
   try {
     return Object.keys(obj);
   } catch (e) {
@@ -7,9 +7,10 @@ export const keys = (obj)=>{
     return [];
   }
 };
+exports.keys = keys;
 
 exports.values = (obj)=>{
-  keys(obj).map(k=>obj[k]);
+  return Object.keys(obj).map(k=>obj[k]);
 };
 exports.isTrue= (func)=>{
   try {
