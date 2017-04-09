@@ -6,10 +6,10 @@ import grumpy from '../images/grumpy.jpg';
 import {keys,} from '../utils';
 
 
-/* make images pop up when selected and fadeout when removed*/
+/* make images pop up with animation when they are added,
+ and fadeout when removed*/
 /* can you find any weaknesses in this implementation? */
 const {string,object,} = React.PropTypes;
-
 
 /*
 takes: {[imgName] : src, [img2Name]: src2, ...}
