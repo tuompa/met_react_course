@@ -7,21 +7,21 @@ import {keys,} from '../utils';
 
 
 /* make images pop up with animation when they are added,
- and fadeout when removed*/
-/* can you find any weaknesses in this implementation? */
-const {string,object,} = React.PropTypes;
+ and fadeout when removed by changing className property*/
 
-/*
+/* mapNewImages function
 takes: {[imgName] : src, [img2Name]: src2, ...}
 produces: {[imgName]: {src: 'url/path', isRemoved:bool}, [img2Name]: ...}
 */
-
-const mapNewImages = images=>keys(images)
+function mapNewImages(images) {
+  return keys(images)
     .reduce((acc,k)=>{
       acc[k] = {src: images[k],isRemoved: false,};
       return acc;
     },{});
+}
 
+const {object,} = React.PropTypes;
 class AnimateImageList extends React.Component {
 
   static propTypes ={
@@ -45,7 +45,7 @@ class AnimateImageList extends React.Component {
     this.setState({images,});
   }
 
-  /*
+  /* TODO
   1. check which images are removed
   2. set their state is removed so that correct
   className with correct animation will be displayed
