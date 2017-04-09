@@ -11,12 +11,14 @@ class Button extends LoggingComponent {
     onClick: func,
   };
 
+  renders = 0;
+
   render() {
     super.doLog('RENDER');
     const {text,onClick,logIdentity,className,} = this.props;
     return (
       <div className="component-profile">
-        <div className="component-identity">{`Button ${logIdentity}`}</div>
+        <div className="component-identity">{`Button ${logIdentity} `} <b>{++this.renders}</b></div>
         <button onClick={onClick} className={className}>{text}</button>
       </div>
     );
@@ -32,12 +34,14 @@ class Input extends LoggingComponent {
     logIdentity: string,
   };
 
+  renders = 0;
+
   render() {
     super.doLog('RENDER');
     const {text,onTextChanged,} = this.props;
     return (
       <div className="component-profile">
-        <div className="component-identity">{`Input ${this.props.logIdentity}`}</div>
+        <div className="component-identity">{`Input ${this.props.logIdentity}`} <b>{++this.renders}</b></div>
         <input
           value={text}
           className="input-default"
@@ -56,7 +60,7 @@ class TodoForm extends LoggingComponent {
     buttonText: string.isRequired,
     mutable: bool.isRequired,
   };
-
+  renders = 0;
   state = {text: '',};
 
   handleSubmit = ()=>{
@@ -73,7 +77,7 @@ class TodoForm extends LoggingComponent {
       <div>
         <h3>See chrome console logs to see whats happening</h3>
         <div className="component-profile">
-          <div className="component-identity">{`TodoForm ${this.props.logIdentity}`}</div>
+          <div className="component-identity">{`TodoForm ${this.props.logIdentity}`} <b>{++this.renders}</b></div>
           <Input
             indentations={(this.props.indentations || 0) + 1}
             logIdentity={this.props.logIdentity}
@@ -101,12 +105,14 @@ class Item extends LoggingComponent {
     indentations: number,
   };
 
+  renders = 0;
+
   render() {
     super.doLog('RENDER');
     const {text,onRemove,logIdentity,} = this.props;
     return (
       <div className="component-profile">
-        <div className="component-identity">{`Item ${logIdentity}`}</div>
+        <div className="component-identity">{`Item ${logIdentity}`} <b>{++this.renders}</b></div>
         <h4> Todo: {text}</h4>
         <Button
           indentations={(this.props.indentations || 0) + 1}
@@ -123,6 +129,7 @@ class Item extends LoggingComponent {
 export default class Todos extends LoggingComponent {
 
   state = {todos: [],};
+  renders = 0;
 
   addTodo = (todo)=>{
     let {todos,} = this.state;
@@ -143,7 +150,7 @@ export default class Todos extends LoggingComponent {
     super.doLog('RENDER');
     return (
       <div className="component-profile-root">
-        <div className="component-identity">Todos $</div>
+        <div className="component-identity">Todos $ <b>{++this.renders}</b></div>
         <TodoForm
           indentations={(this.props.indentations || 0) + 1}
           mutable
