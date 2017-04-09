@@ -6,4 +6,5 @@ import './button.scss';
 import './component-lifecycle.scss';
 import './todosApp.scss';
 import './chat.scss';
+import './emoji.scss';
 import './app.scss';

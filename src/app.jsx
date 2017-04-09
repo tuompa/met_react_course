@@ -11,7 +11,7 @@ import Home from './components/Home';
 import JSXSyntax from './components/JSXSyntax';
 import JSXSyntaxExercise from './components/JSXSyntaxExercise';
 import Lists from './components/Lists';
-import ListsExercise from './components/ListExercise';
+import ListsExercise from './components/ListsExercise';
 import ComponentState from './components/ComponentState';
 import ComponentStateExercise from './components/ComponentStateExercise';
 import ComponentProps from './components/ComponentProps';
