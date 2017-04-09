@@ -50,7 +50,9 @@
     "arrow-body-style": [1],
     "react/sort-comp": [1],
     "no-empty" : [1],
-    "react/no-find-dom-node": [1]
+    "react/no-find-dom-node": [1],
+    "spaced-comment": [1],
+    "arrow-parens": [1]
   },
 
   "plugins": [
