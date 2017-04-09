@@ -8,7 +8,6 @@ const LINKS = [
   {path: '/componentState',name: 'Component State',exercise: true,},
   {path: '/componentProps',name: 'Component Props',exercise: true,},
   {path: '/componentLifecycle',name: 'Component Lifecycle',},
-  {path: '/firebase',name: 'Firebase',},
   {path: '/Redux',name: 'Redux',},
   {path: '/reactRedux',name: 'React Redux',exercise: true,},
   {path: '/usingRestApis',name: 'Using Rest apis',exercise: true,},
