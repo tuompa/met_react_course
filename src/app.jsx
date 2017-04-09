@@ -20,6 +20,7 @@ import Firebase from './components/Firebase/FirebaseChatApp';
 import Redux from './components/Redux';
 import ReactRedux from './containers/ReactRedux';
 import ComponentLifecycle from './components/ComponentLifecycle';
+import ComponentLifeCycleExercise from './components/ComponentLifecycleExercise';
 import ReactReduxExercise from './containers/ReactReduxExercise';
 import UsingRestApis from './containers/UsingRestApis';
 import UsingRestApisExercise from './containers/UsingRestApisExercise';
@@ -49,6 +50,7 @@ const root = (
         <Route path="/componentProps" component={ComponentProps} />
         <Route path="/componentProps/exercise" component={ComponentPropsExecrice} />
         <Route path="/componentLifecycle" components={ComponentLifecycle} />
+        <Route path="/componentLifecycle/exercise" components={ComponentLifeCycleExercise} />
         <Route path="/firebase" components={Firebase} />
         <Route path="/redux" component={Redux} />
         <Route path="/reactRedux" component={ReactRedux} />
