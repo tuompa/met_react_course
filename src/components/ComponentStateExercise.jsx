@@ -24,10 +24,10 @@ export default class ComponentStateExercise extends React.Component {
     * 3. set states text to match the upper cased value
     * HINT: you can check if IMAGES has the matching property
     * in a if statement by: 'if(IMAGES[upperCasedValue]) {...}'*/
+
   }
 
   render() {
-    console.log(IMAGES[this.state.imageName]);
     return (
       <div className="note-exercise-m">
         <input className="input-default" value={this.state.text} onChange={this.onTextChanged} />
