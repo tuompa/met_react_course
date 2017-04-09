@@ -17,7 +17,7 @@ export default class ChatLogin extends React.Component {
   validateUsername(username) {
     const {users,} = this.props;
     return username.length>2 && !values(users)
-      .some(({username: other,})=>other===username);
+      .some(user=>user && user.username===username);
   }
 
   handleSubmit = (e)=>{
