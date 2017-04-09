@@ -16,15 +16,15 @@ const CATS = [getRandomCatUrl(),getRandomCatUrl(),getRandomCatUrl(),];
 const IMG_HEIGHT = 240;
 
 const Component = props=>(
-  <div className="flex">
+  <div className="flex note-example-l">
     <ul>
-      <li>This gives you the same result...</li>
+      {/* This gives you the same result...*/}
       <li><img src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
       <li><img src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
       <li><img src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
     </ul>
     <ul>
-      <li>... but this is more convenient</li>
+      {/* ... but this is more convenient*/}
       {CATS.map((url,index)=><li key={index}><img src={url} role="presentation" height={IMG_HEIGHT} /></li>)
         /* when creating elements dynamically,
         you always need to provide each element a unique key*/
