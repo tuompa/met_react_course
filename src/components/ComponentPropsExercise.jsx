@@ -4,9 +4,10 @@ import Img from './Img';
 
 const {func,string,} = React.PropTypes;
 
-/* ValidateInput is a component that displays error
- * after focus has left on element is left if props validate
- * function does not return true */
+/* ValidateInput is a component that displays error (red)
+ * on blur (on focus off).
+ * It evaluates its state by using this.props.validate function
+*/
 class ValidateInput extends React.Component {
 
   static propTypes = {
@@ -59,8 +60,16 @@ class ValidateInput extends React.Component {
 const emailRegex = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/;
 const Form = ()=>(
   <div>
-    <ValidateInput validate={text=>emailRegex.test(text)} type="email" placeholder="email" />
-    <ValidateInput validate={text=>text.length > 8} type="password" placeholder="password" />
+    <ValidateInput
+      validate={text=>emailRegex.test(text)}
+      type="email"
+      placeholder="email"
+    />
+    <ValidateInput
+      validate={text=>text.length > 8}
+      type="password"
+      placeholder="password"
+    />
   </div>
     );
 
