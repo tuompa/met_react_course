@@ -78,7 +78,7 @@ class AnimateImageList extends React.Component {
 
   componentWillUnmount() {
     // clear any possible timeouts
-    keys(this).filter(k=>k.contains('imgRemoval'))
+    keys(this).filter(k=>k.includes('imgRemoval'))
       .forEach(k=>this[k].clearTimeout(k));
   }
 
