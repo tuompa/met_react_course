@@ -1,9 +1,5 @@
 import React from 'react';
 
-/* in most cases one jsx file contains only 1 React component,
- * but for sake of simplicity, in all examples and exercises all the related
- * jsx will be written in a single file */
-
 const TEXT_ALIGN_OPTIONS = [
   'left','center','right',
 ];

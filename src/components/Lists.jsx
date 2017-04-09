@@ -9,7 +9,10 @@ function getRandomCatUrl() {
     423,424,425,426,429,431,444,450,401,
     500,502,503,504,506,507,508,509,511,
     599,];
-  const index = parseInt(Math.random() * 10000) % STATUS_CODES.length;
+  let index = parseInt(Math.random() * 10000) % STATUS_CODES.length;
+  if(!STATUS_CODES[index]){
+    index++;
+  }
   return `https://http.cat/${STATUS_CODES[index]}`;
 }
 const CATS = [getRandomCatUrl(),getRandomCatUrl(),getRandomCatUrl(),];
@@ -19,9 +22,9 @@ const Component = props=>(
   <div className="flex note-example-l">
     <ul>
       {/* This gives you the same result...*/}
-      <li><img src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
-      <li><img src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
-      <li><img src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
+      <li><img className="image-default" src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
+      <li><img className="image-default" src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
+      <li><img className="image-default" src={getRandomCatUrl()} role="presentation" height={IMG_HEIGHT} /></li>
     </ul>
     <ul>
       {/* ... but this is more convenient*/}

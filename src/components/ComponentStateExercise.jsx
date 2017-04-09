@@ -29,10 +29,10 @@ export default class ComponentStateExercise extends React.Component {
   render() {
     console.log(IMAGES[this.state.imageName]);
     return (
-      <div>
-        <input value={this.state.text} onChange={this.onTextChanged} />
+      <div className="note-exercise-m">
+        <input className="input-default" value={this.state.text} onChange={this.onTextChanged} />
         <br />
-        <img src={IMAGES[this.state.imageName]} role="presentation" height={400} />
+        <img className="image-default" src={IMAGES[this.state.imageName]} role="presentation" height={400} />
       </div>
     );
   }
