@@ -21,11 +21,11 @@ export default class ComponentState extends React.Component {
     const {text,} = this.state;
     console.log('re-render with',text);
     return (
-      <div>
-        <p>Number of re-renders {this.reRenders++}</p>
-        <label htmlFor="random_text">{`${text.length}/${this.maxLength}`}</label>
-        <input id="random_text" value={text} onChange={this.onTextChanged} />
-        <button onClick={this.clearText}>Clear</button>
+      <div className="note-example-s">
+        <p className="text-default">Number of re-renders {this.reRenders++}</p>
+        <label className="text-default">{`${text.length}/${this.maxLength}`}</label>
+        <input className="input-default" value={text} onChange={this.onTextChanged} />
+        <button className={`button-default-${text.length+5}`} onClick={this.clearText}>Clear</button>
       </div>
     );
   }

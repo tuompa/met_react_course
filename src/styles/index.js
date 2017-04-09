@@ -8,4 +8,5 @@ import './todosApp.scss';
 import './chat.scss';
 import './emoji.scss';
 import './notes.scss';
+import './text.scss';
 import './app.scss';
