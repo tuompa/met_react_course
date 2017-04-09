@@ -1,10 +1,13 @@
 import React from 'react';
 
-const GREETING = 'Hello react';
+const buttonText = 'Im a button';
 
 const Component = props=>(
-  <div id="parentTag">
-    <h2>Make evaluated value of GREETING be displayed in a 'h3' tag on the next line</h2>
+  <div className="note-exercise-s">
+    <div>
+      <h2>Make evaluated value of 'buttonText' be displayed in
+        a 'button' tag on the next line, and attach an onClick listener to it</h2>
+    </div>
   </div>
 );
 
