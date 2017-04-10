@@ -52,7 +52,8 @@
     "no-empty" : [1],
     "react/no-find-dom-node": [1],
     "spaced-comment": [1],
-    "arrow-parens": [1]
+    "arrow-parens": [1],
+    "no-use-before-define": ["error", { "functions": false, "classes": false }]
   },
 
   "plugins": [
