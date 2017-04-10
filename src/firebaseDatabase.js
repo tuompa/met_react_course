@@ -14,7 +14,6 @@ const config = {
 firebase.initializeApp(config);
 const dbRef = firebase.database().ref();
 axios.get('/token').then(({data: token,})=>{
-  log({token,});
   firebase.auth().signInWithCustomToken(token).catch((error)=>{
     // Handle Errors here.
     const {code,message,} = error;

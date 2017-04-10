@@ -79,7 +79,7 @@ const baseConfig = {
 module.exports = {
   distPath,
   sourcePath,
-  vendorLibs: ['react','react-dom','redux','react-redux','redux-thunk',],
+  vendorLibs: ['axios', 'firebase', 'react','react-dom','redux','react-redux','redux-thunk','react-addons-css-transition-group','react-flip-move'],
   outputPublicPath: '/',
   base: baseConfig,
   modulesPath: path.join(__dirname,'node_modules'),
