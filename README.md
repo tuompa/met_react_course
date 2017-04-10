@@ -89,15 +89,15 @@
               </ol>
             </li>
       <li>Debugging in Chrome
-        <ul>
-          <li>Using Chrome developer tools you can for example: see console log:s, set breakpoints, and see and change application state using react devtools and redux devtools</li>
-          <li>
-            <ul>
-              <li>Windows: <b>F12, Ctrl + Shift + I</b></li>
-              <li>Mac: <b>Cmd + Opt + I</b></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
+              <ul>
+                <li><a href="https://chrome.google.com/webstore/detail/scratch-js/alploljligeomonipppgaahpkenfnfkn">Scratch JS</a> enables writing es6>= in chrome console</li>
+                <li>Open chrome dev tools</li>
+                <ul>
+                  <li>Windows: <b>F12, Ctrl + Shift + I</b></li>
+                  <li>Mac: <b>Cmd + Opt + I</b></li>
+                </ul>
+                <li>Always keep chrome console output visible to catch errors</li>
+              </ul>
+            </li>
     </ul>
   </div>
