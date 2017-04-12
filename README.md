@@ -1,5 +1,4 @@
 <div>
-<h1>TODO implement react lifecycle animation exercise</h1>
     <h1>Pre-requisites:</h1>
     <ul>
       <li>Bringin your <b>own laptop</b> and necessary <b>display cables</b> to connect to schools display is recommended, cause having 2 displays to work duting this course is going to be helpful to you</li>
