@@ -36,7 +36,7 @@
     </ul>
     <h1>Workflow</h1>
     <ul>    
-      <li>Will be looking at <b>short examples</b>, and between each there is a <b>short assignment</b> based on the previous topic</li>      
+      <li>Will be looking at <b>short examples</b>, and between each there is a <b>short programming assignment</b> based on the previous topic</li>      
       <li>When you are done with the topics assigment
         <ol>
           <li>First make sure you are not in master branch <b>git branch</b></li>
@@ -49,7 +49,6 @@
     </ul>
     <h1>Development tips</h1>
     <ul>
-    <li>Always keep chrome console log visible to catch errors</li>
       <li>Enable <b>ESlint</b> codequality tools for Webstorm
               <ol>
                 <li>
