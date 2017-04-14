@@ -27,7 +27,7 @@ ImageItem.propTypes = {
 const ImageGallery = (props) => {
   const { selectImage, selectedImage, images, removeImage, } = props;
   return (
-    <div>
+    <div className='note-example-m'>
       <div className='thump-nail-container'>
         {images.map((url, index) => (<ImageItem key={url} url={url} selectImage={() => selectImage(index)} removeImage={() => removeImage(index)} isSelected={selectedImage === index} />))}
       </div>

@@ -27,7 +27,7 @@ class Component extends React.Component {
     const { onCatNameChanged, onCatRemoved, cats, } = this.props;
     const { newCatName, newCatImg, } = this.state;
     return (
-      <div>
+      <div className='note-example-m'>
         <InputDefault
           value={newCatName}
           placeholder='cat name'

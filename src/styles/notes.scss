@@ -14,7 +14,7 @@
 }
 .note-exercise-s{
   @extend .notes-base;
-  background: #e7ffee;
+  background: #eafff0;
   transform: rotate(1.5deg);
 }
 
@@ -26,7 +26,7 @@
 }
 .note-exercise-m{
   @extend .notes-base;
-  background: #e7ffee;
+  background: #eafff0;
   transform: rotate(1deg);
 }
 
@@ -37,6 +37,6 @@
 }
 .note-exercise-l{
   @extend .notes-base;
-  background: #e7ffee;
+  background: #eafff0;
   transform: rotate(.3deg);
 }

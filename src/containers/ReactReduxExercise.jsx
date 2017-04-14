@@ -36,7 +36,7 @@ class ImageGallery extends React.Component {
   render() {
     const { selectImage, selectedImage, images, resetImages, } = this.props;
     return (
-      <div>
+      <div className='note-exercise-l'>
         <div className='flex-row'>
           <input
             className='input-default'

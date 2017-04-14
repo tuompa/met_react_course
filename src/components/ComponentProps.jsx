@@ -65,7 +65,7 @@ export default class Component extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='note-example-s'>
         <h1>{this.state.header}</h1>
         <SeizureButton imageUrl={URL1} onClick={() => this.setState({ header: '!!AEIOUYÖÄ!', })} />
         <SeizureButton imageUrl={URL2} onClick={() => this.setState({ header: 'I like cardboard boxes', })} />

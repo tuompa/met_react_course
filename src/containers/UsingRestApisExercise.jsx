@@ -108,7 +108,7 @@ class TodoAppContainer extends React.Component {
     const { user, } = this.props;
     const { data, } = user;
     return (
-      <div >
+      <div className='note-exercise-m'>
         <AddUser onAddUser={() => {}} />
         <div className='todos-app-container'>
           <div>
