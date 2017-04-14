@@ -2,8 +2,8 @@ import {ADD_BREED,REMOVE_BREED,MODIFY_BREED,} from '../actions/types';
 
 
 const initialState = {
-  1: {id: 1,name: 'Joona',},
-  2: {id: 2,name: 'Kalle',},
+  1: {id: 1,name: 'cheezburger',img: 'https://img.memesuper.com/d2eee997fefac6a426ba8807c275e482_the-rise-of-image-memes-i-can-haz-cheezburger-meme_570-595.jpeg',},
+  2: {id: 2,name: 'Cat2',img: 'http://sharesloth.com/wp-content/uploads/2014/07/kcRUogc.jpg',},
 };
 let nextId = 3;
 const {keys,} = Object;
