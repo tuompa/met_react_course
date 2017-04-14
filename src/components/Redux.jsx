@@ -28,14 +28,6 @@ class Component extends React.Component {
     const { newCatName, newCatImg, } = this.state;
     return (
       <div>
-        {keys(cats)
-          .map(key => cats[key])
-          .map(({ id, name, img, }) => (
-            <div key={id} className='centered-row'>
-              <InputDefault value={name} onChange={name => onCatNameChanged({ id, name, })} />
-              <ButtonWarning onClick={() => onCatRemoved(id)}>Remove</ButtonWarning>
-              <Img className='url-thump-nail' src={img} />
-            </div>))}
         <InputDefault
           value={newCatName}
           placeholder='cat name'
@@ -45,6 +37,14 @@ class Component extends React.Component {
           placeholder='cat img'
           onChange={(newCatImg) => this.setState({ newCatImg, })} />
         <ButtonPrimary onClick={this.addCat}>Create</ButtonPrimary>
+        {keys(cats)
+          .map(key => cats[key])
+          .map(({ id, name, img, }) => (
+            <div key={id} className='centered-row'>
+              <InputDefault value={name} onChange={name => onCatNameChanged({ id, name, })} />
+              <ButtonWarning onClick={() => onCatRemoved(id)}>Remove</ButtonWarning>
+              <Img className='url-thump-nail' src={img} />
+            </div>))}
       </div>
     );
   }
