@@ -9,7 +9,7 @@ module.exports = merge(config.base, {
   devtool: 'source-map',
   context: config.sourcePath,
   entry: {
-    bundle: 'index.jsx',
+    bundle: 'index.js',
   },
   output: {
     path: config.distPath,

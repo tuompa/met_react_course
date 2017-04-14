@@ -26,15 +26,14 @@ import UsingRestApis from './containers/UsingRestApis';
 import UsingRestApisExercise from './containers/UsingRestApisExercise';
 
 const middlewares = [ thunk, ];
-let store;
-if (process.env.NODE_ENV === 'production') {
-  store = createStore(reducers, middlewares);
-} else {
+
+if (process.env.NODE_ENV !== 'production') {
   const { logger, } = require('redux-logger');
   middlewares.push(logger);
-  const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-  store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
 }
+
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
+const store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
 
 const root = (
   <Provider store={store}>

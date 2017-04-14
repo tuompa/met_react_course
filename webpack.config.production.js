@@ -8,7 +8,7 @@ const API_HOST = JSON.stringify('TODO');
 module.exports = merge(config.base, {
   context: config.sourcePath,
   entry: {
-    bundle: 'index.jsx',
+    bundle: 'index.js',
     vendor: config.vendorLibs,
     publicPath: config.outputPublicPath,
   },
