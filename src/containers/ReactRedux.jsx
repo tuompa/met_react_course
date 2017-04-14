@@ -10,7 +10,7 @@ const ImageItem = (props) => {
   const { url, removeImage, selectImage, isSelected, } = props;
   return (
     <div key={url} className='thump-nail-item'>
-      <ButtonWarning className='centered-foreground-item' onClick={removeImage}>Remove</ButtonWarning>
+      <ButtonWarning disabled={isSelected} className='centered-foreground-item' onClick={removeImage}>Remove</ButtonWarning>
       <Img src={url} className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'} />
       <ButtonPrimary className='centered-foreground-item' onClick={selectImage}>Select</ButtonPrimary>
     </div>
@@ -31,7 +31,7 @@ const ImageGallery = (props) => {
       <div className='thump-nail-container'>
         {images.map((url, index) => (<ImageItem key={url} url={url} selectImage={() => selectImage(index)} removeImage={() => removeImage(index)} isSelected={selectedImage === index} />))}
       </div>
-      <Img key={selectedImage} src={images[selectedImage]} className='selected-item' />
+      <Img key={images[selectedImage]} src={images[selectedImage]} className='selected-item' />
     </div>
   );
 };
