@@ -20,7 +20,7 @@ export default class ComponentStateExercise extends React.Component {
     /* 1. make event.target.value upper case 'event.target.value.toUpperCase()'
     * and save it to a variable
     * 2. check if variable equals some of the IMAGES names,
-    * and if it does change states 'imageName' to match it
+    * and if it does, change states 'imageName' to match it
     * 3. set states text to match the upper cased value
     * HINT: you can check if IMAGES has the matching property
     * in a if statement by: 'if(IMAGES[upperCasedValue]) {...}'*/

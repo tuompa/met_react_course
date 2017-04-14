@@ -2,11 +2,13 @@ import React from 'react';
 import catInvalid from '../images/cat-invalid.png';
 import Img from './Img';
 
-const {func,string,} = React.PropTypes;
+const { func, string, } = React.PropTypes;
 
-/* ValidateInput is a component that displays error (red)
- * on blur (on focus off).
- * It evaluates its state by using this.props.validate function
+/* ValidateInput is a component that displays error when user has typed in something that isn't valid
+ TODO
+ 1. onBlur check if input value is valid and set state to invalid if it isn't.
+ 2. when user re-enters input, when first typing in invalid value
+  set state to invalid:false ones input text validates to true
 */
 class ValidateInput extends React.Component {
 
@@ -20,56 +22,48 @@ class ValidateInput extends React.Component {
     type: 'text',
   };
 
-  state = {text: '',invalid: false,};
+  state = { text: '', invalid: false, };
 
-  onTextChanged = (event)=>{
+  onTextChanged = (event) => {
     const text = event.target.value;
-    const nextState = {text,};
-    /* change state.text */
-    /* and validate text, if it is valid set state.invalid:false*/
+    const nextState = { text, };
   };
 
-  onBlur= ()=>{
-    /* on blur validate text and set state invalid:true if it is not valid */
+  onBlur= () => {
   };
 
   render() {
-    const {text,invalid,} = this.state;
-    const {type,} = this.props;
+    const { text, invalid, } = this.state;
+    const { type, } = this.props;
     return (
-      <div className="validate-input-container">
+      <div className='validate-input-container'>
         <input
           type={type}
           placeholder={this.props.placeholder}
           className={invalid ? 'invalid-input' : 'input-default'}
           onChange={this.onTextChanged}
           value={text}
-          onBlur={this.onBlur}
-        />
+          onBlur={this.onBlur} />
         <Img
           className={invalid ? 'invalid-indicator-visible' : 'invalid-indicator-hidden'}
-          src={catInvalid}
-        />
+          src={catInvalid} />
       </div>
     );
   }
 
-
 }
 
 const emailRegex = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/;
-const Form = ()=>(
+const Form = () => (
   <div>
     <ValidateInput
-      validate={text=>emailRegex.test(text)}
-      type="email"
-      placeholder="email"
-    />
+      validate={text => emailRegex.test(text)}
+      type='email'
+      placeholder='email' />
     <ValidateInput
-      validate={text=>text.length > 8}
-      type="password"
-      placeholder="password"
-    />
+      validate={text => text.length > 8}
+      type='password'
+      placeholder='password' />
   </div>
     );
 

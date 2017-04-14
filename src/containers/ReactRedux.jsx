@@ -1,17 +1,20 @@
 import React from 'react';
-import {connect,} from 'react-redux';
+import { connect, } from 'react-redux';
+import { SELECT_IMAGE, REMOVE_IMAGE, } from '../actions/types';
 import Img from '../components/Img';
-import {ButtonWarning,ButtonPrimary,} from '../components/Buttons';
+import { ButtonWarning, ButtonPrimary, } from '../components/Buttons';
 
-const {func,string,bool,arrayOf,} = React.PropTypes;
+const { func, string, number, bool, arrayOf, } = React.PropTypes;
 
-const ImageItem = (props)=>{
-  const {url,removeImage,selectImage,isSelected,} = props;
-  return (<div key={url} className="thump-nail-item">
-    <ButtonWarning className="centered-foreground-item" onClick={()=>removeImage(url)}>Remove</ButtonWarning>
-    <Img src={url} className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'} />
-    <ButtonPrimary className="centered-foreground-item" onClick={()=>selectImage(url)}>Select</ButtonPrimary>
-  </div>);
+const ImageItem = (props) => {
+  const { url, removeImage, selectImage, isSelected, } = props;
+  return (
+    <div key={url} className='thump-nail-item'>
+      <ButtonWarning className='centered-foreground-item' onClick={removeImage}>Remove</ButtonWarning>
+      <Img src={url} className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'} />
+      <ButtonPrimary className='centered-foreground-item' onClick={selectImage}>Select</ButtonPrimary>
+    </div>
+  );
 };
 
 ImageItem.propTypes = {
@@ -21,15 +24,14 @@ ImageItem.propTypes = {
   url: string,
 };
 
-
-const ImageGallery = (props)=>{
-  const {selectImage,selectedImage,images,removeImage,} = props;
+const ImageGallery = (props) => {
+  const { selectImage, selectedImage, images, removeImage, } = props;
   return (
     <div>
-      <div className="thump-nail-container">
-        {images.map(url=>(<ImageItem key={url} url={url} selectImage={selectImage} removeImage={removeImage} isSelected={selectedImage === url} />))}
+      <div className='thump-nail-container'>
+        {images.map((url, index) => (<ImageItem key={url} url={url} selectImage={() => selectImage(index)} removeImage={() => removeImage(index)} isSelected={selectedImage === index} />))}
       </div>
-      <Img key={selectedImage} src={selectedImage} className="selected-item" />
+      <Img key={selectedImage} src={images[selectedImage]} className='selected-item' />
     </div>
   );
 };
@@ -37,18 +39,20 @@ const ImageGallery = (props)=>{
 ImageGallery.propTypes = {
   selectImage: func,
   removeImage: func,
-  selectedImage: string,
+  selectedImage: number,
   images: arrayOf(string),
 };
 
-/* 'state' is redux store state*/
-const mapStateToProps = state=>({
+/* react-redux allows you to pass state and dispatch to component
+props without implementing manually a Connect component*/
+
+const mapStateToProps = state => ({
   selectedImage: state.image.selectedImage,
   images: state.image.images,
 });
 const mapDispatchToProps = ({
-  selectImage: url=>dispatch=>dispatch({type: 'SELECT_IMAGE',payload: url,}),
-  removeImage: url=>dispatch=>dispatch({type: 'REMOVE_IMAGE',payload: url,}),
+  selectImage: index => dispatch => dispatch({ type: SELECT_IMAGE, payload: index, }),
+  removeImage: index => dispatch => dispatch({ type: REMOVE_IMAGE, payload: index, }),
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(ImageGallery);
+export default connect(mapStateToProps, mapDispatchToProps)(ImageGallery);

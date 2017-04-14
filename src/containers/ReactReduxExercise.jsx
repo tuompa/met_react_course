@@ -1,24 +1,23 @@
 import React from 'react';
-import {connect,} from 'react-redux';
+import { connect, } from 'react-redux';
 import FlipMove from 'react-flip-move';
-import {ButtonPrimary,ButtonWarning,} from '../components/Buttons';
-import Img from '../components/Img'
+import { ButtonPrimary, ButtonWarning, ButtonDefault, } from '../components/Buttons';
+import Img from '../components/Img';
 
-const {func,string,bool,arrayOf,} = React.PropTypes;
+const { func, string, number, bool, arrayOf, } = React.PropTypes;
 
 class Image extends React.Component {
 
   render() {
-    const {url,removeImage,selectImage,isSelected,} = this.props;
-    return (<div key={url} className="thump-nail-list-item">
-      <div className="image-action-container">
-        <ButtonWarning className="centered-foreground-item" onClick={()=>removeImage(url)}>Remove</ButtonWarning>
-        <ButtonPrimary className="centered-foreground-item" onClick={()=>selectImage(url)}>Select</ButtonPrimary>
+    const { url, removeImage, selectImage, isSelected, } = this.props;
+    return (<div key={url} className='thump-nail-list-item'>
+      <div className='image-action-container'>
+        <ButtonWarning className='centered-foreground-item' onClick={removeImage}>Remove</ButtonWarning>
+        <ButtonPrimary className='centered-foreground-item' onClick={selectImage}>Select</ButtonPrimary>
       </div>
       <Img
         src={url}
-        className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'}
-      />
+        className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'} />
     </div>);
   }
 }
@@ -30,32 +29,40 @@ Image.propTypes = {
   url: string,
 };
 
-
 class ImageGallery extends React.Component {
 
-  state = {inputValue: '',};
+  state = { inputValue: '', };
 
   render() {
-    const {selectImage,selectedImage,images,resetImages,} = this.props;
+    const { selectImage, selectedImage, images, resetImages, } = this.props;
     return (
       <div>
-        <div className="flex-row">
+        <div className='flex-row'>
           <input
-            className="input-default"
-            type="text"
-            placeholder="image url"
+            className='input-default'
+            type='text'
+            placeholder='image url'
             value={this.state.inputValue}
-            onChange={e=>this.setState({inputValue: e.target.value,})}
-          />
-          <button className="button-primary" onClick={()=>console.log('ADD_IMAGE not implemented')}>Add</button>
-          <button className="button-default" onClick={resetImages}>Reset Images</button>
+            onChange={e => this.setState({ inputValue: e.target.value, })} />
+          <ButtonPrimary onClick={() => console.log('ADD_IMAGE not implemented')}>Add</ButtonPrimary>
+          <ButtonDefault onClick={resetImages}>Reset Images</ButtonDefault>
           {/* TODO shuffle images button*/}
         </div>
-        <div className="flex-row">
-          <FlipMove duration={450} easing="ease-out" typeName="div">
-            {images.map(url=>(<Image key={url} url={url} selectImage={selectImage} removeImage={()=>console.log('TODO removeImage')} isSelected={selectedImage === url} />))}
+        <div className='flex-row'>
+          <FlipMove duration={450} easing='ease-out' typeName='div'>
+            {images.map((url, index) => (
+              <Image
+                key={url}
+                url={url}
+                selectImage={() => selectImage(index)}
+                removeImage={() => console.log('TODO removeImage')}
+                isSelected={selectedImage === index} />
+            ))}
           </FlipMove>
-          <img key={selectedImage} role="presentation" src={selectedImage} className="selected-item" />
+          <Img
+            key={images[selectedImage]}
+            src={images[selectedImage]}
+            className='selected-item' />
         </div>
       </div>
     );
@@ -64,7 +71,7 @@ class ImageGallery extends React.Component {
 
 ImageGallery.propTypes = {
   selectImage: func,
-  selectedImage: string,
+  selectedImage: number,
   images: arrayOf(string),
   resetImages: func,
   /* TODO
@@ -74,17 +81,17 @@ ImageGallery.propTypes = {
 };
 
 /* state is redux store state*/
-const mapStateToProps = state=>({
+const mapStateToProps = state => ({
   selectedImage: state.image.selectedImage,
   images: state.image.images,
 });
 const mapDispatchToProps = ({
-  selectImage: url=>dispatch=>dispatch({type: 'SELECT_IMAGE',payload: url,}),
-  removeImage: url=>dispatch=>dispatch({type: 'REMOVE_IMAGE',payload: url,}),
-  resetImages: ()=>dispatch=>dispatch({type: 'RESET_IMAGES',}),
+  selectImage: index => dispatch => dispatch({ type: 'SELECT_IMAGE', payload: index, }),
+  removeImage: index => dispatch => dispatch({ type: 'REMOVE_IMAGE', payload: index, }),
+  resetImages: () => dispatch => dispatch({ type: 'RESET_IMAGES', }),
   /* addImage ...
   * shuffleImages ...
   * */
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(ImageGallery);
+export default connect(mapStateToProps, mapDispatchToProps)(ImageGallery);

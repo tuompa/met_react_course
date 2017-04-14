@@ -5,21 +5,13 @@ import candidate from '../images/cat-candidate.jpg';
 import grumpy from '../images/grumpy.jpg';
 import {keys,} from '../utils';
 
-
-/* make images pop up with animation when they are added,
- and fadeout when removed by changing className property*/
-
-/* mapNewImages function
-takes: {[imgName] : src, [img2Name]: src2, ...}
-produces: {[imgName]: {src: 'url/path', isRemoved:bool}, [img2Name]: ...}
+/* AnimateImageList animates 'image removed' and 'image added' animations.
+* Removal animations are not possible with css alone
+* AnimateImageList achieves it 'image removed' animation by caching props.images in it's state.
+* When image is actually removed, AnimateImageList delays it's removal from it's inner state.
+* AnimateImageList sets the removed items css class to 'image-shrink-out'
+* Ones animation has finished then AnimateImageList removes the image from its state.
 */
-function mapNewImages(images) {
-  return keys(images)
-    .reduce((acc,k)=>{
-      acc[k] = {src: images[k],isRemoved: false,};
-      return acc;
-    },{});
-}
 
 const {object,} = React.PropTypes;
 class AnimateImageList extends React.Component {
@@ -30,10 +22,11 @@ class AnimateImageList extends React.Component {
 
   state = {/*   example shape of state
     images: {
-      {[imgName]: {
+      imgName: {
         src: 'url/path',
         isRemoved:false
-      }, [img2Name]: ...
+      },
+      img2Name: {...} ...
     }*/
   }
 
@@ -47,33 +40,16 @@ class AnimateImageList extends React.Component {
 
   /* TODO
   1. check which images are removed
-  2. set their state is removed so that correct
-  className with correct animation will be displayed
+  2. set removed images state isRemoved to true
+  (... so that className with correct animation will be displayed)
   3. set timeout for removing the image after animation has finished
-  4. produce next state
+  (use this.setTimeoutToRemoveImage method for this)
+  4. produce next state ...
   */
-  componentWillReceiveProps({images,}) {
-    const existingImages = mapNewImages(images);
-    const currentImages = this.state.images;
-    /*
-    1. find out which images have been removed
-    const removedKeys = ... */
-
-    /*
-    2. to get the right css className set (for animation)
-    set every removed images 'isRemoved' to true,
-    !(but do not delete it from state
-    and remember not to mutate the current state directly)
-    const fadeOutImages = ...
-    */
-
-    /*
-    3. set timeout to remove images from state after animation
-     */
-
-    /*
-    4. produce next state
-    */
+  componentWillReceiveProps(nextProps) {
+    const existingImages = mapNewImages(nextProps.images);
+    const currentImages = {...this.state.images,};
+    // ...
   }
 
   componentWillUnmount() {
@@ -114,7 +90,6 @@ class AnimateImageList extends React.Component {
   }
 }
 
-
 const cvPicks= {whiteCollar,candidate,grumpy,};
 export default class ImageList extends React.Component {
 
@@ -151,4 +126,15 @@ export default class ImageList extends React.Component {
       </div>
     );
   }
+}
+/* mapNewImages function
+ takes: {imgName: 'path/orUrl', img2Name: 'path/orUrl', ...}
+ produces: {imgName: {src: 'path/urUrl', isRemoved: false}, img2Name: {...} ...}
+ */
+function mapNewImages(images) {
+  return keys(images)
+    .reduce((acc,k)=>{
+      acc[k] = {src: images[k],isRemoved: false,};
+      return acc;
+    },{});
 }

@@ -17,18 +17,18 @@ class SeizureButton extends React.Component {
     clearTimeout(this.timeout);
   }
 
-  onMouseOver = ()=>{
+  onMouseOver = () => {
     this.setTimerForTextAlign();
     this.setState({displayImage: true,});
   };
 
-  onMouseOut = ()=>{
+  onMouseOut = () => {
     clearTimeout(this.timeout);
     this.setState({displayImage: false,});
   };
 
   setTimerForTextAlign() {
-    this.timeout = setTimeout(()=>{
+    this.timeout = setTimeout(() => {
       const textAlign = TEXT_ALIGN_OPTIONS[parseInt(Math.random() * 3,10)];
       this.setState({textAlign,});
       this.setTimerForTextAlign();
@@ -48,8 +48,7 @@ class SeizureButton extends React.Component {
           onMouseOver={this.onMouseOver}
           onMouseOut={this.onMouseOut}
           style={extraStyles}
-          onClick={this.props.onClick}
-        >
+          onClick={this.props.onClick}>
           Click here
         </button>
       </div>
@@ -69,8 +68,8 @@ export default class Component extends React.Component {
     return (
       <div>
         <h1>{this.state.header}</h1>
-        <SeizureButton imageUrl={URL1} onClick={()=>this.setState({header: '!!AEIOUYÖÄ!',})} />
-        <SeizureButton imageUrl={URL2} onClick={()=>this.setState({header: 'I like cardboard boxes',})} />
+        <SeizureButton imageUrl={URL1} onClick={() => this.setState({header: '!!AEIOUYÖÄ!',})} />
+        <SeizureButton imageUrl={URL2} onClick={() => this.setState({header: 'I like cardboard boxes',})} />
       </div>
     );
   }

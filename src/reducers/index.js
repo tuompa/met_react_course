@@ -1,6 +1,6 @@
 import {combineReducers,} from 'redux';
-import image from './imagesReducer';
-import catBreed from './catBreed';
+import image from './images';
+import catBreed from './cats';
 import user from './user';
 import todo from './todo';
 

@@ -1,6 +1,13 @@
-export const ADD_BREED = 'ADD_BREED';
-export const REMOVE_BREED = 'REMOVE_BREED';
-export const MODIFY_BREED = 'MODIFY_BREED';
+export const ADD_CAT = 'ADD_CAT';
+export const REMOVE_CAT = 'REMOVE_CAT';
+export const CHANGE_CAT_NAME = 'CHANGE_CAT_NAME';
+export const CHANGE_CAT_IMAGE = 'CHANGE_CAT_IMAGE';
+
+export const ADD_IMAGE = 'ADD_IMAGE';
+export const REMOVE_IMAGE = 'REMOVE_IMAGE';
+export const SELECT_IMAGE = 'SELECT_IMAGE';
+export const RESET_IMAGES = 'RESET_IMAGES';
+export const SHUFFLE_IMAGES = 'SHUFFLE_IMAGES';
 
 export const START_USER_REQUEST='START_USER_REQUEST';
 export const USER_REQUEST_ERROR='USER_REQUEST_ERROR';

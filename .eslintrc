@@ -2,6 +2,7 @@
   "extends": [
     "airbnb"
   ],
+  "plugins": ["react"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2017,
@@ -14,9 +15,11 @@
     "mocha": true
   },
   "rules": {
+    "strict": ["warn", "never"],
     "no-shadow": 0,
     "react/require-default-props": 0,
     "react/forbid-prop-types": [0],
+    "react/no-unused-prop-types": "warn",
     "no-class-assign": 0,
     "import/no-unresolved" : "off",
     "import/extensions": "off",
@@ -24,48 +27,44 @@
     "react/prop-types": "off",
     "max-len": [0, {"code": 200}], /*airbnb default maxlength causes problems with my ide*/
     "no-underscore-dangle": 0,
-    "react/jsx-space-before-closing" : 0,
+    "react/jsx-space-before-closing" : "warn",
     "import/no-extraneous-dependencies": "off",
-    "comma-dangle" : [1, "always"],
-    "indent": [1,2],
-    "camelcase": [1, {"properties": "always"}],
-    "comma-spacing": [1, {"before": false}],
-    "array-bracket-spacing":[1, "never"],
+    "comma-dangle" : ["warn", "always"],
+    "indent": ["warn",2, {"SwitchCase": 1}],
+    "camelcase": ["warn", {"properties": "always"}],
+    "comma-spacing": ["warn", {"after": true}],
+    "array-bracket-spacing":["warn", "always"],
     "no-param-reassign": [0],
-    "key-spacing": [1, { "afterColon": true, "beforeColon": false}],
-    "no-unused-vars": 1,
-    "react/jsx-indent": 1,
-    "no-trailing-spaces": [0, { "skipBlankLines": true }],
-    "eol-last": 1,
-    "react/no-multi-comp": 1,
-    "react/jsx-closing-bracket-location": 1,
-    "arrow-spacing": [1, { "before": false, "after": false }],
+    "key-spacing": ["warn", { "afterColon": true, "beforeColon": false}],
+    "no-unused-vars": "warn",
+    "react/jsx-indent": "warn",
+    "no-trailing-spaces": ["warn", { "skipBlankLines": true }],
+    "eol-last": "warn",
+    "react/no-multi-comp": "warn",
+    "arrow-spacing": ["warn", { "before": true, "after": true }],
     "no-plusplus": 0,
-    "jsx-quotes": [1, "prefer-double"],
-    "object-curly-spacing": [1, "never"],
+    "jsx-quotes": ["warn", "prefer-single"],
+    "object-curly-spacing": ["warn", "always"],
     "space-infix-ops": [0, "never"],
     "func-names": [0, "never"],
-    "keyword-spacing": [1],
-    "brace-style": [1],
-    "arrow-body-style": [1],
-    "react/sort-comp": [1],
-    "no-empty" : [1],
-    "react/no-find-dom-node": [1],
-    "spaced-comment": [1],
-    "arrow-parens": [1],
-    "no-use-before-define": ["error", { "functions": false, "classes": false }]
-  },
-
-  "plugins": [
-    "react"
-  ],
-  "indent": [
-    1,
-    2
-  ],
-  "quotes": [
-    1,
-    "single"
-  ],
-  "semi": [1, "always"]
+    "keyword-spacing": ["warn"],
+    "brace-style": ["warn"],
+    "arrow-body-style": ["warn"],
+    "react/sort-comp": ["warn"],
+    "no-empty" : ["warn"],
+    "react/no-find-dom-node": ["warn"],
+    "spaced-comment": ["warn"],
+    "arrow-parens": [0],
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "react/jsx-closing-bracket-location": ["warn", "after-props"],
+    "space-before-blocks": "warn",
+    "space-before-function-paren": "warn",
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 1 }],
+    "consistent-return": "warn",
+    "quotes": ["warn","single"],
+    "class-methods-use-this": "warn",
+    "no-useless-return": 0,
+    "semi": ["warn", "always"],
+    "object-shorthand": "warn"
+  }
 }

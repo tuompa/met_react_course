@@ -1,46 +1,50 @@
 import React from 'react';
+import { InputDefault, } from './Inputs';
+import { ButtonPrimary, ButtonWarning, } from './Buttons';
+import { ADD_CAT, REMOVE_CAT, CHANGE_CAT_NAME } from '../actions/types';
+import Img from './Img';
 
-const {keys,} = Object;
-const {object,func,} = React.PropTypes;
+const { keys, } = Object;
+const { object, func, } = React.PropTypes;
 class Component extends React.Component {
 
   static propTypes = {
-    catBreeds: object.isRequired,
-    onBreedAdded: func.isRequired,
-    onBreedChanged: func.isRequired,
-    onBreedRemoved: func.isRequired,
+    cats: object.isRequired,
+    onCatAdded: func.isRequired,
+    onCatNameChanged: func.isRequired,
+    onCatRemoved: func.isRequired,
   };
 
-  state = {newBreedName: '',};
+  state = { newCatName: '', newCatImg: '', };
 
-  onNewBreedNameChanged = (e)=>{
-    const newBreedName = e.target.value;
-    this.setState({newBreedName,});
-  };
-
-  addBreed = ()=>{
-    this.props.onBreedAdded(this.state.newBreedName);
-    this.setState({newBreedName: '',});
+  addCat = () => {
+    const { newCatName, newCatImg, } = this.state;
+    this.props.onCatAdded({ name: newCatName, img: newCatImg, });
+    this.setState({ newCatName: '', newCatImg: '', });
   };
 
   render() {
-    const {onBreedChanged,onBreedRemoved,catBreeds,} = this.props;
+    const { onCatNameChanged, onCatRemoved, cats, } = this.props;
+    const { newCatName, newCatImg, } = this.state;
     return (
       <div>
-        {keys(catBreeds)
-          .map(key=>catBreeds[key])
-          .map(({id,name,})=>(
-            <div key={id}>
-              <input className="input-default" value={name} onChange={e=>onBreedChanged({id,name: e.target.value,})} />
-              <button className="button-default" onClick={()=>onBreedRemoved(id)}>Remove</button>
+        {keys(cats)
+          .map(key => cats[key])
+          .map(({ id, name, img, }) => (
+            <div key={id} className='centered-row'>
+              <InputDefault value={name} onChange={name => onCatNameChanged({ id, name, })} />
+              <ButtonWarning onClick={() => onCatRemoved(id)}>Remove</ButtonWarning>
+              <Img className='url-thump-nail' src={img} />
             </div>))}
-        <input
-          value={this.state.newBreedName}
-          className="input-default"
-          placeholder="new breed"
-          onChange={this.onNewBreedNameChanged}
-        />
-        <button className="button-default" onClick={this.addBreed}>Create</button>
+        <InputDefault
+          value={newCatName}
+          placeholder='cat name'
+          onChange={(newCatName) => this.setState({ newCatName, })} />
+        <InputDefault
+          value={newCatImg}
+          placeholder='cat img'
+          onChange={(newCatImg) => this.setState({ newCatImg, })} />
+        <ButtonPrimary onClick={this.addCat}>Create</ButtonPrimary>
       </div>
     );
   }
@@ -67,12 +71,9 @@ class Connect extends React.Component {
     /* when the value of context data is changed it does not usually automatically cause re-render for
     child components, This is why Redux store has a callback function 'subscribe' that get called every time a new
     store state is generated */
-    const {store,} = this.context;
+    const { store, } = this.context;
     this.setState(store.getState());
-    this.subscription = store.subscribe(()=>{
-      /*  when new store state is generated, this function is called
-      -> Connect (this component) and its  child component 'Component' gets re-rendered' due to
-      Connect calls this.setState*/
+    this.subscription = store.subscribe(() => {
       this.setState(store.getState());
     });
   }
@@ -84,15 +85,14 @@ class Connect extends React.Component {
   }
 
   render() {
-    const {store,} = this.context;
+    const { store, } = this.context;
     if (this.state.catBreed) {
       return (
         <Component
-          catBreeds={this.state.catBreed}
-          onBreedAdded={breedName=>store.dispatch({type: 'ADD_BREED',payload: breedName,})}
-          onBreedChanged={breedName=>store.dispatch({type: 'MODIFY_BREED',payload: breedName,})}
-          onBreedRemoved={id=>store.dispatch({type: 'REMOVE_BREED',payload: id,})}
-        />
+          cats={this.state.catBreed}
+          onCatAdded={(nameAndImage) => store.dispatch({ type: ADD_CAT, payload: nameAndImage, })}
+          onCatNameChanged={breedName => store.dispatch({ type: CHANGE_CAT_NAME, payload: breedName, })}
+          onCatRemoved={id => store.dispatch({ type: REMOVE_CAT, payload: id, })} />
       );
     }
     return <div />;
