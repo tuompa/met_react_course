@@ -8,7 +8,8 @@
     "build": "webpack --config webpack.config.production.js",
     "test": "mocha --compilers js:babel-core/register tests/**/*.test.js",
     "test:watch": "npm run test -- --watch",
-    "start": "webpack-dev-server --config webpack.config.development.js --colors --progress --inline"
+    "start": "webpack-dev-server --config webpack.config.development.js --colors --progress --inline",
+    "deploy" : "npm run build && firebase deploy"
   },
   "author": "",
   "license": "UNLICENCED",
