@@ -41,6 +41,9 @@ ul.tree-list li a {
     font-size: 12px;
     line-height: 10px;
 }
+.pointer-visible{
+    cursor: pointer;
+}
 
 ul.tree-list ul li:before {
     content: "";
