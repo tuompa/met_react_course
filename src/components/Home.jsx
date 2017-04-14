@@ -1,27 +1,24 @@
 import React from 'react';
 
-const Home = ()=>(
+const Home = () => (
   <div>
     <h1>Pre-requisites:</h1>
     <ul>
       <li>Bringin your <b>own laptop</b> and necessary <b>display cables</b> to connect to schools display is recommended, cause having 2 displays to work duting this course is going to be helpful to you</li>
       <li>Lectures will be held at least <b>mostly in finnish</b>, course <b>content</b> will be in <b>english</b></li>
-      <li><b>GIT</b> <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></li>
-      <li><b>Node</b> <a href="https://nodejs.org/en/">https://nodejs.org/en/</a>
+      <li><b>GIT</b> <a href='https://git-scm.com/downloads'>https://git-scm.com/downloads</a></li>
+      <li><b>Node</b> <a href='https://nodejs.org/en/'>https://nodejs.org/en/</a>
       </li>
       <li>IDE. Most preferably <b>Webstorm </b><a
-        href="https://www.jetbrains.com/webstorm/"
-      >https://www.jetbrains.com/webstorm/</a>
+        href='https://www.jetbrains.com/webstorm/'>https://www.jetbrains.com/webstorm/</a>
       </li>
-      <li><b>Chrome</b> <a href="https://www.google.com/chrome/">https://www.google.com/chrome/</a>
+      <li><b>Chrome</b> <a href='https://www.google.com/chrome/'>https://www.google.com/chrome/</a>
       </li>
       <li><a
-        href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en"
-      >Chrome
+        href='https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en'>Chrome
         React Development Tools </a></li>
       <li><a
-        href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en"
-      >Redux
+        href='https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en'>Redux
         DevTools for Chrome</a></li>
     </ul>
     <h1>To get started</h1>
@@ -92,7 +89,7 @@ const Home = ()=>(
       </li>
       <li>Debugging in Chrome
         <ul>
-          <li><a href="https://chrome.google.com/webstore/detail/scratch-js/alploljligeomonipppgaahpkenfnfkn">Scratch JS</a> enables writing es6>= in chrome console</li>
+          <li><a href='https://chrome.google.com/webstore/detail/scratch-js/alploljligeomonipppgaahpkenfnfkn'>Scratch JS</a> enables writing es6>= in chrome console</li>
           <li>Open chrome dev tools</li>
           <ul>
             <li>Windows: <b>F12, Ctrl + Shift + I</b></li>

@@ -14,9 +14,9 @@ to match it, so that a new image will be displayed
 
 export default class ComponentStateExercise extends React.Component {
 
-  state = {text: 'CATURDAY',imageName: 'CATURDAY',};
+  state = { text: 'CATURDAY', imageName: 'CATURDAY', };
 
-  onTextChanged = (event)=>{
+  onTextChanged = (event) => {
     /* 1. make event.target.value upper case 'event.target.value.toUpperCase()'
     * and save it to a variable
     * 2. check if variable equals some of the IMAGES names,
@@ -29,10 +29,10 @@ export default class ComponentStateExercise extends React.Component {
 
   render() {
     return (
-      <div className="note-exercise-m">
-        <input className="input-default" value={this.state.text} onChange={this.onTextChanged} />
+      <div className='note-exercise-m'>
+        <input className='input-default' value={this.state.text} onChange={this.onTextChanged} />
         <br />
-        <img className="image-default" src={IMAGES[this.state.imageName]} role="presentation" height={400} />
+        <img className='image-default' src={IMAGES[this.state.imageName]} role='presentation' height={400} />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputDefault, } from './Inputs';
 import { ButtonPrimary, ButtonWarning, } from './Buttons';
-import { ADD_CAT, REMOVE_CAT, CHANGE_CAT_NAME } from '../actions/types';
+import { ADD_CAT, REMOVE_CAT, CHANGE_CAT_NAME, } from '../actions/types';
 import Img from './Img';
 
 const { keys, } = Object;

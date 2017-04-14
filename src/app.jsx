@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router,Route,IndexRoute,browserHistory,} from 'react-router';
-import {createStore,applyMiddleware,} from 'redux';
-import {Provider,} from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory, } from 'react-router';
+import { createStore, applyMiddleware, } from 'redux';
+import { Provider, } from 'react-redux';
 import thunk from 'redux-thunk';
 import 'styles';
 import reducers from './reducers';
@@ -25,41 +25,41 @@ import ReactReduxExercise from './containers/ReactReduxExercise';
 import UsingRestApis from './containers/UsingRestApis';
 import UsingRestApisExercise from './containers/UsingRestApisExercise';
 
-const middlewares = [thunk,];
+const middlewares = [ thunk, ];
 let store;
 if (process.env.NODE_ENV === 'production') {
-  store = createStore(reducers,middlewares);
+  store = createStore(reducers, middlewares);
 } else {
-  const {logger,} = require('redux-logger');
+  const { logger, } = require('redux-logger');
   middlewares.push(logger);
   const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-  store = createStoreWithMiddleware(reducers,window.devToolsExtension && window.devToolsExtension());
+  store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
 }
 
 const root = (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
+      <Route path='/' component={App}>
         <IndexRoute component={Home} />
-        <Route path="/jsxSyntax" component={JSXSyntax} />
-        <Route path="/jsxSyntax/exercise" component={JSXSyntaxExercise} />
-        <Route path="/lists" component={Lists} />
-        <Route path="/lists/exercise" component={ListsExercise} />
-        <Route path="/componentState" component={ComponentState} />
-        <Route path="/componentState/exercise" component={ComponentStateExercise} />
-        <Route path="/componentProps" component={ComponentProps} />
-        <Route path="/componentProps/exercise" component={ComponentPropsExecrice} />
-        <Route path="/componentLifecycle" components={ComponentLifecycle} />
-        <Route path="/componentLifecycle/exercise" components={ComponentLifeCycleExercise} />
-        <Route path="/firebase" components={Firebase} />
-        <Route path="/redux" component={Redux} />
-        <Route path="/reactRedux" component={ReactRedux} />
-        <Route path="/reactRedux/exercise" component={ReactReduxExercise} />
-        <Route path="/usingRestApis" component={UsingRestApis} />
-        <Route path="/usingRestApis/exercise" component={UsingRestApisExercise} />
+        <Route path='/jsxSyntax' component={JSXSyntax} />
+        <Route path='/jsxSyntax/exercise' component={JSXSyntaxExercise} />
+        <Route path='/lists' component={Lists} />
+        <Route path='/lists/exercise' component={ListsExercise} />
+        <Route path='/componentState' component={ComponentState} />
+        <Route path='/componentState/exercise' component={ComponentStateExercise} />
+        <Route path='/componentProps' component={ComponentProps} />
+        <Route path='/componentProps/exercise' component={ComponentPropsExecrice} />
+        <Route path='/componentLifecycle' components={ComponentLifecycle} />
+        <Route path='/componentLifecycle/exercise' components={ComponentLifeCycleExercise} />
+        <Route path='/firebase' components={Firebase} />
+        <Route path='/redux' component={Redux} />
+        <Route path='/reactRedux' component={ReactRedux} />
+        <Route path='/reactRedux/exercise' component={ReactReduxExercise} />
+        <Route path='/usingRestApis' component={UsingRestApis} />
+        <Route path='/usingRestApis/exercise' component={UsingRestApisExercise} />
       </Route>
     </Router>
   </Provider>
 );
 
-ReactDOM.render(root,document.getElementById('app'));
+ReactDOM.render(root, document.getElementById('app'));

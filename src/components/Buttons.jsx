@@ -1,22 +1,21 @@
 import React from 'react';
 
-function handleClick(e,onClick) {
+function handleClick(e, onClick) {
   try {
     e.preventDefault();// prevent default for forms
-  } catch (Excecption) {
+  } catch (Exception) {
 
   }
   onClick(e);
 }
 
-const {log,} = console;
-const {func,string,bool,} = React.PropTypes;
-const ButtonDefault = ({onClick=()=>log('onClick not implemented'),className='',children,disabled,})=>(
+const { log, } = console;
+const { func, string, bool, } = React.PropTypes;
+const ButtonDefault = ({ onClick=() => log('onClick not implemented'), className='', children, disabled, }) => (
   <button
     className={`button-default ${className}`}
     disabled={disabled}
-    onClick={e=>handleClick(e,onClick)}
-  >
+    onClick={e => handleClick(e, onClick)}>
     {children}
   </button>);
 ButtonDefault.propTypes = {
@@ -24,12 +23,11 @@ ButtonDefault.propTypes = {
   className: string,
   disabled: bool,
 };
-const ButtonPrimary = ({onClick=()=>log('onClick not implemented'),className='',children,disabled,})=>(
+const ButtonPrimary = ({ onClick=() => log('onClick not implemented'), className='', children, disabled, }) => (
   <button
     className={`button-primary ${className}`}
     disabled={disabled}
-    onClick={e=>handleClick(e,onClick)}
-  >
+    onClick={e => handleClick(e, onClick)}>
     {children}
   </button>);
 ButtonPrimary.propTypes = {
@@ -37,12 +35,11 @@ ButtonPrimary.propTypes = {
   className: string,
   disabled: bool,
 };
-const ButtonWarning = ({onClick=()=>log('onClick not implemented'),className='',children,disabled,})=>(
+const ButtonWarning = ({ onClick=() => log('onClick not implemented'), className='', children, disabled, }) => (
   <button
     className={`button-warning ${className}`}
     disabled={disabled}
-    onClick={e=>handleClick(e,onClick)}
-  >
+    onClick={e => handleClick(e, onClick)}>
     {children}
   </button>);
 ButtonWarning.propTypes = {

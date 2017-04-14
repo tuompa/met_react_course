@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TEXT_ALIGN_OPTIONS = [
-  'left','center','right',
+  'left', 'center', 'right',
 ];
 
 class SeizureButton extends React.Component {
@@ -11,7 +11,7 @@ class SeizureButton extends React.Component {
     onClick: React.PropTypes.func.isRequired,
   };
 
-  state = {displayImage: false,textAlign: 'center',};
+  state = { displayImage: false, textAlign: 'center', };
 
   componentWillUnmount() {
     clearTimeout(this.timeout);
@@ -19,32 +19,32 @@ class SeizureButton extends React.Component {
 
   onMouseOver = () => {
     this.setTimerForTextAlign();
-    this.setState({displayImage: true,});
+    this.setState({ displayImage: true, });
   };
 
   onMouseOut = () => {
     clearTimeout(this.timeout);
-    this.setState({displayImage: false,});
+    this.setState({ displayImage: false, });
   };
 
   setTimerForTextAlign() {
     this.timeout = setTimeout(() => {
-      const textAlign = TEXT_ALIGN_OPTIONS[parseInt(Math.random() * 3,10)];
-      this.setState({textAlign,});
+      const textAlign = TEXT_ALIGN_OPTIONS[parseInt(Math.random() * 3, 10)];
+      this.setState({ textAlign, });
       this.setTimerForTextAlign();
-    },100);
+    }, 100);
   }
 
   render() {
-    const {textAlign,displayImage,} = this.state;
+    const { textAlign, displayImage, } = this.state;
     let extraStyles = {};
     if (displayImage) {
-      extraStyles = {textAlign,background: `url("${this.props.imageUrl}") center -40px`,};
+      extraStyles = { textAlign, background: `url("${this.props.imageUrl}") center -40px`, };
     }
     return (
       <div>
         <button
-          className="hover-image-button"
+          className='hover-image-button'
           onMouseOver={this.onMouseOver}
           onMouseOut={this.onMouseOut}
           style={extraStyles}
@@ -56,20 +56,19 @@ class SeizureButton extends React.Component {
   }
 }
 
-
 const URL1 = 'https://media3.giphy.com/media/3o85xoi6nNqJQJ95Qc/200w.webp#8';
 const URL2 = 'http://catsticker.com/images/dancing-cat.gif';
 
 export default class Component extends React.Component {
 
-  state = {header: 'Click a button',};
+  state = { header: 'Click a button', };
 
   render() {
     return (
       <div>
         <h1>{this.state.header}</h1>
-        <SeizureButton imageUrl={URL1} onClick={() => this.setState({header: '!!AEIOUYÖÄ!',})} />
-        <SeizureButton imageUrl={URL2} onClick={() => this.setState({header: 'I like cardboard boxes',})} />
+        <SeizureButton imageUrl={URL1} onClick={() => this.setState({ header: '!!AEIOUYÖÄ!', })} />
+        <SeizureButton imageUrl={URL2} onClick={() => this.setState({ header: 'I like cardboard boxes', })} />
       </div>
     );
   }

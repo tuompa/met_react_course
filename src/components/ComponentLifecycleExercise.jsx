@@ -3,7 +3,7 @@ import Img from './Img';
 import whiteCollar from '../images/business-cat-white-collar-tie.jpg';
 import candidate from '../images/cat-candidate.jpg';
 import grumpy from '../images/grumpy.jpg';
-import {keys,} from '../utils';
+import { keys, } from '../utils';
 
 /* AnimateImageList animates 'image removed' and 'image added' animations.
 * Removal animations are not possible with css alone
@@ -13,7 +13,7 @@ import {keys,} from '../utils';
 * Ones animation has finished then AnimateImageList removes the image from its state.
 */
 
-const {object,} = React.PropTypes;
+const { object, } = React.PropTypes;
 class AnimateImageList extends React.Component {
 
   static propTypes ={
@@ -33,9 +33,9 @@ class AnimateImageList extends React.Component {
   // Set the initial images before component mount
   componentWillMount() {
     // shallow copy props images
-    let {...propsImages} = this.props.images;
+    let { ...propsImages } = this.props.images;
     const images = mapNewImages(propsImages);
-    this.setState({images,});
+    this.setState({ images, });
   }
 
   /* TODO
@@ -48,14 +48,14 @@ class AnimateImageList extends React.Component {
   */
   componentWillReceiveProps(nextProps) {
     const existingImages = mapNewImages(nextProps.images);
-    const currentImages = {...this.state.images,};
+    const currentImages = { ...this.state.images, };
     // ...
   }
 
   componentWillUnmount() {
     // clear any possible timeouts
-    keys(this).filter(k=>k.includes('imgRemoval'))
-      .forEach((k)=>{
+    keys(this).filter(k => k.includes('imgRemoval'))
+      .forEach((k) => {
         if (k instanceof String) {
           this[k].clearTimeout(k);
         }
@@ -64,64 +64,62 @@ class AnimateImageList extends React.Component {
 
   setTimeoutToRemoveImage(key) {
     // remove image after 0.4seconds
-    this[`imgRemoval${key}`] = setTimeout(()=>{
+    this[`imgRemoval${key}`] = setTimeout(() => {
       // take shallow copy of images
-      const {...images} = this.state.images;
+      const { ...images } = this.state.images;
       delete images[key];
-      this.setState({images,});
-    },390);
+      this.setState({ images, });
+    }, 390);
   }
 
   render() {
-    const {images,} = this.state;
+    const { images, } = this.state;
     return (
-      <div className="centering-flex">
+      <div className='centering-flex'>
         {keys(images)
-          .sort((k1,k2)=>k1<k2)
-          .map(k=>(
+          .sort((k1, k2) => k1<k2)
+          .map(k => (
             <Img
               key={k}
               src={images[k].src}
-              className={images[k].isRemoved ? 'image-shrink-out' : 'image-pop-up'}
-            />
+              className={images[k].isRemoved ? 'image-shrink-out' : 'image-pop-up'} />
           ))}
       </div>
     );
   }
 }
 
-const cvPicks= {whiteCollar,candidate,grumpy,};
+const cvPicks= { whiteCollar, candidate, grumpy, };
 export default class ImageList extends React.Component {
 
-  state = {images: cvPicks,};
+  state = { images: cvPicks, };
 
   toggleImage(name) {
-    const {...images} = this.state.images;
+    const { ...images } = this.state.images;
     if (images[name]) {
       delete images[name];
     } else {
       images[name] = cvPicks[name];
     }
-    this.setState({images,});
+    this.setState({ images, });
   }
 
   render() {
-    const {images,} = this.state;
+    const { images, } = this.state;
     return (
-      <div className="note-exercise-m">
-        <div className="centering-flex">
-          {['whiteCollar','grumpy','candidate',]
-          .map(name=>(
+      <div className='note-exercise-m'>
+        <div className='centering-flex'>
+          {[ 'whiteCollar', 'grumpy', 'candidate', ]
+          .map(name => (
             <button
               key={name}
               className={images[name] ? 'button-warning' : 'button-primary'}
-              onClick={()=>this.toggleImage(name)}
-            >{name}</button>
+              onClick={() => this.toggleImage(name)}>{name}</button>
             )
           )}
         </div>
-        <div className="centering-flex">
-          <AnimateImageList images={this.state.images}/>
+        <div className='centering-flex'>
+          <AnimateImageList images={this.state.images} />
         </div>
       </div>
     );
@@ -133,8 +131,8 @@ export default class ImageList extends React.Component {
  */
 function mapNewImages(images) {
   return keys(images)
-    .reduce((acc,k)=>{
-      acc[k] = {src: images[k],isRemoved: false,};
+    .reduce((acc, k) => {
+      acc[k] = { src: images[k], isRemoved: false, };
       return acc;
-    },{});
+    }, {});
 }

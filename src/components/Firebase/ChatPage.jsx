@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {values,} from '../../utils';
-import {ButtonPrimary,ButtonWarning,} from '../Buttons';
-import {InputDefault,} from '../Inputs';
+import { values, } from '../../utils';
+import { ButtonPrimary, ButtonWarning, } from '../Buttons';
+import { InputDefault, } from '../Inputs';
 
-const {object,func,} = React.PropTypes;
+const { object, func, } = React.PropTypes;
 export default class ChatPage extends React.Component {
 
   static propTypes = {
@@ -14,14 +14,14 @@ export default class ChatPage extends React.Component {
     onLogout: func.isRequired,
   }
 
-  state = {inputValue: '',}
+  state = { inputValue: '', }
 
   componentDidMount() {
     this.scrollToBottom();
   }
 
-  componentDidUpdate({messages: prevMessages,}) {
-    let {messages,} = this.props;
+  componentDidUpdate({ messages: prevMessages, }) {
+    let { messages, } = this.props;
     messages = values(messages);
     prevMessages = values(prevMessages);
     const prevLastIndex = prevMessages.length-1;
@@ -32,60 +32,53 @@ export default class ChatPage extends React.Component {
     }
   }
 
-
-  handleSubmit = (e)=>{
+  handleSubmit = (e) => {
     try { e.preventDefault(); } catch (e) {}
-    const {inputValue,} = this.state;
+    const { inputValue, } = this.state;
     if (inputValue) {
       this.props.onMessageAdded(inputValue);
-      this.setState({inputValue: '',});
+      this.setState({ inputValue: '', });
     }
   }
 
   scrollToBottom() {
     if (this.messagesEnd) {
       const node = ReactDOM.findDOMNode(this.messagesEnd);
-      node.scrollIntoView({behavior: 'smooth',});
+      node.scrollIntoView({ behavior: 'smooth', });
     }
   }
 
-
   render() {
-    const {users,messages,onLogout,} = this.props;
+    const { users, messages, onLogout, } = this.props;
     return (
-      <div className="chat-app">
+      <div className='chat-app'>
         <ButtonWarning
-          className="chat-logout-button"
-          onClick={onLogout}
-        >Logout</ButtonWarning>
-        <div className="chat-upper-container">
-          <div className="chat-feed">
-            {values(messages).map((message,i)=>(
+          className='chat-logout-button'
+          onClick={onLogout}>Logout</ButtonWarning>
+        <div className='chat-upper-container'>
+          <div className='chat-feed'>
+            {values(messages).map((message, i) => (
               <p
-                ref={(el)=>{ this.messagesEnd = el; }}
+                ref={(el) => { this.messagesEnd = el; }}
                 key={i}
-                className="chat-message"
-              ><span
-                className="chat-message-author"
-              >{message.author}</span>:{message.text}
+                className='chat-message'><span
+                  className='chat-message-author'>{message.author}</span>:{message.text}
               </p>
             ))}
           </div>
-          <div className="chat-users">
-            {values(users).map(({username,})=><p key={username}>{username}</p>)}
+          <div className='chat-users'>
+            {values(users).map(({ username, }) => <p key={username}>{username}</p>)}
           </div>
         </div>
-        <form className="chat-lower-container" onSubmit={this.handleSubmit}>
+        <form className='chat-lower-container' onSubmit={this.handleSubmit}>
 
           <InputDefault
-            className="chat-input"
+            className='chat-input'
             value={this.state.inputValue}
-            onChange={inputValue=>this.setState({inputValue,})}
-          />
+            onChange={inputValue => this.setState({ inputValue, })} />
           <ButtonPrimary
-            className="chat-submit"
-            onClick={this.handleSubmit}
-          >Send
+            className='chat-submit'
+            onClick={this.handleSubmit}>Send
           </ButtonPrimary>
         </form>
       </div>

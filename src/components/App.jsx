@@ -1,39 +1,37 @@
 import React from 'react';
 import TransitionGroup from 'react-addons-css-transition-group';
+import { browserHistory, } from 'react-router';
 import Sidebar from 'components/Sidebar';
-import {signOut} from '../firebaseDatabase';
-import {browserHistory,} from 'react-router';
+import { signOut, } from '../firebaseDatabase';
 
 class App extends React.Component {
 
-  state = {sidebarCollapsed: false,pathname: undefined,};
+  state = { sidebarCollapsed: false, pathname: undefined, };
 
   componentWillMount() {
-    this.setState({pathname: browserHistory.getCurrentLocation().pathname,});
-    this.routeSubscription = browserHistory.listen(({pathname,})=>this.setState({pathname,}));
+    this.setState({ pathname: browserHistory.getCurrentLocation().pathname, });
+    this.routeSubscription = browserHistory.listen(({ pathname, }) => this.setState({ pathname, }));
   }
   componentWillUnmount() {
     this.routeSubscription();
     signOut();
   }
   render() {
-    const {sidebarCollapsed,pathname,} = this.state;
+    const { sidebarCollapsed, pathname, } = this.state;
     return (
       <div>
         <div>
-          <div className="app-window">
+          <div className='app-window'>
             <Sidebar
               pathname={pathname}
-              collapsed={sidebarCollapsed}
-            />
+              collapsed={sidebarCollapsed} />
             <TransitionGroup
-              transitionName="route-change"
+              transitionName='route-change'
               transitionEnter
               transitionLeave
               transitionEnterTimeout={500}
-              transitionLeaveTimeout={500}
-            >
-              <div className="activity-window" key={pathname}>
+              transitionLeaveTimeout={500}>
+              <div className='activity-window' key={pathname}>
                 {this.props.children}
               </div>
             </TransitionGroup>

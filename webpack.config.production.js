@@ -5,7 +5,7 @@ const config = require('./webpack.config.base');
 
 const API_HOST = JSON.stringify('TODO');
 
-module.exports = merge(config.base,{
+module.exports = merge(config.base, {
   context: config.sourcePath,
   entry: {
     bundle: 'index.jsx',
@@ -17,9 +17,9 @@ module.exports = merge(config.base,{
     filename: '[name].[hash].js',
   },
   plugins: [
-    new CleanWebpackPlugin([config.distPath,]),
+    new CleanWebpackPlugin([ config.distPath, ]),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor','manifest',],
+      names: [ 'vendor', 'manifest', ],
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -44,6 +44,6 @@ module.exports = merge(config.base,{
         comments: false,
       },
     }),
-    new webpack.LoaderOptionsPlugin({minimize: true,debug: false,}),
+    new webpack.LoaderOptionsPlugin({ minimize: true, debug: false, }),
   ],
 });
