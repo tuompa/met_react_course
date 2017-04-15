@@ -1,88 +1,95 @@
 import axios from '../axios';
-import { START_USER_REQUEST,
-  USER_REQUEST_ERROR,
+import {
+  START_USER_REQUEST,
   USER_REQUEST_SUCCESS,
+  USER_REQUEST_ERROR,
   CLEAR_USER_ERROR,
   SET_USERS,
   REMOVE_USER,
   SELECT_USER,
   UNSELECT_USER,
-  UPDATE_USER,
+  UPSERT_USER,
   CLEAR_USER_SUCCESS, } from './types';
 
-const { keys, } = Object;
-
-export function getAllUsers() {
-  return function (dispatch) {
-    dispatch({ type: START_USER_REQUEST, payload: 'Getting all profiles', });
-    return axios.get('/users');
-  };
-}
-
-export function getUserById(userId) {
-  return function (dispatch) {
-    dispatch({ type: START_USER_REQUEST, payload: 'Fetching latest user data', });
-    return axios.get(`/users/${userId}`);
-  };
-}
-
-export function setUserRequestError(message) {
-  return function (dispatch) {
-    dispatch({ type: USER_REQUEST_ERROR, payload: message, });
-    setTimeout(() => dispatch({ type: CLEAR_USER_ERROR, }), 2500);
-  };
-}
-
-export function setUserRequestSuccess(message) {
-  return function (dispatch) {
-    dispatch({ type: USER_REQUEST_SUCCESS, payload: message, });
-    setTimeout(() => dispatch({ type: CLEAR_USER_SUCCESS, }), 2500);
-  };
-}
-
-export function setUsers(users) {
-  return function (dispatch) {
-    users = users.reduce((acc, next) => ({ ...acc, [next.id]: next, }), {});
-    dispatch({ type: SET_USERS, payload: users, });
-  };
+function setPostRequestMessage({ dispatch, type, subject, message, }) {
+  let before;
+  let after;
+  if (type ==='error') {
+    before =USER_REQUEST_ERROR;
+    after = CLEAR_USER_ERROR;
+  } else {
+    before = USER_REQUEST_SUCCESS;
+    after = CLEAR_USER_SUCCESS;
+  }
+  dispatch({ type: before, payload: { subject, message, }, });
+  setTimeout(() => dispatch({ type: after, payload: subject, }), 2000);
 }
 
 export function selectUser(userId) {
-  return function (dispatch, getState) {
+  return function (dispatch) {
     dispatch({ type: SELECT_USER, payload: userId, });
   };
 }
 
-export function unSelectUser(userId) {
+export function unSelectUser() {
   return function (dispatch) {
     dispatch({ type: UNSELECT_USER, });
   };
 }
 
-export function requestUpdateUser() {
-  return function (dispatch, getState) {
-    const userId = getState().user.selected.id;
-    return axios.put(`/users/${userId}`);
+export function getAllUsers() {
+  return function (dispatch) {
+    const subject = 'get_all_users';
+    dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Fetching users', }, });
+    return axios.get('/users')
+        .then(({ data, }) => dispatch({ type: SET_USERS, payload: data, }))
+        .then(() => setPostRequestMessage({ dispatch, type: 'success', subject, message: 'Users fetched', }))
+        .catch((err) => {
+          console.error(err);
+          setPostRequestMessage({ dispatch, type: 'error', subject, message: 'Error while fetching users', });
+        });
   };
 }
 
-export function updateUser(user) {
+export function createUser({ name, imageUrl, }) {
   return function (dispatch) {
-    dispatch({ type: UPDATE_USER, payload: user, });
+    const subject = 'create_user';
+    dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'creating user', }, });
+    axios.post('/users', { name, imageUrl, })
+        .then(({ data, }) => dispatch({ type: UPSERT_USER, payload: data, }))
+        .then(() => setPostRequestMessage({ type: 'success', dispatch, subject, message: 'user created', }))
+        .catch(err => {
+          console.error(err);
+          setPostRequestMessage({ type: 'error', dispatch, subject, message: 'error on creating user', });
+        });
   };
 }
 
-export function requestDeleteUser(userId) {
+export function getUserById(userId) {
   return function (dispatch) {
-    return axios.delete(`/users/${userId}`);
+    const subject = 'get_user_by_id';
+    dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Fetching user', }, });
+    axios.get(`/users/${userId}`)
+        .then(({ data, }) => dispatch({ type: UPSERT_USER, payload: data, }))
+        .then(() => setPostRequestMessage({ dispatch, type: 'success', subject, message: 'User fetched', }))
+        .catch(err => {
+          console.error(err);
+          setPostRequestMessage({ dispatch, type: 'error', subject, message: 'error on fetching user', });
+        });
   };
 }
+
+
 export function removeUser(userId) {
-  return function (dispatch, getState) {
-    const { selected, } = getState().user;
-    if (selected && selected.id === userId) {
-      dispatch({ type: UNSELECT_USER, });
-    }
-    dispatch({ type: REMOVE_USER, payload: userId, });
+  return function (dispatch) {
+    const subject = 'remove_user';
+    dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Removing user', }, });
+    axios.delete(`/users/${userId}`)
+      .then(() => dispatch({ type: REMOVE_USER, payload: userId, }))
+      .then(() => setPostRequestMessage({ dispatch, type: 'success', subject, message: 'User removed', }))
+      .catch(err => {
+        console.error(err);
+        setPostRequestMessage({ dispatch, type: 'error', subject, message: 'Could not remove user', });
+      });
   };
 }
