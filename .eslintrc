@@ -66,6 +66,7 @@
     "no-useless-return": 0,
     "semi": ["warn", "always"],
     "object-shorthand": "warn",
-    "jsx-a11y/no-static-element-interactions":"warn"
+    "jsx-a11y/no-static-element-interactions":"warn",
+    "array-callback-return": "warn"
   }
 }

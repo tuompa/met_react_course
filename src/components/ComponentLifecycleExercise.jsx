@@ -39,16 +39,14 @@ class AnimateImageList extends React.Component {
   }
 
   /* TODO
-  1. check which images are removed
-  2. set removed images state isRemoved to true
+  1. set removed images state isRemoved to true
   (... so that className with correct animation will be displayed)
-  3. set timeout for removing the image after animation has finished
+  2. set timeout for removing the image after animation has finished
   (use this.setTimeoutToRemoveImage method for this)
-  4. produce next state ...
+  3. set next state
   */
   componentWillReceiveProps(nextProps) {
-    const existingImages = mapNewImages(nextProps.images);
-    const currentImages = { ...this.state.images, };
+    const notRemovedImages = mapNewImages(nextProps.images);
     // ...
   }
 
