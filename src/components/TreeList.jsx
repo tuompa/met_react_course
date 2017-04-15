@@ -1,6 +1,6 @@
 import React from 'react';
 import StateNode from './StateNode';
-import '../styles/treelist.css';
+import '../styles/treelist.scss';
 
 export default class TreeList extends React.Component {
 

@@ -7,36 +7,36 @@
   flex-grow: 1;
 }
 
+.notes-example-base{
+  @extend .notes-base;
+  background: $yellowNote;
+}
 .note-example-s{
-  @extend .notes-base;
-  background: #fdffe6;
+  @extend .notes-example-base;
   transform: rotate(1.5deg);
 }
-.note-exercise-s{
-  @extend .notes-base;
-  background: #eafff0;
-  transform: rotate(1.5deg);
-}
-
 .note-example-m{
-  @extend .notes-base;
-  background: #fdffe6;
-  transform: rotate(1deg);
-
-}
-.note-exercise-m{
-  @extend .notes-base;
-  background: #eafff0;
+  @extend .notes-example-base;
   transform: rotate(1deg);
 }
-
 .note-example-l{
-  @extend .notes-base;
-  background: #fdffe6;
+  @extend .notes-example-base;
   transform: rotate(-.3deg);
 }
-.note-exercise-l{
+
+.notes-exercise-base{
   @extend .notes-base;
-  background: #eafff0;
+  background: $greenNote;
+}
+.note-exercise-s{
+  @extend .notes-exercise-base;
+  transform: rotate(1.5deg);
+}
+.note-exercise-m{
+  @extend .notes-exercise-base;
+  transform: rotate(1deg);
+}
+.note-exercise-l{
+  @extend .notes-exercise-base;
   transform: rotate(.3deg);
 }

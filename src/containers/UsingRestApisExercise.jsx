@@ -95,13 +95,10 @@ class TodoAppContainer extends React.Component {
 
   componentWillMount() {
     const { getAllUsers, setUsers, } = this.props;
-    setUsers([
-      { id: '2', name: 's', imageUrl: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSkaOVGeP-KtPVerBW_sLSQq3lZxmZdiOrSMCNi9WnWE0z7PiSbtH0SFq0', },
-      { id: 'something', name: 'onni', imageUrl: 'https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg', },
-    ]);
-    /* getAllUsers()
+
+     getAllUsers()
       .then(({ data, }) => setUsers(data))
-      .catch(err => setUserRequestError(err.message));*/
+      .catch(err => setUserRequestError(err.message));
   }
 
   render() {

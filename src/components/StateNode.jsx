@@ -1,4 +1,5 @@
 import React from 'react';
+import FlipMove from 'react-flip-move';
 
 const { string, any, } = React.PropTypes;
 const { keys, } = Object;
@@ -21,9 +22,10 @@ export default class StateNode extends React.Component {
         <div>
           <div className='inline'>
             <span>{name}</span>
+            <i onClick={e => { e.preventDefault(); this.setState({ visible: !visible, }); }} className={`tree-list-arrow fa fa-arrow-${visible ? 'up' : 'down'}`} />
           </div>
           <ul className='tree-list'>
-            <i onClick={e => { e.preventDefault(); this.setState({ visible: !visible, }); }} className={`pointer-visible fa fa-arrow-${visible ? 'up' : 'down'}`} />
+
             {visible && keys(subject).map(k => ({ k, v: subject[k], }))
               .map(
                 ({ k, v, }) => (

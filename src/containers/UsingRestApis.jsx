@@ -16,7 +16,7 @@ export default class UsingRestApis extends React.Component {
   render() {
     const { status, data, } = this.state;
     return (
-      <div className='note-example-m'>
+      <div className='notes-example-base'>
         <h3>{status}</h3>
         <ButtonPrimary onClick={this.fetchApiDescription}>Fetch api description</ButtonPrimary>
         <TreeList objectRoot={data} />
