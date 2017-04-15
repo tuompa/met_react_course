@@ -8,12 +8,14 @@ import { getAllUsers, removeUser, selectUser, unSelectUser, getUserById, createU
 import { fetchTodos, toggleTodoDone, } from '../actions/todoActions';
 
 /* TODO
+...currently in this app you can fetch users, and todos by user
 * Extend todo app so that you can...
-* 1. update users name and imageUrl
-* 2. remove users
+* 1. unselect user to display no todos.
+* 2. remove todos
 * 3. add todos
-* 4. remove todos
-* 5. update todos
+* 4. update todos (done / checked)
+* 5. update users name and imageUrl
+* 6. remove users
 * ... all the endpoints needed for this actions are described in api description
 * +++++ due to slow responses from server, look into 'optimistic update' (on put, post & delete requests)
 * and try to implement it in your reducer state

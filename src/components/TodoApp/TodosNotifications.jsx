@@ -18,9 +18,15 @@ const TodosNotifications = ({ fetchindTodos, userRequests, }) => {
   }));
   keys(error).forEach(k => acc.push({
     created: error[k].created,
-    component: (<TransitionText key={k} className='notification-item-error' text={error[k].message}/>),
+    component: (<TransitionText key={k} className='notification-item-error' text={error[k].message} />),
   }));
   acc = acc.sort((a, b) => a.created<b.created).map(({ component, }) => component);
+  if (fetchindTodos) {
+    acc = [
+      (<TransitionText key={fetchindTodos} text={'Fetching todos'} className='notification-item-pending' />),
+      ...acc,
+    ];
+  }
   return (
     <div className='todos-notifications'>
       <FlipMove duration={750} easing='ease-out' typeName='div'>
