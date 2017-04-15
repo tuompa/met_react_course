@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect, } from 'react-redux';
 import FlipMove from 'react-flip-move';
+import {InputDefault} from '../components/Inputs'
 import { ButtonPrimary, ButtonWarning, ButtonDefault, } from '../components/Buttons';
 import Img from '../components/Img';
 
@@ -31,19 +32,22 @@ Image.propTypes = {
 
 class ImageGallery extends React.Component {
 
-  state = { inputValue: '', };
+  state = { name, imageUrl: '', };
 
   render() {
     const { selectImage, selectedImage, images, resetImages, } = this.props;
+    const {name, imageUrl } = this.state;
     return (
       <div className='note-exercise-l'>
         <div className='flex-row'>
-          <input
-            className='input-default'
-            type='text'
+          <InputDefault
+            placeholder='name'
+            value={name}
+            onChange={name => this.setState({ name, })} />
+          <InputDefault
             placeholder='image url'
-            value={this.state.inputValue}
-            onChange={e => this.setState({ inputValue: e.target.value, })} />
+            value={imageUrl}
+            onChange={imageUrl => this.setState({ imageUrl, })} />
           <ButtonPrimary onClick={() => console.log('ADD_IMAGE not implemented')}>Add</ButtonPrimary>
           <ButtonDefault onClick={resetImages}>Reset Images</ButtonDefault>
           {/* TODO shuffle images button*/}

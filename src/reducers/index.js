@@ -1,7 +1,7 @@
 import { combineReducers, } from 'redux';
 import image from './images';
-import catBreed from './cats';
-import user from './user';
-import todo from './todo';
+import cats from './cats';
+import users from './users';
+import todos from './todos';
 
-export default combineReducers({ image, catBreed, user, todo, });
+export default combineReducers({ image, cats, users, todos, });

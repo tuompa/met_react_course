@@ -1,133 +1,60 @@
 import React from 'react';
 import { connect, } from 'react-redux';
-import axios from '../axios';
-import Img from '../components/Img';
-import { InputDefault, } from '../components/Inputs';
-import { ButtonPrimary, } from '../components/Buttons';
-import { setUsers, getAllUsers, removeUser, requestDeleteUser, requestUpdateUser, selectUser, setUserRequestError, unSelectUser, updateUser, getUserById, } from '../actions/userActions';
+import UsersComponent from '../components/TodoApp/UsersComponent';
+import TodosComponent from '../components/TodoApp/TodosComponent';
+import TodoNotifications from '../components/TodoApp/TodosNotifications';
 
-const { keys, } = Object;
-const { func, array, string, } = React.PropTypes;
+import { getAllUsers, removeUser, selectUser, unSelectUser, getUserById, createUser, } from '../actions/userActions';
+import { fetchTodos, toggleTodoDone, } from '../actions/todoActions';
 
-class UserItem extends React.Component {
+/* TODO
+* Extend todo app so that you can...
+* 1. update users name and imageUrl
+* 2. remove users
+* 3. add todos
+* 4. remove todos
+* 5. update todos
+* ... all the endpoints needed for this actions are described in api description
+* +++++ due to slow responses from server, look into 'optimistic update' (on put, post & delete requests)
+* and try to implement it in your reducer state
+* */
 
-  render() {
-    const { isSelected, imageUrl, name, } = this.props;
-    return (
-      <div className='user-item-container'>
-        <Img className='user-image-thumbnail' src={imageUrl} />
-        <div className='user-right-container'>
-          <p className='user-item-name'>{name}</p>
-          <button className='user-select-button'>{isSelected ? 'unselect' : 'select'}</button>
-        </div>
+const TodoAppContainer = ({ todos, users, fetchTodos, getAllUsers, getUserById, unSelectUser, removeUser, createUser, selectUser, }) => (
+  <div className='note-exercise-m'>
+    <div className='todos-app-container'>
+      <TodoNotifications userRequests={users.request} fetchindTodos={todos.isFetching} />
+      <div>
+        <UsersComponent
+          users={users}
+          getAllUsers={getAllUsers}
+          getUserById={getUserById}
+          removeUser={removeUser}
+          createUser={createUser}
+          selectUser={selectUser}
+          selectedUser={users.content.selected}
+          unSelectUser={unSelectUser} />
       </div>
-    );
-  }
-}
-
-class UsersComponent extends React.Component {
-
-  static propTypes = {
-    getUserById: func,
-    selectUser: func,
-    selected: string,
-    unSelectUser: func,
-    users: array,
-  };
-
-  render() {
-    const { users, selected, } = this.props;
-    return (
-      <div className='user-list-container'>
-        {users.map(user => <UserItem key={user.id} isSelected={user.id === selected} {...user} />)}
+      <div>
+        <TodosComponent
+          todos={todos}
+          toggleTodoDone={toggleTodoDone}
+          selectedUser={users.content.selected}
+          fetchTodos={fetchTodos} />
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+  );
 
-class Todos extends React.Component {
-  render() {
-    return (
-      <div className='todos-list-container'>
-        <div className='todo-item'>Must do this</div>
-        <div className='todo-item'>Must do that</div>
-      </div>
-    );
-  }
-}
-
-class AddUser extends React.Component {
-
-  static propTypes = {
-    onAddUser: func.isRequired,
-  };
-
-  state = { name: '', imageUrl: '', };
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { name, imageUrl, } = this.state;
-    if (name && imageUrl) {
-      this.props.onAddUser({ name, imageUrl, });
-    }
-  };
-
-  render() {
-    const { name, imageUrl, } = this.state;
-    return (
-      <form onSubmit={this.onSubmit}>
-        <h4>Add user</h4>
-        <InputDefault
-          placeholder='username'
-          value={name}
-          onChange={name => this.setState({ name, })} />
-        <InputDefault
-          placeholder='image url'
-          value={imageUrl}
-          onChange={imageUrl => this.setState({ imageUrl, })} />
-        <ButtonPrimary onClick={this.onSubmit}>Submit</ButtonPrimary>
-      </form>
-    );
-  }
-}
-
-class TodoAppContainer extends React.Component {
-
-  componentWillMount() {
-    const { getAllUsers, setUsers, } = this.props;
-
-     getAllUsers()
-      .then(({ data, }) => setUsers(data))
-      .catch(err => setUserRequestError(err.message));
-  }
-
-  render() {
-    const { user, } = this.props;
-    const { data, } = user;
-    return (
-      <div className='note-exercise-m'>
-        <AddUser onAddUser={() => {}} />
-        <div className='todos-app-container'>
-          <div>
-            <UsersComponent {...this.props} users={keys(data).map(id => data[id])} selected={user.selected} />
-          </div>
-          <div>
-            <Todos />
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = ({ user, }) => ({ user, });
+const mapStateToProps = ({ users, todos, }) => ({ users, todos, });
 const mapDispatchToProps = ({
   getAllUsers,
-  setUsers,
-  setUserRequestError,
   getUserById,
   selectUser,
   unSelectUser,
+  removeUser,
+  createUser,
+  fetchTodos,
+  toggleTodoDone,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoAppContainer);

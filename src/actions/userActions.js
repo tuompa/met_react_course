@@ -21,7 +21,7 @@ function setPostRequestMessage({ dispatch, type, subject, message, }) {
     before = USER_REQUEST_SUCCESS;
     after = CLEAR_USER_SUCCESS;
   }
-  dispatch({ type: before, payload: { subject, message, }, });
+  dispatch({ type: before, payload: { subject, message: message || '(╯°□°)╯︵ ┻━┻', }, });
   setTimeout(() => dispatch({ type: after, payload: subject, }), 2000);
 }
 
@@ -46,7 +46,7 @@ export function getAllUsers() {
         .then(() => setPostRequestMessage({ dispatch, type: 'success', subject, message: 'Users fetched', }))
         .catch((err) => {
           console.error(err);
-          setPostRequestMessage({ dispatch, type: 'error', subject, message: 'Error while fetching users', });
+          setPostRequestMessage({ dispatch, type: 'error', subject, });
         });
   };
 }
@@ -60,7 +60,7 @@ export function createUser({ name, imageUrl, }) {
         .then(() => setPostRequestMessage({ type: 'success', dispatch, subject, message: 'user created', }))
         .catch(err => {
           console.error(err);
-          setPostRequestMessage({ type: 'error', dispatch, subject, message: 'error on creating user', });
+          setPostRequestMessage({ type: 'error', dispatch, subject, });
         });
   };
 }
@@ -74,7 +74,7 @@ export function getUserById(userId) {
         .then(() => setPostRequestMessage({ dispatch, type: 'success', subject, message: 'User fetched', }))
         .catch(err => {
           console.error(err);
-          setPostRequestMessage({ dispatch, type: 'error', subject, message: 'error on fetching user', });
+          setPostRequestMessage({ dispatch, type: 'error', subject, });
         });
   };
 }
@@ -89,7 +89,7 @@ export function removeUser(userId) {
       .then(() => setPostRequestMessage({ dispatch, type: 'success', subject, message: 'User removed', }))
       .catch(err => {
         console.error(err);
-        setPostRequestMessage({ dispatch, type: 'error', subject, message: 'Could not remove user', });
+        setPostRequestMessage({ dispatch, type: 'error', subject, });
       });
   };
 }

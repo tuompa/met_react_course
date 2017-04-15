@@ -86,12 +86,12 @@ class Connect extends React.Component {
 
   render() {
     const { store, } = this.context;
-    if (this.state.catBreed) {
+    if (this.state.cats) {
       return (
         <Component
-          cats={this.state.catBreed}
+          cats={this.state.cats}
           onCatAdded={(nameAndImage) => store.dispatch({ type: ADD_CAT, payload: nameAndImage, })}
-          onCatNameChanged={breedName => store.dispatch({ type: CHANGE_CAT_NAME, payload: breedName, })}
+          onCatNameChanged={name => store.dispatch({ type: CHANGE_CAT_NAME, payload: name, })}
           onCatRemoved={id => store.dispatch({ type: REMOVE_CAT, payload: id, })} />
       );
     }
