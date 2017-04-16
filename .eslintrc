@@ -68,6 +68,7 @@
     "object-shorthand": "warn",
     "jsx-a11y/no-static-element-interactions":"warn",
     "array-callback-return": "warn",
-    "import/first": "warn"
+    "import/first": "warn",
+    "radix": 0
   }
 }
