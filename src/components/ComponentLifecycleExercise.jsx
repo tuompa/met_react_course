@@ -42,15 +42,15 @@ class AnimateImageList extends React.Component {
   1. set removed images state isRemoved to true
   (... so that className with correct animation will be displayed)
   2. set timeout for removing the image after animation has finished
-  (use this.setTimeoutToRemoveImage method for this)
+  (use this.setTimeoutToRemoveImage(imgName) method for this)
   3. set next state
   */
   componentWillReceiveProps(nextProps) {
-    const notRemovedImages = mapNewImages(nextProps.images);
+    const notRemovedImages = mapNewImages({ ...nextProps.images, });
     // ...
   }
 
-  componentWillUnmount() {
+  componentWillUnmount() { // (no thing to do here)
     // clear any possible timeouts
     keys(this).filter(k => k.includes('imgRemoval'))
       .forEach((k) => {
@@ -60,7 +60,7 @@ class AnimateImageList extends React.Component {
       });
   }
 
-  setTimeoutToRemoveImage(key) {
+  setTimeoutToRemoveImage(key) { // (nothing to do here)
     // remove image after 0.4seconds
     this[`imgRemoval${key}`] = setTimeout(() => {
       // take shallow copy of images

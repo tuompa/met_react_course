@@ -12,9 +12,9 @@ export default function catImage(state = { images: catUrls, selectedImage: 0, },
     case SELECT_IMAGE:
       return { ...state, selectedImage: action.payload, };
     case REMOVE_IMAGE: {
-      const images = [ ...state.images, ];
-      console.log('remove ', action.payload);
-      delete images[action.payload];
+      let images = [ ...state.images, ];
+      const { payload, } = action;
+      images = [ ...images.slice(0, payload), ...images.slice(payload+1, images.length), ];
       return { ...state, images, };
     } case RESET_IMAGES:
       return { ...state, images: catUrls, };
