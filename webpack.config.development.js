@@ -32,8 +32,8 @@ module.exports = merge(config.base, {
     contentBase: config.sourcePath,
     historyApiFallback: true,
     watchOptions: {
-      aggregateTimeout: 50,
-      poll: 100,
+      aggregateTimeout: 200,
+      poll: 200,
     },
   },
 });

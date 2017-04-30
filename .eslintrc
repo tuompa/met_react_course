@@ -50,7 +50,7 @@
     "keyword-spacing": ["warn"],
     "brace-style": ["warn"],
     "arrow-body-style": ["warn"],
-    "react/sort-comp": ["warn"],
+    "react/sort-comp": 0,
     "no-empty" : ["warn"],
     "react/no-find-dom-node": ["warn"],
     "spaced-comment": ["warn"],
