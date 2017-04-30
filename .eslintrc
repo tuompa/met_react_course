@@ -70,6 +70,7 @@
     "jsx-a11y/no-static-element-interactions":"warn",
     "array-callback-return": "warn",
     "import/first": "warn",
-    "radix": 0
+    "radix": 0,
+    "import/newline-after-import": "warn"
   }
 }

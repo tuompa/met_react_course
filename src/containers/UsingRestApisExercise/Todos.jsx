@@ -1,5 +1,6 @@
 import React from 'react';
-import TodoItem from './TodoItem';
+import TodoItem from '../../components/UsingRestApisExercise/TodoItem';
+
 const { keys, } = Object;
 const { func, object, } = React.PropTypes;
 
