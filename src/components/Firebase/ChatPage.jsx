@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { values, } from '../../utils';
-import { ButtonPrimary, ButtonWarning, } from '../Buttons';
+import Button from '../Button';
 import { InputDefault, } from '../Inputs';
 
 const { object, func, } = React.PropTypes;
@@ -52,9 +52,10 @@ export default class ChatPage extends React.Component {
     const { users, messages, onLogout, } = this.props;
     return (
       <div className='chat-app'>
-        <ButtonWarning
+        <Button
+          warn
           className='chat-logout-button'
-          onClick={onLogout}>Logout</ButtonWarning>
+          onClick={onLogout}>Logout</Button>
         <div className='chat-upper-container'>
           <div className='chat-feed'>
             {values(messages).map((message, i) => (
@@ -71,15 +72,15 @@ export default class ChatPage extends React.Component {
           </div>
         </div>
         <form className='chat-lower-container' onSubmit={this.handleSubmit}>
-
           <InputDefault
             className='chat-input'
             value={this.state.inputValue}
             onChange={inputValue => this.setState({ inputValue, })} />
-          <ButtonPrimary
+          <Button
+            primary
             className='chat-submit'
             onClick={this.handleSubmit}>Send
-          </ButtonPrimary>
+          </Button>
         </form>
       </div>
     );

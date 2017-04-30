@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputDefault, } from '../Inputs';
-import { ButtonPrimary, } from '../Buttons';
+import Button from '../Button';
 
 const { func, } = React.PropTypes;
 export default class AddUser extends React.Component {
@@ -33,7 +33,7 @@ export default class AddUser extends React.Component {
           placeholder='image url'
           value={imageUrl}
           onChange={imageUrl => this.setState({ imageUrl, })} />
-        <ButtonPrimary onClick={this.onSubmit}>Submit</ButtonPrimary>
+        <Button primary onClick={this.onSubmit}>Submit</Button>
       </form>
     );
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputDefault, } from './Inputs';
-import { ButtonPrimary, ButtonWarning, } from './Buttons';
+import Button from './Button';
 import { ADD_CAT, REMOVE_CAT, CHANGE_CAT_NAME, } from '../actions/types';
 import Img from './Img';
 
@@ -36,13 +36,13 @@ class Component extends React.Component {
           value={newCatImg}
           placeholder='cat img'
           onChange={(newCatImg) => this.setState({ newCatImg, })} />
-        <ButtonPrimary onClick={this.addCat}>Create</ButtonPrimary>
+        <Button primary onClick={this.addCat}>Create</Button>
         {keys(cats)
           .map(key => cats[key])
           .map(({ id, name, img, }) => (
             <div key={id} className='centered-row'>
               <InputDefault value={name} onChange={name => onCatNameChanged({ id, name, })} />
-              <ButtonWarning onClick={() => onCatRemoved(id)}>Remove</ButtonWarning>
+              <Button warn onClick={() => onCatRemoved(id)}>Remove</Button>
               <Img className='url-thump-nail' src={img} />
             </div>))}
       </div>

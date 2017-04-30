@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from '../axios';
-import { ButtonPrimary, } from '../components/Buttons';
+import Button from '../components/Button';
 import TreeList from '../components/TreeList';
 
 export default class UsingRestApis extends React.Component {
@@ -18,7 +18,7 @@ export default class UsingRestApis extends React.Component {
     return (
       <div className='notes-example-base'>
         <h3>{status}</h3>
-        <ButtonPrimary onClick={this.fetchApiDescription}>Fetch api description</ButtonPrimary>
+        <Button primary onClick={this.fetchApiDescription}>Fetch api description</Button>
         <TreeList objectRoot={data} />
       </div>
     );

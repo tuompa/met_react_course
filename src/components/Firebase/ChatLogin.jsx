@@ -1,6 +1,6 @@
 import React from 'react';
 import { values, } from '../../utils';
-import { ButtonPrimary, } from '../Buttons';
+import Button from '../Button';
 import { InputDefault, } from '../Inputs';
 
 const { oneOfType, object, array, func, } = React.PropTypes;
@@ -34,7 +34,7 @@ export default class ChatLogin extends React.Component {
           value={username}
           placeholder='username'
           onChange={username => this.setState({ username, isValid: this.validateUsername(username), })} />
-        <ButtonPrimary onClick={this.handleSubmit} disabled={!isValid}>Submit</ButtonPrimary>
+        <Button primary onClick={this.handleSubmit} disabled={!isValid}>Submit</Button>
       </form>);
   }
 }

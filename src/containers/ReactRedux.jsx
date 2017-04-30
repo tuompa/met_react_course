@@ -2,7 +2,7 @@ import React from 'react';
 import { connect, } from 'react-redux';
 import { SELECT_IMAGE, REMOVE_IMAGE, } from '../actions/types';
 import Img from '../components/Img';
-import { ButtonWarning, ButtonPrimary, } from '../components/Buttons';
+import Button from '../components/Button';
 
 const { func, string, number, bool, arrayOf, } = React.PropTypes;
 
@@ -10,9 +10,9 @@ const ImageItem = (props) => {
   const { url, removeImage, selectImage, isSelected, } = props;
   return (
     <div key={url} className='thump-nail-item'>
-      <ButtonWarning disabled={isSelected} className='centered-foreground-item' onClick={removeImage}>Remove</ButtonWarning>
+      <Button warn disabled={isSelected} className='centered-foreground-item' onClick={removeImage}>Remove</Button>
       <Img src={url} className={isSelected ? 'url-thump-nail-selected' : 'url-thump-nail'} />
-      <ButtonPrimary className='centered-foreground-item' onClick={selectImage}>Select</ButtonPrimary>
+      <Button primary className='centered-foreground-item' onClick={selectImage}>Select</Button>
     </div>
   );
 };

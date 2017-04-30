@@ -2,7 +2,7 @@ import React from 'react';
 import { connect, } from 'react-redux';
 import FlipMove from 'react-flip-move';
 import { InputDefault, } from '../components/Inputs';
-import { ButtonPrimary, ButtonWarning, ButtonDefault, } from '../components/Buttons';
+import Button from '../components/Button';
 import { SELECT_IMAGE, REMOVE_IMAGE, RESET_IMAGES, SHUFFLE_IMAGES, ADD_IMAGE, } from '../actions/types';
 import Img from '../components/Img';
 
@@ -19,8 +19,8 @@ class Image extends React.Component {
     const { url, removeImage, selectImage, isSelected, } = this.props;
     return (<div key={url} className='thump-nail-list-item'>
       <div className='image-action-container'>
-        <ButtonWarning className='centered-foreground-item' onClick={removeImage}>Remove</ButtonWarning>
-        <ButtonPrimary className='centered-foreground-item' onClick={selectImage}>Select</ButtonPrimary>
+        <Button warn className='centered-foreground-item' onClick={removeImage}>Remove</Button>
+        <Button primary className='centered-foreground-item' onClick={selectImage}>Select</Button>
       </div>
       <Img
         src={url}
@@ -73,8 +73,8 @@ class ImageGallery extends React.Component {
             placeholder='image url'
             value={imageUrl}
             onChange={imageUrl => this.setState({ imageUrl, })} />
-          <ButtonPrimary onClick={addImage}>Add</ButtonPrimary>
-          <ButtonDefault onClick={resetImages}>Reset Images</ButtonDefault>
+          <Button primary onClick={addImage}>Add</Button>
+          <Button warn onClick={resetImages}>Reset Images</Button>
           {/* TODO shuffle images button*/}
         </div>
         <div className='flex-row'>
