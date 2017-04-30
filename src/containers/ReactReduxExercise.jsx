@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect, } from 'react-redux';
 import FlipMove from 'react-flip-move';
-import {InputDefault} from '../components/Inputs'
+import { InputDefault, } from '../components/Inputs';
 import { ButtonPrimary, ButtonWarning, ButtonDefault, } from '../components/Buttons';
+import { SELECT_IMAGE, REMOVE_IMAGE, RESET_IMAGES, SHUFFLE_IMAGES, ADD_IMAGE, } from '../actions/types';
 import Img from '../components/Img';
 
+const { log, } = console;
 const { func, string, number, bool, arrayOf, } = React.PropTypes;
+
+/* TODO implement reducer reactions to corresponding action types SHUFFLE & REMOVE
+    add removeImage to mapDispatchToProps
+ */
 
 class Image extends React.Component {
 
@@ -34,9 +40,28 @@ class ImageGallery extends React.Component {
 
   state = { name, imageUrl: '', };
 
+  static propTypes = {
+    images: arrayOf(string),
+    selectedImage: number,
+    selectImage: func,
+    addImage: func,
+    removeImage: func,
+    resetImages: func,
+    shuffleImages: func,
+    /* TODO
+     * addImage,
+     * shuffleImages, */
+  };
+
+  static defaultProps = {
+    addImage: () => log('TODO', ADD_IMAGE),
+    removeImage: () => log('TODO', REMOVE_IMAGE),
+    shuffleImages: () => log('TODO', SHUFFLE_IMAGES),
+  }
+
   render() {
-    const { selectImage, selectedImage, images, resetImages, } = this.props;
-    const {name, imageUrl } = this.state;
+    const { selectImage, selectedImage, images, resetImages, addImage, removeImage, shuffleImages, } = this.props;
+    const { name, imageUrl, } = this.state;
     return (
       <div className='note-exercise-l'>
         <div className='flex-row'>
@@ -48,7 +73,7 @@ class ImageGallery extends React.Component {
             placeholder='image url'
             value={imageUrl}
             onChange={imageUrl => this.setState({ imageUrl, })} />
-          <ButtonPrimary onClick={() => console.log('ADD_IMAGE not implemented')}>Add</ButtonPrimary>
+          <ButtonPrimary onClick={addImage}>Add</ButtonPrimary>
           <ButtonDefault onClick={resetImages}>Reset Images</ButtonDefault>
           {/* TODO shuffle images button*/}
         </div>
@@ -59,7 +84,7 @@ class ImageGallery extends React.Component {
                 key={url}
                 url={url}
                 selectImage={() => selectImage(index)}
-                removeImage={() => console.log('TODO removeImage')}
+                removeImage={() => removeImage(index)}
                 isSelected={selectedImage === index} />
             ))}
           </FlipMove>
@@ -73,29 +98,18 @@ class ImageGallery extends React.Component {
   }
 }
 
-ImageGallery.propTypes = {
-  selectImage: func,
-  selectedImage: number,
-  images: arrayOf(string),
-  resetImages: func,
-  /* TODO
-  * removeImage
-  * addImage
-  * shuffleImages*/
-};
-
 /* state is redux store state*/
 const mapStateToProps = state => ({
   selectedImage: state.image.selectedImage,
   images: state.image.images,
 });
 const mapDispatchToProps = ({
-  selectImage: index => dispatch => dispatch({ type: 'SELECT_IMAGE', payload: index, }),
-  removeImage: index => dispatch => dispatch({ type: 'REMOVE_IMAGE', payload: index, }),
-  resetImages: () => dispatch => dispatch({ type: 'RESET_IMAGES', }),
-  /* addImage ...
-  * shuffleImages ...
-  * */
+  selectImage: index => dispatch => dispatch({ type: SELECT_IMAGE, payload: index, }),
+  resetImages: () => dispatch => dispatch({ type: RESET_IMAGES, }),
+  /* TODO
+   * removeImage
+   * addImage,
+   * shuffleImages, */
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageGallery);
