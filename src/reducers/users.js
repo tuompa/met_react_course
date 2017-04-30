@@ -6,11 +6,25 @@ import {
   USER_REQUEST_SUCCESS,
   CLEAR_USER_ERROR,
   SET_USERS,
-  SELECT_USER,
   REMOVE_USER,
-  UNSELECT_USER,
   CLEAR_USER_SUCCESS,
 } from '../actions/types';
+
+function content(state = {}, { type, payload, }) {
+  switch (type) {
+    case SET_USERS:
+      return { ...payload, };
+    case UPSERT_USER:
+      return { ...state, [payload.id]: payload, };
+    case REMOVE_USER: {
+      const nextState = { ...state, };
+      delete nextState[payload];
+      return nextState;
+    }
+    default:
+      return state;
+  }
+}
 
 function request(state = { pending: {}, error: {}, success: {}, }, { type, payload, }) {
   switch (type) {
@@ -20,53 +34,31 @@ function request(state = { pending: {}, error: {}, success: {}, }, { type, paylo
       pending[subject] = { message, created: new Date(), };
       return { ...state, pending, };
     } case USER_REQUEST_SUCCESS: {
-      const pending = { ...state.pending, };
-      const { subject, message, } = payload;
-      const { created, } = pending[subject];
-      delete pending[subject];
-      const success = { ...state.success, };
-      success[subject] = { message, created, };
-      return { ...state, pending, success, };
-    } case USER_REQUEST_ERROR: {
-      const pending = { ...state.pending, };
-      const { subject, message, } = payload;
-      const { created, } = pending[subject];
-      delete pending[subject];
-      const error = { ...state.error, };
-      error[subject] = { message, created, };
-      return { ...state, pending, error, };
-    } case CLEAR_USER_ERROR: {
-      const error = { ...state.error, };
-      delete error[payload];
-      return { ...state, error, };
-    } case CLEAR_USER_SUCCESS: {
-      const success = { ...state.success, };
-      delete success[payload];
-      return { ...state, success, };
-    } default:
-      return state;
-  }
-}
-
-function content(state = { data: {}, selected: null, }, { type, payload, }) {
-  switch (type) {
-    case SET_USERS:
-      return { ...state, data: payload, };
-    case UPSERT_USER: {
-      let { data, } = state;
-      data = { ...data, [payload.id]: payload, };
-      return { ...state, data, };
-    } case SELECT_USER:
-      return { ...state, selected: { ...state.data[payload], }, };
-    case UNSELECT_USER:
-      return { ...state, selected: null, };
-    case REMOVE_USER: {
-      const data = { ...state.data, };
-      delete data[payload];
-      return { ...state, data, };
-    }
-    default:
-      return state;
+    const pending = { ...state.pending, };
+    const { subject, message, } = payload;
+    const { created, } = pending[subject];
+    delete pending[subject];
+    const success = { ...state.success, };
+    success[subject] = { message, created, };
+    return { ...state, pending, success, };
+  } case USER_REQUEST_ERROR: {
+    const pending = { ...state.pending, };
+    const { subject, message, } = payload;
+    const { created, } = pending[subject];
+    delete pending[subject];
+    const error = { ...state.error, };
+    error[subject] = { message, created, };
+    return { ...state, pending, error, };
+  } case CLEAR_USER_ERROR: {
+    const error = { ...state.error, };
+    delete error[payload];
+    return { ...state, error, };
+  } case CLEAR_USER_SUCCESS: {
+    const success = { ...state.success, };
+    delete success[payload];
+    return { ...state, success, };
+  } default:
+    return state;
   }
 }
 

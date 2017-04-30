@@ -1,14 +1,24 @@
 import axios from '../axios';
-import { UPDATE_TODO, FETCH_TODOS_SUCCESS, FETCH_TODOS, TODOS_REQUEST_ERROR, CREATE_TODO, DELETE_TODO, } from './types';
+import {
+  START_TODOS_REQUEST,
+  CLEAR_TODOS_SUCCESS,
+  TODOS_REQUEST_ERROR,
+  TODOS_REQUEST_SUCCESS,
+  CLEAR_TODOS_ERROR,
+  SET_TODOS,
+  UPSERT_TODO,
+  REMOVE_TODO, } from './types';
 
 export function fetchTodos(userId) {
   return function (dispatch) {
-    dispatch({ type: FETCH_TODOS, payload: userId, });
+    const subject = 'fetch_todos';
+    dispatch({ type: START_TODOS_REQUEST, payload: { subject, message: 'fetching todos', }, });
     return axios.get(`/users/${userId}/todos`)
-      .then(({ data, }) => dispatch({ type: FETCH_TODOS_SUCCESS, payload: data, }))
+      .then(({ data, }) => dispatch({ type: SET_TODOS, payload: data, }))
+      .then(() => setPostRequestMessage({ dispatch, type: 'success', subject, message: 'Todos fetched', }))
       .catch(err => {
         console.error(err);
-        dispatch({ type: TODOS_REQUEST_ERROR, payload: 'Fetch todos error', });
+        setPostRequestMessage({ dispatch, type: 'error', subject, });
       });
   };
 }
@@ -18,4 +28,28 @@ export function toggleTodoDone(todoId){
     console.error('toggleTodoDone not implemented');
   };
 };
+export function removeTodo(todoId){
+  return function(dispatch){
+    console.error('removeTodo not implemented');
+  };
+}
+export function addTodo(description){
+  return function(dispatch){
+    console.error('addTodo not implemented');
+  };
+}
 
+// No need to use this if you do not absolutelly want to
+function setPostRequestMessage({ dispatch, type, subject, message, }) {
+  let before;
+  let after;
+  if (type ==='error') {
+    before = TODOS_REQUEST_ERROR;
+    after = CLEAR_TODOS_ERROR;
+  } else {
+    before = TODOS_REQUEST_SUCCESS;
+    after = CLEAR_TODOS_SUCCESS;
+  }
+  dispatch({ type: before, payload: { subject, message: message || '(╯°□°)╯︵ ┻━┻', }, });
+  setTimeout(() => dispatch({ type: after, payload: subject, }), 2000);
+}

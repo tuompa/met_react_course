@@ -7,7 +7,7 @@
 
 .todo-app-box {
   display: flex;
-  transition: box-shadow .3s;
+  transition: all .3s;
   border: 1px solid black;
   box-shadow: .3em .3em .3em $neutralGrey;
   background: $facebookLightBlue;
@@ -67,7 +67,7 @@
   box-shadow: .2em .2em .2em .2em $facebookLightBlue;
 }
 
-.user-select-button {
+.user-button {
   box-shadow: 3px 3px 3px $neutralGrey;
   width: 100px;
   margin: .5em;
@@ -101,7 +101,7 @@
   @extend .todo-app-box;
   transition: background 1s;
   height: 50px;
-
+  margin: .2em;
   width: 200px;
   justify-content:center;
   align-items: center;
@@ -133,6 +133,18 @@
   position: absolute;
   opacity:0;
   transition: opacity .4s;
+}
+
+.remove-icon{
+  padding: 0 .3em 0 .3em;
+  margin: 0 .3em 0 .3em;
+  cursor:pointer;
+  &:hover{
+    border-color: red;
+  }
+}
+.pending-item{
+  opacity: .3;
 }
 @keyframes appear-animation{
   0% {opacity: 0;}

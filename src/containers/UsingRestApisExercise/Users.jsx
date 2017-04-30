@@ -1,34 +1,56 @@
 import React from 'react';
+import { connect, } from 'react-redux';
+import { browserHistory, } from 'react-router';
 import AddUser from '../../components/UsingRestApisExercise/AddUser';
+import FlipMove from 'react-flip-move';
 import UserListItem from '../../components/UsingRestApisExercise/UserListItem';
+import * as actions from '../../actions/userActions';
 
 const { keys, } = Object;
 const { func, object, } = React.PropTypes;
 
+// TODO add functionality to update user
 class UsersComponent extends React.Component {
 
   static propTypes = {
-    selectUser: func.isRequired,
-    removeUser: func.isRequired,
     users: object.isRequired,
+    getAllUsers: func.isRequired,
+    removeUser: func.isRequired,
     createUser: func.isRequired,
   };
 
   render() {
-    const { users, createUser, removeUser, selectUser, } = this.props;
-    const { data, } = users.content;
+    const { users, createUser, removeUser, } = this.props;
+    const { content, } = users;
     return (
       <div className='user-list-container'>
-        {keys(data).map(id => (
+        {keys(content).map(id => (
           <UserListItem
             key={id}
-            {...data[id]}
+            {...content[id]}
             onRemove={removeUser}
-            onSelect={selectUser} />))}
-        <AddUser onAddUser={({ name, imageUrl, }) => createUser({ name, imageUrl, })} />
+            onSelect={this.onSelectUser} />))}
+        <AddUser onAddUser={createUser} />
       </div>
     );
   }
+
+  onSelectUser = (userId) => {
+    browserHistory.push(`/usingRestApis/exercise/${userId}`);
+  };
+
+  componentDidMount() {
+    this.props.getAllUsers();
+  }
 }
 
-export default UsersComponent;
+const mapStateToProps = ({ users, }) => ({ users, });
+const mapDispatchToProps = ({
+  getAllUsers: actions.getAllUsers,
+  createUser: actions.createUser,
+  addUser: actions.createUser,
+  removeUser: actions.removeUser,
+});
+export default connect(mapStateToProps,
+  mapDispatchToProps)(
+  UsersComponent);

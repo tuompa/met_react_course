@@ -1,6 +1,6 @@
 import React from 'react';
-import {InputDefault} from '../Inputs';
-import {ButtonPrimary} from '../Buttons';
+import { InputDefault, } from '../Inputs';
+import { ButtonPrimary, } from '../Buttons';
 
 const { func, } = React.PropTypes;
 export default class AddUser extends React.Component {
@@ -16,6 +16,7 @@ export default class AddUser extends React.Component {
     const { name, imageUrl, } = this.state;
     if (name && imageUrl) {
       this.props.onAddUser({ name, imageUrl, });
+      this.setState({ name: '', imageUrl: '', });
     }
   };
 

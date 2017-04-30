@@ -1,24 +1,35 @@
 import React from 'react';
 import Img from '../Img';
 
-const { func, string, bool, } = React.PropTypes;
+const { func, string, } = React.PropTypes;
 
-const UserItem = ({ id, imageUrl, name, onSelect, onRemove, }) => (
-  <div className={'user-item-container'}>
-    <Img className='user-image-thumbnail' src={imageUrl} />
+const UserListItem = ({ id, name, imageUrl, pending, onSelect, onRemove, }) => (
+  <div
+    className={`user-item-container ${pending && 'pending-item'}`}>
+    <Img
+      className='user-image-thumbnail'
+      src={imageUrl}/>
     <div className='user-right-container'>
       <p className='user-item-name'>{name}</p>
-      <button onClick={() => onSelect(id)} className='user-select-button'>Select</button>
-      <button onClick={() => onRemove(id)} className='user-select-button'>Remove</button>
+      <button
+        disabled={pending}
+        onClick={() => onSelect(id)}
+        className='user-button'>Select
+      </button>
+      <button
+        disabled={pending}
+        onClick={() => onRemove(id)}
+        className='user-button'>
+        Remove
+      </button>
     </div>
   </div>
 );
 
-UserItem.propTypes = {
+UserListItem.propTypes = {
   imageUrl: string,
   name: string,
   onSelect: func,
   onRemove: func,
 };
-
-export default UserItem;
+export default UserListItem;
