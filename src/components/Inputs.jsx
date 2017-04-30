@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const { string, func, any, bool, } = React.PropTypes;
+const { string, func, any, } = React.PropTypes;
 const InputDefault = ({ value, className='', placeholder, type='text', onChange = () => console.log('on change not implemented'), }) => (
   <input
     type={type}
