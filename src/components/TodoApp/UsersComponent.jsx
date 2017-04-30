@@ -3,7 +3,7 @@ import AddUser from './AddUser';
 import UserItem from './UserItem';
 
 const { keys, } = Object;
-const { func, string, object, } = React.PropTypes;
+const { func, object, } = React.PropTypes;
 
 class UsersComponent extends React.Component {
 
@@ -17,15 +17,9 @@ class UsersComponent extends React.Component {
     createUser: func.isRequired,
   };
 
-  componentWillMount() {
-    this.props.getAllUsers();
-  }
-
   render() {
     const { users, createUser, removeUser, selectUser, unSelectUser, } = this.props;
     const { data, selected, } = users.content;
-    console.log(selected);
-    console.log('data: ', data);
     return (
       <div className='user-list-container'>
         {keys(data).map(id => (
@@ -39,6 +33,10 @@ class UsersComponent extends React.Component {
         <AddUser onAddUser={({ name, imageUrl, }) => createUser({ name, imageUrl, })} />
       </div>
     );
+  }
+
+  componentDidMount() {
+    this.props.getAllUsers();
   }
 }
 
