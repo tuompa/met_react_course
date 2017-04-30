@@ -68,20 +68,9 @@ class Connect extends React.Component {
   state = {};
 
   componentWillMount() {
-    /* when the value of context data is changed it does not usually automatically cause re-render for
-    child components, This is why Redux store has a callback function 'subscribe' that get called every time a new
-    store state is generated */
+    /* set initial state */
     const { store, } = this.context;
     this.setState(store.getState());
-    this.subscription = store.subscribe(() => {
-      this.setState(store.getState());
-    });
-  }
-
-  componentWillUnmount() {
-    /* subscriptions must be unsubscribed when component unmounts otherwise
-    * it will continue to receive context data changes after it not needed*/
-    this.subscription();
   }
 
   render() {
@@ -97,5 +86,22 @@ class Connect extends React.Component {
     }
     return <div />;
   }
+
+  componentDidMount() {
+    /* when the value of context data is changed it does not usually automatically cause re-render for
+     child components, This is why Redux store has a callback function 'subscribe' that get called every time a new
+     store state is generated */
+    const { store, } = this.context;
+    this.subscription = store.subscribe(() => {
+      this.setState(store.getState());
+    });
+  }
+
+  componentWillUnmount() {
+    /* subscriptions must be unsubscribed when component unmounts otherwise
+     * it will continue to receive context data changes after it not needed*/
+    this.subscription();
+  }
+
 }
 export default Connect;
