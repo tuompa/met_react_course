@@ -33,7 +33,7 @@ const baseConfig = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2|otf)$/,
-        include: [ path.join(SRC_PATH, './images'), path.join(SRC_PATH, './fonts'), ],
+        include: path.join(SRC_PATH, './images'),
         use: 'url-loader?limit=10000&name=assets/[name].[hash:8].[ext]',
         //If the file is greater than the limit (10000 in bytes) the file-loader is used and all query parameters are passed to it.
       },
