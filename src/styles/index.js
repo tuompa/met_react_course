@@ -1,4 +1,5 @@
 import './normalize.css';
+import './font-awesome-4.7.0/font-awesome.scss';
 import './misc.scss';
 import './sidebar.scss';
 import './input.scss';
