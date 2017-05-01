@@ -29,12 +29,12 @@ export default class Sidebar extends React.Component {
           <SidebarSmallItem
             selected={pathname === '/'}
             onClick={() => browserHistory.push('/')}
-            className='home'
+            name='home'
             id='homeLink' />
           <SidebarSmallItem
             selected={pathname === '/firebase'}
             onClick={() => browserHistory.push('/firebase')}
-            className='comment'
+            name='comment'
             id='homeLink' />
         </div>
         {LINKS.map(({ path, name, exercise, }) => (

@@ -1,4 +1,5 @@
 import React from 'react';
+import Fa from 'react-fontawesome';
 
 const { string, any, bool, } = React.PropTypes;
 const { keys, } = Object;
@@ -23,7 +24,10 @@ export default class StateNode extends React.Component {
         <div>
           <div className='inline'>
             <span>{(parentIsArray ? '-' : name)}</span>
-            <i onClick={e => { e.preventDefault(); this.setState({ visible: !visible, }); }} className={`tree-list-arrow fa fa-arrow-${visible ? 'up' : 'down'}`} />
+            <Fa
+              name={`arrow-${visible ? 'up' : 'down'}`}
+              className='tree-list-arrow'
+              onClick={e => { e.preventDefault(); this.setState({ visible: !visible, }); }} />
             {subjectIsArray && <span>[</span>}
           </div>
           <ul className='tree-list'>

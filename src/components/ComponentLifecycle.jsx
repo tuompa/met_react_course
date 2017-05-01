@@ -73,7 +73,7 @@ class TodoForm extends LoggingComponent {
     super.doLog('RENDER');
     return (
       <div>
-        <h3>See chrome console logs to better see whats happening</h3>
+        <h3>See chrome logs to better see whats happening</h3>
         <div className='component-profile'>
           <div className='component-identity'>{`TodoForm ${this.props.logIdentity}`} <b>{++this.renders}</b></div>
           <Input

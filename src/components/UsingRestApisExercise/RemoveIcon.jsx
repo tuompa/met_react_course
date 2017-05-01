@@ -1,11 +1,10 @@
 import React from 'react';
+import Fa from 'react-fontawesome';
 
-const RemoveIcon = ({ onRemove }) => {
-  return (
-    <span className='remove-icon' onClick={onRemove}>
-      <i className='fa fa-trash' />
+const RemoveIcon = ({ onRemove, }) => (
+  <span className='remove-icon' onClick={onRemove}>
+    <Fa name='trash' />
   </span>
   );
-};
 
 export default RemoveIcon;

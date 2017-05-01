@@ -45,10 +45,7 @@ export function createUser({ name, imageUrl, }) {
 export function removeUser(userId) {
   return function (dispatch, getState) {
     const subject = 'remove_user';
-    console.log(JSON.stringify(getState(), null,
-      1));
     const user = getState().users.content[userId];
-
     dispatch({ type: REMOVE_USER, payload: userId, });
     dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Removing user', }, });
     axios.delete(`/users/${userId}`)

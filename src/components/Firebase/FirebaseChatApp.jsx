@@ -20,14 +20,12 @@ class FirebaseChatApp extends React.Component {
     this.users = chat.child('users');
     this.messages= chat.child('messages');
     this.users.on('value', (next) => {
-      console.log({ users: next.val(), });
       this.setState({ users: next.val(), });
     });
     // this.messages.push({text: 'hello chat',sent: new Date().toISOString(),});
     this.messages
       .limitToLast(500)
       .on('value', (next) => {
-        console.log({ messages: next.val(), });
         this.setState({ messages: next.val(), });
       });
     let user = localStorage.getItem('chat-user');
