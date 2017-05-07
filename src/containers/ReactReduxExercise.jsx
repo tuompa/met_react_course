@@ -9,12 +9,17 @@ import Img from '../components/Img';
 const { log, } = console;
 const { func, string, number, bool, arrayOf, } = React.PropTypes;
 
-/* TODO implement reducer reactions to corresponding action types SHUFFLE & REMOVE
-    add removeImage to mapDispatchToProps
+/* TODO implement reducer reactions to corresponding action types SHUFFLE & REMOVE in file /reducers/images.js
+    add shuffleImages, addImage and removeImage to mapDispatchToProps
  */
 
 class Image extends React.Component {
-
+  static propTypes = {
+    selectImage: func,
+    removeImage: func,
+    isSelected: bool,
+    url: string,
+  };
   render() {
     const { url, removeImage, selectImage, isSelected, } = this.props;
     return (<div key={url} className='thump-nail-list-item'>
@@ -29,13 +34,6 @@ class Image extends React.Component {
   }
 }
 
-Image.propTypes = {
-  selectImage: func,
-  removeImage: func,
-  isSelected: bool,
-  url: string,
-};
-
 class ImageGallery extends React.Component {
 
   state = { name, imageUrl: '', };
@@ -48,9 +46,6 @@ class ImageGallery extends React.Component {
     removeImage: func,
     resetImages: func,
     shuffleImages: func,
-    /* TODO
-     * addImage,
-     * shuffleImages, */
   };
 
   static defaultProps = {

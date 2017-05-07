@@ -2,7 +2,6 @@ import React from 'react';
 import { connect, } from 'react-redux';
 import { browserHistory, } from 'react-router';
 import AddUser from '../../components/UsingRestApisExercise/AddUser';
-import FlipMove from 'react-flip-move';
 import UserListItem from '../../components/UsingRestApisExercise/UserListItem';
 import * as actions from '../../actions/userActions';
 

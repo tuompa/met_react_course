@@ -16,6 +16,13 @@ class TodoAppWrapper extends React.Component {
       <div>
         <TodoNotifications userRequests={users.request} todosRequest={todos.request} />
         <div className='note-exercise-m'>
+          <p>Files related to the exercise are under</p>
+          <ul>
+            <li>components/UsinRestApisExercise</li>
+            <li>containers/UsinRestApisExercise</li>
+            <li>reducers/todos && reducers/users</li>
+          </ul>
+          <p>Start with Users container and then move on to Todos container</p>
           <div className='todos-app-container'>
             {children}
           </div>

@@ -45,11 +45,11 @@ ImageGallery.propTypes = {
 
 /* react-redux allows you to pass state and dispatch to component
 props without implementing manually a Connect component*/
-
 const mapStateToProps = state => ({
   selectedImage: state.image.selectedImage,
   images: state.image.images,
 });
+//Thunk syntax
 const mapDispatchToProps = ({
   selectImage: index => dispatch => dispatch({ type: SELECT_IMAGE, payload: index, }),
   removeImage: index => dispatch => dispatch({ type: REMOVE_IMAGE, payload: index, }),
