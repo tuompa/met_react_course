@@ -10,7 +10,7 @@ import {
   REMOVE_TODO, } from './types';
 
 export function fetchTodos(userId) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
     const subject = 'fetch_todos';
     dispatch({ type: START_TODOS_REQUEST, payload: { subject, message: 'fetching todos', }, });
     return axios.get(`/users/${userId}/todos`)
@@ -24,22 +24,22 @@ export function fetchTodos(userId) {
 }
 
 export function toggleTodoDone(todoId){
-  return function(dispatch){
+  return function(dispatch, getState){
     console.error('toggleTodoDone not implemented');
   };
 };
 export function removeTodo(todoId){
-  return function(dispatch){
+  return function(dispatch, getState){
     console.error('removeTodo not implemented');
   };
 }
 export function addTodo(description){
-  return function(dispatch){
+  return function(dispatch, getState){
     console.error('addTodo not implemented');
   };
 }
 
-// No need to use this if you do not absolutelly want to
+// No need to use this if you do not absolutely want to
 function setPostRequestMessage({ dispatch, type, subject, message, }) {
   let before;
   let after;

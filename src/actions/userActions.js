@@ -12,7 +12,7 @@ import {
   CLEAR_USER_SUCCESS, } from './types';
 
 export function getAllUsers() {
-  return function (dispatch) {
+  return function (dispatch, getState) {
     const subject = 'get_all_users';
     dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Fetching users', }, });
     return axios.get('/users')
@@ -26,7 +26,7 @@ export function getAllUsers() {
 }
 
 export function createUser({ name, imageUrl, }) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
     const subject = 'create_user';
     dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'creating user', }, });
     const id = uuidV4();
@@ -59,7 +59,7 @@ export function removeUser(userId) {
 }
 
 export function getUserById(userId) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
     const subject = 'get_user_by_id';
     dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Fetching user', }, });
     axios.get(`/users/${userId}`)

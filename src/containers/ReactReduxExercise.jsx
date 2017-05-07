@@ -104,8 +104,8 @@ const mapStateToProps = state => ({
   images: state.image.images,
 });
 const mapDispatchToProps = ({
-  selectImage: index => dispatch => dispatch({ type: SELECT_IMAGE, payload: index, }),
-  resetImages: () => dispatch => dispatch({ type: RESET_IMAGES, }),
+  selectImage: index => (dispatch, getState)=> dispatch({ type: SELECT_IMAGE, payload: index, }),
+  resetImages: () => (dispatch, getState) => dispatch({ type: RESET_IMAGES, }),
   /* TODO
    * removeImage
    * addImage,

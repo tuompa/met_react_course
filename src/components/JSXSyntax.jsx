@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Component = props => {
@@ -24,7 +23,7 @@ const Component = props => {
   );
 };
 
-/* This is something you do not need to understand yet -->*/
+/* Something you do not need to understand yet -->*/
 Component.propTypes = {
   text: React.PropTypes.string.isRequired,
 };
