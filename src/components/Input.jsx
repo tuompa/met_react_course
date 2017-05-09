@@ -2,7 +2,7 @@
 import React from 'react';
 
 const { string, func, any, } = React.PropTypes;
-const InputDefault = ({ value, className='', placeholder, type='text', onChange = () => console.log('on change not implemented'), }) => (
+const Input = ({ value, className='', placeholder, type='text', onChange = () => console.log('on change not implemented'), }) => (
   <input
     type={type}
     value={value}
@@ -10,11 +10,11 @@ const InputDefault = ({ value, className='', placeholder, type='text', onChange 
     placeholder={placeholder}
     onChange={e => onChange(e.target.value)} />
 );
-InputDefault.propTypes = {
+Input.propTypes = {
   className: string,
   placeholder: string,
   type: string,
   onChange: func,
   value: any,
 };
-exports.InputDefault = InputDefault;
+export default Input;

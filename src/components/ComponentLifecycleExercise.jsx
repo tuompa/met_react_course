@@ -1,8 +1,8 @@
 import React from 'react';
-import Img from './Img';
-import whiteCollar from '../images/business-cat-white-collar-tie.jpg';
-import candidate from '../images/cat-candidate.jpg';
-import grumpy from '../images/grumpy.jpg';
+import Img from 'components/Img';
+import whiteCollar from 'images/business-cat-white-collar-tie.jpg';
+import candidate from 'images/cat-candidate.jpg';
+import grumpy from 'images/grumpy.jpg';
 import { keys, } from '../utils';
 
 /* AnimateImageList animates 'image removed' and 'image added' animations.

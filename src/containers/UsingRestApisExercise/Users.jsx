@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect, } from 'react-redux';
 import { browserHistory, } from 'react-router';
-import AddUser from '../../components/UsingRestApisExercise/AddUser';
-import UserListItem from '../../components/UsingRestApisExercise/UserListItem';
-import * as actions from '../../actions/userActions';
+import AddUser from 'components/UsingRestApisExercise/AddUser';
+import UserListItem from 'components/UsingRestApisExercise/UserListItem';
+import * as actions from 'actions/userActions';
 
 const { keys, } = Object;
 const { func, object, } = React.PropTypes;

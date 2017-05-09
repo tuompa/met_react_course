@@ -1,8 +1,8 @@
 import React from 'react';
-import { InputDefault, } from './Inputs';
-import Button from './Button';
-import { ADD_CAT, REMOVE_CAT, CHANGE_CAT_NAME, } from '../actions/types';
-import Img from './Img';
+import Input from 'components/Input';
+import Button from 'components/Button';
+import { ADD_CAT, REMOVE_CAT, CHANGE_CAT_NAME, } from 'actions/types';
+import Img from 'components/Img';
 
 const { keys, } = Object;
 const { object, func, } = React.PropTypes;
@@ -28,11 +28,11 @@ class Component extends React.Component {
     const { newCatName, newCatImg, } = this.state;
     return (
       <div className='note-example-m'>
-        <InputDefault
+        <Input
           value={newCatName}
           placeholder='cat name'
           onChange={(newCatName) => this.setState({ newCatName, })} />
-        <InputDefault
+        <Input
           value={newCatImg}
           placeholder='cat img'
           onChange={(newCatImg) => this.setState({ newCatImg, })} />
@@ -41,7 +41,7 @@ class Component extends React.Component {
           .map(key => cats[key])
           .map(({ id, name, img, }) => (
             <div key={id} className='centered-row'>
-              <InputDefault value={name} onChange={name => onCatNameChanged({ id, name, })} />
+              <Input value={name} onChange={name => onCatNameChanged({ id, name, })} />
               <Button warn onClick={() => onCatRemoved(id)}>Remove</Button>
               <Img className='url-thump-nail' src={img} />
             </div>))}

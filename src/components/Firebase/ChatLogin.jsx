@@ -1,7 +1,7 @@
 import React from 'react';
+import Button from 'components/Button';
+import Input from 'components/Input';
 import { values, } from '../../utils';
-import Button from '../Button';
-import { InputDefault, } from '../Inputs';
 
 const { oneOfType, object, array, func, } = React.PropTypes;
 export default class ChatLogin extends React.Component {
@@ -30,7 +30,7 @@ export default class ChatLogin extends React.Component {
     const { username, isValid, } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <InputDefault
+        <Input
           value={username}
           placeholder='username'
           onChange={username => this.setState({ username, isValid: this.validateUsername(username), })} />

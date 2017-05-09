@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect, } from 'react-redux';
-import * as todoActions from '../../actions/todoActions';
-import {getUserById} from '../../actions/userActions';
-import TodoItem from '../../components/UsingRestApisExercise/TodoItem';
-import UserProfile from '../../components/UsingRestApisExercise/UserProfile';
+import * as todoActions from 'actions/todoActions';
+import { getUserById, } from 'actions/userActions';
+import TodoItem from 'components/UsingRestApisExercise/TodoItem';
+import UserProfile from 'components/UsingRestApisExercise/UserProfile';
 
 const { keys, } = Object;
 const { func, object, } = React.PropTypes;
@@ -11,7 +11,7 @@ const { func, object, } = React.PropTypes;
 // TODO implement todos actions and UserProfile component
 
 const mapStateToProps = ({ todos, users, }) => ({ todosContent: todos.content, usersContent: users.content, });
-const mapDispatchToProps = ({...todoActions, getUserById});
+const mapDispatchToProps = ({ ...todoActions, getUserById, });
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Todos extends React.Component {
 

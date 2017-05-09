@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect, } from 'react-redux';
 import FlipMove from 'react-flip-move';
-import { InputDefault, } from '../components/Inputs';
-import Button from '../components/Button';
-import { SELECT_IMAGE, REMOVE_IMAGE, RESET_IMAGES, SHUFFLE_IMAGES, ADD_IMAGE, } from '../actions/types';
-import Img from '../components/Img';
+import Input from 'components/Input';
+import Button from 'components/Button';
+import { SELECT_IMAGE, REMOVE_IMAGE, RESET_IMAGES, SHUFFLE_IMAGES, ADD_IMAGE, } from 'actions/types';
+import Img from 'components/Img';
 
 const { log, } = console;
 const { func, string, number, bool, arrayOf, } = React.PropTypes;
@@ -60,11 +60,11 @@ class ImageGallery extends React.Component {
     return (
       <div className='note-exercise-l'>
         <div className='flex-row'>
-          <InputDefault
+          <Input
             placeholder='name'
             value={name}
             onChange={name => this.setState({ name, })} />
-          <InputDefault
+          <Input
             placeholder='image url'
             value={imageUrl}
             onChange={imageUrl => this.setState({ imageUrl, })} />

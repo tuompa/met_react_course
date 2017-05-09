@@ -1,6 +1,6 @@
 import React from 'react';
 import FlipMove from 'react-flip-move';
-import TransitionText from './TransitionText';
+import TransitionText from 'components/TransitionText';
 
 const { object, } = React.PropTypes;
 const { keys, } = Object;

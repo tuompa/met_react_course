@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Button from 'components/Button';
+import Input from 'components/Input';
 import { values, } from '../../utils';
-import Button from '../Button';
-import { InputDefault, } from '../Inputs';
 
 const { object, func, } = React.PropTypes;
 export default class ChatPage extends React.Component {
@@ -72,7 +72,7 @@ export default class ChatPage extends React.Component {
           </div>
         </div>
         <form className='chat-lower-container' onSubmit={this.handleSubmit}>
-          <InputDefault
+          <Input
             className='chat-input'
             value={this.state.inputValue}
             onChange={inputValue => this.setState({ inputValue, })} />

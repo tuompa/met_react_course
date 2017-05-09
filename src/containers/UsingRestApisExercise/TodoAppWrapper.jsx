@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect, } from 'react-redux';
-import TodoNotifications from '../../components/UsingRestApisExercise/TodosNotifications';
+import TodoNotifications from 'components/UsingRestApisExercise/TodosNotifications';
 
 const { object, } = React.PropTypes;
 

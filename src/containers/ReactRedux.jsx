@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect, } from 'react-redux';
-import { SELECT_IMAGE, REMOVE_IMAGE, } from '../actions/types';
-import Img from '../components/Img';
-import Button from '../components/Button';
+import { SELECT_IMAGE, REMOVE_IMAGE, } from 'actions/types';
+import Img from 'components/Img';
+import Button from 'components/Button';
 
 const { func, string, number, bool, arrayOf, } = React.PropTypes;
 

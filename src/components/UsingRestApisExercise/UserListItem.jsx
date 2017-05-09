@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from '../Img';
+import Img from 'components/Img';
 
 const { func, string, } = React.PropTypes;
 

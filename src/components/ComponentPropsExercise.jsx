@@ -1,6 +1,6 @@
 import React from 'react';
-import catInvalid from '../images/cat-invalid.png';
-import Img from './Img';
+import catInvalid from 'images/cat-invalid.png';
+import Img from 'components/Img';
 
 const { func, string, } = React.PropTypes;
 

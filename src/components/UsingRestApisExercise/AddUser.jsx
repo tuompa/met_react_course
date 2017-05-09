@@ -1,6 +1,6 @@
 import React from 'react';
-import { InputDefault, } from '../Inputs';
-import Button from '../Button';
+import Input from 'components/Input';
+import Button from 'components/Button';
 
 const { func, } = React.PropTypes;
 export default class AddUser extends React.Component {
@@ -25,11 +25,11 @@ export default class AddUser extends React.Component {
     return (
       <form onSubmit={this.onSubmit} className='add-user'>
         <h4>Add user</h4>
-        <InputDefault
+        <Input
           placeholder='username'
           value={name}
           onChange={name => this.setState({ name, })} />
-        <InputDefault
+        <Input
           placeholder='image url'
           value={imageUrl}
           onChange={imageUrl => this.setState({ imageUrl, })} />
