@@ -9,7 +9,8 @@ const { keys, } = Object;
 const { func, object, } = React.PropTypes;
 
 // TODO add functionality to update user
-class UsersComponent extends React.Component {
+@connect(({ users, }) => ({ users, }), ({...actions}))
+export default class UsersComponent extends React.Component {
 
   static propTypes = {
     users: object.isRequired,
@@ -42,14 +43,3 @@ class UsersComponent extends React.Component {
     this.props.getAllUsers();
   }
 }
-
-const mapStateToProps = ({ users, }) => ({ users, });
-const mapDispatchToProps = ({
-  getAllUsers: actions.getAllUsers,
-  createUser: actions.createUser,
-  addUser: actions.createUser,
-  removeUser: actions.removeUser,
-});
-export default connect(mapStateToProps,
-  mapDispatchToProps)(
-  UsersComponent);

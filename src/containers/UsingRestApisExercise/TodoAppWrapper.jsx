@@ -3,7 +3,9 @@ import { connect, } from 'react-redux';
 import TodoNotifications from '../../components/UsingRestApisExercise/TodosNotifications';
 
 const { object, } = React.PropTypes;
-class TodoAppWrapper extends React.Component {
+
+@connect(({ users, todos, }) => ({ users, todos, }))
+export default class TodoAppWrapper extends React.Component {
 
   static propTypes = {
     users: object.isRequired,
@@ -21,6 +23,7 @@ class TodoAppWrapper extends React.Component {
             <li>components/UsinRestApisExercise</li>
             <li>containers/UsinRestApisExercise</li>
             <li>reducers/todos && reducers/users</li>
+            <li>Note that  <b>backend throws error time to time</b></li>
           </ul>
           <p>Start with Users container and then move on to Todos container</p>
           <div className='todos-app-container'>
@@ -31,5 +34,3 @@ class TodoAppWrapper extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ users, todos, }) => ({ users, todos, });
-export default connect(mapStateToProps)(TodoAppWrapper);

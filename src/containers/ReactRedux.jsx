@@ -24,27 +24,8 @@ ImageItem.propTypes = {
   url: string,
 };
 
-const ImageGallery = (props) => {
-  const { selectImage, selectedImage, images, removeImage, } = props;
-  return (
-    <div className='note-example-m'>
-      <div className='thump-nail-container'>
-        {images.map((url, index) => (<ImageItem key={url} url={url} selectImage={() => selectImage(index)} removeImage={() => removeImage(index)} isSelected={selectedImage === index} />))}
-      </div>
-      <Img key={images[selectedImage]} src={images[selectedImage]} className='selected-item' />
-    </div>
-  );
-};
-
-ImageGallery.propTypes = {
-  selectImage: func,
-  removeImage: func,
-  selectedImage: number,
-  images: arrayOf(string),
-};
-
 /* react-redux allows you to pass state and dispatch to component
-props without implementing manually a Connect component*/
+ props without implementing manually a Connect component*/
 const mapStateToProps = state => ({
   selectedImage: state.image.selectedImage,
   images: state.image.images,
@@ -54,5 +35,30 @@ const mapDispatchToProps = ({
   selectImage: index => dispatch => dispatch({ type: SELECT_IMAGE, payload: index, }),
   removeImage: index => dispatch => dispatch({ type: REMOVE_IMAGE, payload: index, }),
 });
+@connect(mapStateToProps, mapDispatchToProps)
+export default class ImageGallery extends React.Component{
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageGallery);
+  static propTypes = {
+    selectImage: func,
+    removeImage: func,
+    selectedImage: number,
+    images: arrayOf(string),
+  };
+  render() {
+    const { selectImage, selectedImage, images, removeImage, } = this.props;
+    return (
+      <div className='note-example-m'>
+        <div className='thump-nail-container'>
+          {images.map((url, index) => (
+            <ImageItem key={url} url={url}
+                       selectImage={() => selectImage(index)}
+                       removeImage={() => removeImage(index)}
+                       isSelected={selectedImage === index}/>))}
+        </div>
+        <Img key={images[ selectedImage ]}
+             src={images[ selectedImage ]}
+             className='selected-item'/>
+      </div>
+    );
+  }
+}
