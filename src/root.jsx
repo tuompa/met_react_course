@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, browserHistory, } from 'react-router';
 import { createStore, applyMiddleware, } from 'redux';
 import { Provider, } from 'react-redux';
 import thunk from 'redux-thunk';
+
 import 'styles';
 import reducers from './reducers';
 import App from './components/App';
@@ -37,7 +38,7 @@ if (process.env.NODE_ENV !== 'production') {
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 const store = createStoreWithMiddleware(reducers, window.devToolsExtension && window.devToolsExtension());
 
-const root= (
+const root = (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/' component={App}>
