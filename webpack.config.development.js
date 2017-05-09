@@ -20,8 +20,8 @@ module.exports = merge(config.base, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
+        API_URL: JSON.stringify('http://138.197.65.89:9000'),
       },
-      API_HOST,
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

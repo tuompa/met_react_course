@@ -1,5 +1,6 @@
 import axios from 'axios';
-
-const instance = axios.create({ baseURL: 'http://138.197.65.89:9000', });
+console.log(JSON.stringify(process.env.API_URL, null,
+  1));
+const instance = axios.create({ baseURL: process.env.API_URL, });
 export default instance;
 

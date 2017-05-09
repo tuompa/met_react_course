@@ -24,7 +24,7 @@ module.exports = merge(config.base, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        API_HOST: JSON.stringify(API_HOST),
+        API_URL: JSON.stringify('http://138.197.65.89:9000'),
       },
     }),
     new webpack.optimize.UglifyJsPlugin({
