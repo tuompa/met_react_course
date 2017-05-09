@@ -1,26 +1,21 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const config = require('./webpack.config.base');
+const { context, vendor, distPath, publicPath, base, }= require('./webpack.config.base');
 
-const API_HOST = JSON.stringify('TODO');
-
-module.exports = merge(config.base, {
-  context: config.sourcePath,
-  entry: {
-    bundle: 'index.js',
-    vendor: config.vendorLibs,
-    publicPath: config.outputPublicPath,
+module.exports = merge(base('production'), {
+  context,
+  entry: {// use babel-polyfill to enable new javascript features on old IE:s
+    bundle: [ 'babel-polyfill', 'index.jsx', ],
+    vendor,
+    publicPath,
   },
   output: {
-    path: config.distPath,
-    filename: '[name].[hash].js',
+    path: distPath,
+    filename: '[name].[chunkhash:8].js',
   },
   plugins: [
-    new CleanWebpackPlugin([ config.distPath, ]),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: [ 'vendor', 'manifest', ],
-    }),
+    new CleanWebpackPlugin([ distPath, ]),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),

@@ -1,20 +1,18 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const { context, vendor, distPath, publicPath, base, }= require('./webpack.config.base');
 
-const API_HOST = JSON.stringify('TODO');
-
-const config = require('./webpack.config.base');
-
-module.exports = merge(config.base, {
+module.exports = merge(base('development'), {
   devtool: 'source-map',
-  context: config.sourcePath,
+  context,
   entry: {
-    bundle: 'index.js',
+    bundle: 'index.jsx',
+    vendor,
   },
   output: {
-    path: config.distPath,
-    filename: '[name].js',
-    publicPath: config.outputPublicPath,
+    path: distPath,
+    filename: '[name].[hash].js',
+    publicPath,
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -25,14 +23,15 @@ module.exports = merge(config.base, {
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
+
   devServer: {
     // host must be set to enable accessing server from localhost:${PORT} when devServer running in docker
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 8000,
-    contentBase: config.sourcePath,
+    contentBase: context,
     historyApiFallback: true,
     watchOptions: {
-      aggregateTimeout: 200,
+      aggregateTimeout: 100,
       poll: 200,
     },
   },
