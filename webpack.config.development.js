@@ -23,7 +23,6 @@ module.exports = merge(base('development'), {
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
-
   devServer: {
     // host must be set to enable accessing server from localhost:${PORT} when devServer running in docker
     host: process.env.HOST || '0.0.0.0',
