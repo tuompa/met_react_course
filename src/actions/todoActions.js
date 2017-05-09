@@ -1,4 +1,4 @@
-import axios from '../axios';
+import axios from 'common/axios';
 import {
   START_TODOS_REQUEST,
   CLEAR_TODOS_SUCCESS,

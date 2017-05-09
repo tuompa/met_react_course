@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'components/Button';
 import Input from 'components/Input';
-import { values, } from '../../utils';
+import { values, } from 'common/utils';
 
 const { oneOfType, object, array, func, } = React.PropTypes;
 export default class ChatLogin extends React.Component {

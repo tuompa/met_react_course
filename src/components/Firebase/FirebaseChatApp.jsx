@@ -1,8 +1,8 @@
 import React from 'react';
-import dbRef from '../../firebaseDatabase';
+import { values, } from 'common/utils';
+import dbRef from 'common/firebaseDatabase';
 import ChatLogin from './ChatLogin';
 import ChatPage from './ChatPage';
-import { values, } from '../../utils';
 
 const chat = dbRef.child('chat');
 

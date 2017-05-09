@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'components/Button';
 import Input from 'components/Input';
-import { values, } from '../../utils';
+import { values, } from 'common/utils';
 
 const { object, func, } = React.PropTypes;
 export default class ChatPage extends React.Component {

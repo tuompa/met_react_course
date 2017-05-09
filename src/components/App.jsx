@@ -2,7 +2,7 @@ import React from 'react';
 import TransitionGroup from 'react-addons-css-transition-group';
 import { browserHistory, } from 'react-router';
 import Sidebar from 'components/Sidebar';
-import { signOut, } from '../firebaseDatabase';
+import { signOut, } from 'common/firebaseDatabase';
 
 class App extends React.Component {
 

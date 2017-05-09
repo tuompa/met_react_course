@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'components/Button';
 import TreeList from 'components/TreeList';
-import axios from '../axios';
+import axios from 'common/axios';
 
 export default class UsingRestApis extends React.Component {
 

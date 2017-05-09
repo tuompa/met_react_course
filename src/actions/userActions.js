@@ -1,5 +1,5 @@
 import uuidV4 from 'uuid/v4';
-import axios from '../axios';
+import axios from 'common/axios';
 
 import {
   START_USER_REQUEST,

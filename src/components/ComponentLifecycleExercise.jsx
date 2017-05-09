@@ -3,7 +3,7 @@ import Img from 'components/Img';
 import whiteCollar from 'images/business-cat-white-collar-tie.jpg';
 import candidate from 'images/cat-candidate.jpg';
 import grumpy from 'images/grumpy.jpg';
-import { keys, } from '../utils';
+import { keys, } from 'common/utils';
 
 /* AnimateImageList animates 'image removed' and 'image added' animations.
 * Removal animations are not possible with css alone
