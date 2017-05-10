@@ -41,15 +41,11 @@ export function addTodo(description){
 
 // No need to use this if you do not absolutely want to
 function setPostRequestMessage({ dispatch, type, subject, message, }) {
-  let before;
-  let after;
   if (type ==='error') {
-    before = TODOS_REQUEST_ERROR;
-    after = CLEAR_TODOS_ERROR;
+    dispatch({ type: TODOS_REQUEST_ERROR, payload: { subject, message: message || '(╯°□°)╯︵ ┻━┻', }, });
+    setTimeout(() => dispatch({ type: CLEAR_TODOS_ERROR, payload: subject, }), 2000);
   } else {
-    before = TODOS_REQUEST_SUCCESS;
-    after = CLEAR_TODOS_SUCCESS;
+    dispatch({ type: TODOS_REQUEST_SUCCESS, payload: { subject, message, }, });
+    setTimeout(() => dispatch({ type: CLEAR_TODOS_SUCCESS, payload: subject, }), 2000);
   }
-  dispatch({ type: before, payload: { subject, message: message || '(╯°□°)╯︵ ┻━┻', }, });
-  setTimeout(() => dispatch({ type: after, payload: subject, }), 2000);
 }

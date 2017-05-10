@@ -73,15 +73,11 @@ export function getUserById(userId) {
 }
 
 function setPostRequestMessage({ dispatch, type, subject, message, }) {
-  let before;
-  let after;
   if (type ==='error') {
-    before = USER_REQUEST_ERROR;
-    after = CLEAR_USER_ERROR;
+    dispatch({ type: USER_REQUEST_ERROR, payload: { subject, message: message || '(╯°□°)╯︵ ┻━┻', }, });
+    setTimeout(() => dispatch({ type: CLEAR_USER_ERROR, payload: subject, }), 2000);
   } else {
-    before = USER_REQUEST_SUCCESS;
-    after = CLEAR_USER_SUCCESS;
+    dispatch({ type: USER_REQUEST_SUCCESS, payload: { subject, message, }, });
+    setTimeout(() => dispatch({ type: CLEAR_USER_SUCCESS, payload: subject, }), 2000);
   }
-  dispatch({ type: before, payload: { subject, message: message || '(╯°□°)╯︵ ┻━┻', }, });
-  setTimeout(() => dispatch({ type: after, payload: subject, }), 2000);
 }
