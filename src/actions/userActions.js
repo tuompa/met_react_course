@@ -12,8 +12,8 @@ import {
   CLEAR_USER_SUCCESS, } from './types';
 
 export function getAllUsers() {
+  const subject = 'get_all_users';
   return function (dispatch, getState) {
-    const subject = 'get_all_users';
     dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Fetching users', }, });
     return axios.get('/users')
         .then(({ data, }) => dispatch({ type: SET_USERS, payload: data, }))
@@ -26,8 +26,8 @@ export function getAllUsers() {
 }
 
 export function createUser({ name, imageUrl, }) {
+  const subject = 'create_user';
   return function (dispatch, getState) {
-    const subject = 'create_user';
     dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'creating user', }, });
     const id = uuidV4();
     dispatch({ type: UPSERT_USER, payload: { id, name, imageUrl, pending: true, }, });
@@ -43,8 +43,8 @@ export function createUser({ name, imageUrl, }) {
 }
 
 export function removeUser(userId) {
+  const subject = 'remove_user';
   return function (dispatch, getState) {
-    const subject = 'remove_user';
     const user = getState().users.content[userId];
     dispatch({ type: REMOVE_USER, payload: userId, });
     dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Removing user', }, });
@@ -59,8 +59,8 @@ export function removeUser(userId) {
 }
 
 export function getUserById(userId) {
+  const subject = 'get_user_by_id';
   return function (dispatch, getState) {
-    const subject = 'get_user_by_id';
     dispatch({ type: START_USER_REQUEST, payload: { subject, message: 'Fetching user', }, });
     axios.get(`/users/${userId}`)
         .then(({ data, }) => dispatch({ type: UPSERT_USER, payload: data, }))
