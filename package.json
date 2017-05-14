@@ -58,7 +58,6 @@
     "file-loader": "^0.10.1",
     "html-webpack-plugin": "^2.26.0",
     "html-webpack-template": "^6.0.0",
-    "install": "^0.10.1",
     "json-loader": "^0.5.4",
     "mocha": "^3.2.0",
     "node-sass": "^4.1.1",
