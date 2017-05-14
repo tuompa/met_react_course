@@ -81,7 +81,7 @@ const base = (env) => ({
 });
 
 const vendor = [
-  'axios', 'firebase', 'react', 'react-addons-css-transition-group', 'react-dom', 'react-flip-move',
+  'axios', 'firebase', 'react', 'react-transition-group', 'react-dom', 'react-flip-move',
   'react-fontawesome', 'react-redux', 'react-router', 'redux', 'redux-thunk', 'uuid',
 ];
 module.exports = {
