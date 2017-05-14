@@ -49,6 +49,9 @@ const Home = () => (
     </ul>
     <h1>Development tips</h1>
     <ul>
+      <li>
+        Download eslint plugin and any common plugins related to JSX and React
+      </li>
       <li>Enable <b>ESlint</b> codequality tools for Webstorm
         <ol>
           <li>
