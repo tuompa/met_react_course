@@ -1,17 +1,5 @@
 import React from 'react';
 
-function getRandomCatUrl() {
-  const STATUS_CODES = [
-    100, 101, 200, 201, 202, 204, 206, 207, 300,
-    301, 303, 304, 305, 307, 400, 401, 402, 403,
-    404, 405, 406, 408, 409, 410, 411, 412, 413,
-    414, 420, 421, 422, 423, 423, 424, 425, 426,
-    429, 431, 444, 450, 401, 500, 502, 503, 504,
-    506, 507, 508, 509, 511, 599,
-  ];
-  const index = parseInt(Math.random() * 10000) % STATUS_CODES.length;
-  return `https://http.cat/${STATUS_CODES[index]}`;
-}
 const CATS = [ getRandomCatUrl(), getRandomCatUrl(), getRandomCatUrl(), ];
 const IMG_HEIGHT = 240;
 
@@ -32,5 +20,25 @@ const Component = props => (
     </ul>
   </div>
 );
+
+function getRandomCatUrl() {
+  const URLS = [
+    'http://random.cat/i/9nGhK.jpg',
+    'http://random.cat/i/tumblr_lnbhr9gsbC1qg6j9eo1_500.jpg',
+    'http://random.cat/i/20160202053446.jpg',
+    'http://random.cat/i/DyqsD.jpg',
+    'http://random.cat/i/tumblr_m421kru3Gq1r6nwiqo2_1280.jpg',
+    'http://random.cat/i/lAs9D.gif',
+    'http://random.cat/i/EFlSK.jpg',
+    'http://random.cat/i/image1(1).jpg',
+    'http://random.cat/i/QAP6w.jpg',
+    'http://random.cat/i/xhfMW.jpg',
+    'http://random.cat/i/Y3KLw.jpg',
+    'http://random.cat/i/21857105562_75931e95df_b.jpg',
+    'http://random.cat/i/NaJaQ.jpg',
+  ];
+  const index = parseInt(Math.random() * 10000) % URLS.length;
+  return URLS[index];
+}
 
 export default Component;
