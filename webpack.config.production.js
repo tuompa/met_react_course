@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const { context, vendor, distPath, publicPath, base, }= require('./webpack.config.base');
+const { context, vendor, distPath, publicPath, base, API_URL, }= require('./webpack.config.base');
+
 
 module.exports = merge(base('production'), {
   context,
@@ -18,8 +19,8 @@ module.exports = merge(base('production'), {
     new CleanWebpackPlugin([ distPath, ]),
     new webpack.DefinePlugin({
       'process.env': {
+        API_URL,
         NODE_ENV: JSON.stringify('production'),
-        API_URL: JSON.stringify('http://138.197.65.89:9000'),
       },
     }),
     new webpack.optimize.UglifyJsPlugin({

@@ -84,7 +84,11 @@ const vendor = [
   'axios', 'firebase', 'react', 'react-transition-group', 'react-dom', 'react-flip-move',
   'react-fontawesome', 'react-redux', 'react-router', 'redux', 'redux-thunk', 'uuid',
 ];
+const devVendors = [
+
+];
 module.exports = {
+  API_URL: process.env.API_URL || JSON.stringify('http://138.197.65.89:9000'),
   distPath,
   context,
   publicPath: '/',

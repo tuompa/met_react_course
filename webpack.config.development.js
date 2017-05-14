@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const { context, vendor, distPath, publicPath, base, }= require('./webpack.config.base');
+const { context, distPath, publicPath, base, API_URL, vendor, }= require('./webpack.config.base');
+
 const port = process.env.PORT || 8000;
 const host = process.env.HOST || '0.0.0.0';
 
@@ -20,8 +21,8 @@ module.exports = merge(base('development'), {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
+        API_URL,
         NODE_ENV: JSON.stringify('development'),
-        API_URL: JSON.stringify('http://138.197.65.89:9000'),
       },
     }),
     new webpack.HotModuleReplacementPlugin(),
