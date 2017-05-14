@@ -1,5 +1,5 @@
 import React from 'react';
-import TransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import { browserHistory, } from 'react-router';
 import Sidebar from 'components/Sidebar';
 import { signOut, } from 'common/firebaseDatabase';
@@ -25,7 +25,7 @@ class App extends React.Component {
             <Sidebar
               pathname={pathname}
               collapsed={sidebarCollapsed} />
-            <TransitionGroup
+            <CSSTransitionGroup
               transitionName='route-change'
               transitionEnter
               transitionLeave
@@ -34,7 +34,7 @@ class App extends React.Component {
               <div className='activity-window' key={pathname}>
                 {this.props.children}
               </div>
-            </TransitionGroup>
+            </CSSTransitionGroup >
           </div>
         </div>
       </div>
