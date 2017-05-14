@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const { context, vendor, distPath, publicPath, base, }= require('./webpack.config.base');
+const port = process.env.PORT || 8000;
+const host = process.env.HOST || '0.0.0.0';
 
 module.exports = merge(base('development'), {
   devtool: 'source-map',
@@ -22,11 +25,12 @@ module.exports = merge(base('development'), {
       },
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new OpenBrowserPlugin({ url: `http://${host}:${port}/`, }),
   ],
   devServer: {
     // host must be set to enable accessing server from localhost:${PORT} when devServer running in docker
-    host: process.env.HOST || '0.0.0.0',
-    port: process.env.PORT || 8000,
+    port,
+    host,
     contentBase: context,
     historyApiFallback: true,
     watchOptions: {
